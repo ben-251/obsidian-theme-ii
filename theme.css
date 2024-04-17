@@ -1,3 +1,5 @@
+/* JS: ./script.js */
+
 :root
 {
     --font-size-normal:              19px;
@@ -15,7 +17,8 @@
     --font-family-preview:           Avenir, Avenir Next, sans-serif;
     --tag-bg: rgba(225, 128, 255, 0.144);
     --tag-font-color: rgb(239, 206, 255);
-    --tag-radius: 2em
+    --tag-radius: 2em;
+    --callout-question-new: 168, 130, 255
 } 
 
 .theme-light,
@@ -30,9 +33,9 @@
   --background-modifier-form-field-highlighted: rgba(0, 0, 0, 0.5);
   --background-modifier-box-shadow: rgba(0, 0, 0, 0.3);
   --background-modifier-success: #50fa7b; /*no sure*/
-  --background-modifier-error: #3d0000; /*no sure*/
-  --background-modifier-error-rgb: 61, 0, 0;
-  --background-modifier-error-hover: #470000;
+  --background-modifier-error: #c00000; /*no sure*/
+  --background-modifier-error-rgb: 192, 0, 0;
+  --background-modifier-error-hover: #ff2727;
   --background-modifier-cover: rgba(0, 0, 0, 0.6);
   --text-accent: #ffb86c;
   --text-accent-hover: #8be9fd;
@@ -43,12 +46,13 @@
   --text-error: #ff79c6;
   --text-error-hover: #ff79c6;
   --text-selection: #6272a4; /* Chromium precess this color with alpha channel */
-  --text-on-accent: #bd93f9;
-  --interactive-normal: #ffb86c;
-  --interactive-hover: #ff5555;
-  --interactive-accent: #ffb86c;
-  --interactive-accent-rgb: 123, 108, 217;
-  --interactive-accent-hover: #ff5555;
+  --text-on-accent: #2b031a;
+  --text-on-warning: #ffffff;
+  	/* --interactive-normal: #dd6cff; */
+	--interactive-hover: var(--interactive-accent);
+	--interactive-accent-hover: var(--interactive-hover);
+	/* --interactive-accent: #dd6cff; */
+	--interactive-normal: var(--interactive-accent);
   --scrollbar-active-thumb-bg: rgba(255, 255, 255, 0.2);
   --scrollbar-bg: rgba(255, 255, 255, 0.05);
   --scrollbar-thumb-bg: rgba(255, 255, 255, 0.1);
@@ -250,7 +254,7 @@ strong, .cm-strong {
 /* emphasis in preview and editor */
 em, .cm-em {
   /* color: var(--text-muted); */
-  color: #ffd86c;
+  color: #e4b5ee;
   font-style: italic;
 }
 
@@ -450,6 +454,7 @@ thead {
 
 .markdown-preview-view .task-list-item-checkbox {
   -webkit-appearance: none;
+  appearance: none;
   top: 0.2em !important;
   right: 4px;
   box-sizing: border-box;
@@ -573,6 +578,14 @@ color: var(--text-accent) !important;
 
 .modal.mod-settings button:not(.mod-cta):hover {
   background-color: var(--interactive-accent-hover);
+}
+
+.dropdown, button:not(.clickable-icon) {
+  color: black
+}
+
+select option {
+  color: var(--text-normal)
 }
 
 /***************************************/
@@ -725,3 +738,35 @@ code{
     transition: transform 100ms ease-in-out;
     padding: 0px  !important;
   }
+
+  .callout[data-callout="question"], .callout[data-callout="help"], .callout[data-callout="faq"] {
+    --callout-color: var(--callout-question-new);
+    --callout-icon: help-circle;
+  }
+
+  .callout[data-callout="pink"] {
+    --callout-color: attr(callout);
+    --callout-icon: lucide-pencil;    
+  }
+
+  button.mod-warning {
+    color: var(--text-on-warning);
+    font-weight: bold;
+  }
+
+ /* HOver */
+@media (hover: hover) {
+
+	select:hover,
+	.dropdown:hover {
+		opacity: 70%
+	}
+
+	button.mod-cta:hover {
+		opacity: 60%;
+	}
+
+	.modal.mod-settings button:not(.mod-cta):hover {
+		opacity: 60%;
+	}
+}
