@@ -1,6 +1,6 @@
-/* JS: ./script.js */
+ /* JS: ./script.js */
 
-:root
+body
 {
     --font-size-normal:              19px;
     --font-size-code:                16px;
@@ -15,11 +15,25 @@
     --font-size-h6:                  19px;
     --font-family-editor:            Avenir, Avenir Next, sans-serif;
     --font-family-preview:           Avenir, Avenir Next, sans-serif;
+    --font-title-new: "Varela Round";
+    --font-header-new: "Varela Round","Lobster Two",  "DM sans";
+    --font-italics: "Playfair", "latin modern roman dunhill";
+    --font-bold: "Varela Round", "Lobster Two";
+    --font-bold-italics: "Varela Round", "Lobster Two";
+    --font-blockquote:  "Playfair", "EB Garamond", "Playfair";
+    --font-blockquote-render:"EB Garamond", "Latin modern roman";    
     --tag-bg: rgba(225, 128, 255, 0.144);
     --tag-font-color: rgb(239, 206, 255);
     --tag-radius: 2em;
-    --callout-question-new: 168, 130, 255
+    --callout-question-new: 168, 130, 255;
+    --file-line-width: 900px;
+    --blockquote-border-thickness: 4px
 } 
+
+.inline-title {
+  font-family: var(--font-title-new);
+  text-shadow: 0 0 10px #ffffff41;;
+}
 
 .theme-light,
 .theme-dark {
@@ -53,20 +67,21 @@
 	--interactive-accent-hover: var(--interactive-hover);
 	/* --interactive-accent: #dd6cff; */
 	--interactive-normal: var(--interactive-accent);
+  --blockquote-background-color: var(--background-secondary);
   --scrollbar-active-thumb-bg: rgba(255, 255, 255, 0.2);
   --scrollbar-bg: rgba(255, 255, 255, 0.05);
   --scrollbar-thumb-bg: rgba(255, 255, 255, 0.1);
 
   --text-title-h1:              #bd93f9;
-  --text-title-h2:              #ffb86c;
-  --text-title-h3:              #8be9fd;
-  --text-title-h4:              #ff79e9;
-  --text-title-h5:              #50fa7b;
-  --text-title-h6:              #ff5555;
-  --inline-code:                #ff9ecb;
+  --text-title-h2:              #d688fa;
+  --text-title-h3:              #a6efff;
+  --text-title-h4:              #fc91ea;
+  --text-title-h5:              #a0f0b4;
+  --text-title-h6:              #e47096;
+  --inline-code:                #ffb86c;
   --code-block:                 #8be9fd;
   --pre-code:                   #44475a;
-  --blockquote-border:          #ffb86c;
+  --blockquote-border:          var(--interactive-normal);
   --vim-cursor:                 #ff5555;
   --border-color:               #2b2727; /*also like transparent*/
 }
@@ -246,16 +261,30 @@ a:not(.internal-link) {
 }
 
 /* bold in preview and editor */
-strong, .cm-strong {
-  font-weight: 600;
-  color: #ff41c6;
+strong, .cm-strong, .cm-quote.cm-strong {
+  font-weight: 800;
+  color: #ba9ce4;
+  font-family: var(--font-bold);
+  font-size: calc(var(--font-size-normal) * 1);
 }
 
-/* emphasis in preview and editor */
-em, .cm-em {
+/* italics/emphasis in preview and editor */
+.cm-s-obsidian .cm-quote.cm-em, .cm-em, em, .cm-em {
   /* color: var(--text-muted); */
-  color: #e4b5ee;
+  color: #d5bdf7;
   font-style: italic;
+  font-family: var(--font-italics);
+  font-size:  calc(var(--font-size-normal) * 1.1);
+}
+
+strong em, .cm-em.cm-strong, .cm-quote.cm-em.cm-strong {
+  font-weight: 800;
+  color: #d5bdf7;
+  font-style:italic;
+  font-family: var(--font-bold-italics);
+  font-size: calc(var(--font-size-normal) * 1);
+  letter-spacing: 0.05em;
+  text-shadow: 0 0 3px #ff00ff9a;
 }
 
 /* strikethrough in preview and editor */
@@ -297,7 +326,7 @@ img:hover {
 /* headings for editor and preview */
 .cm-header-1, .markdown-preview-view h1
 {
-  font-family: var(--font-family-editor);
+  font-family: var(--font-header-new);
   font-weight: 500;
   font-size: var(--font-size-h1);
   color: var(--text-title-h1);
@@ -305,7 +334,7 @@ img:hover {
 
 .cm-header-2, .markdown-preview-view h2
 {
-  font-family: var(--font-family-editor);
+  font-family: var(--font-header-new);
   font-weight: 500;
   font-size: var(--font-size-h2);
   color: var(--text-title-h2);
@@ -313,7 +342,7 @@ img:hover {
 
 .cm-header-3, .markdown-preview-view h3
 {
-  font-family: var(--font-family-editor);
+  font-family: var(--font-header-new);
   font-weight: 500;
   font-size: var(--font-size-h3);
   color: var(--text-title-h3);
@@ -321,7 +350,7 @@ img:hover {
 
 .cm-header-4, .markdown-preview-view h4
 {
-  font-family: var(--font-family-editor);
+  font-family: var(--font-header-new);
   font-weight: 500;
   font-size: var(--font-size-h4);
   color: var(--text-title-h4);
@@ -329,7 +358,7 @@ img:hover {
 
 .cm-header-5, .markdown-preview-view h5
 {
-  font-family: var(--font-family-editor);
+  font-family: var(--font-header-new);
   font-weight: 500;
   font-size: var(--font-size-h5);
   color: var(--text-title-h5);
@@ -337,11 +366,12 @@ img:hover {
 
 .cm-header-6, .markdown-preview-view h6
 {
-  font-family: var(--font-family-editor);
+  font-family: var(--font-header-new);
   font-weight: 500;
   font-size: var(--font-size-h6);
   color: var(--text-title-h6);
 }
+
 
 /***************************************/
 /*         Code block in  Preview      */
@@ -393,10 +423,29 @@ pre code {
 /***************************************/
 
 /* for editor */
-.cm-quote {
+.cm-quote:not(:is(.cm-em, .cm-strong))  {
   color: var(--text-normal) !important;
-  font-style: italic;
+  /* font-style: italic; */
+  font-weight: bold;
+  line-height: 1.5;
 }
+.cm-quote, .cm-quote.cm-em, .cm-quote.cm-em, .cm-quote.cm-em.cm-strong {
+  font-family: var(--font-blockquote);
+  font-size:  calc(var(--font-size-normal) * 1.1);
+}
+.HyperMD-quote.HyperMD-quote-1.cm-line:has(+ .cm-quote) {
+  /* background-color: var(--pre-code); */
+  background-color: red;
+  border-radius: 0 8px 8px 0;
+  line-height: 1.5em;
+  margin: 30px 0px;
+  font-style: italic;
+  font-family: var(--font-blockquote);
+  padding: 0.5em;
+}
+
+
+/*TODO: finish making the blockquotes in editing resemble the ones in final */
 
 /* for preview */
 .markdown-preview-view blockquote {
@@ -408,6 +457,9 @@ pre code {
   line-height: 1.5em;
   margin: 30px 0px;
   font-style: italic;
+  padding: 0.5em .75em;
+  font-family: var(--font-blockquote-render);
+  font-size:  calc(var(--font-size-normal) * 1.4);
 }
 
 /***************************************/
@@ -762,6 +814,9 @@ code{
 		opacity: 70%
 	}
 
+
+
+
 	button.mod-cta:hover {
 		opacity: 60%;
 	}
@@ -770,3 +825,36 @@ code{
 		opacity: 60%;
 	}
 }
+
+/* Date/Timeline Object */
+.date {
+  background-color: color-mix(in srgb, transparent 70%, color-mix(in srgb, aliceblue 10%,  var(--interactive-normal)));
+  color: aliceblue;
+  padding: 0.3em 0.4em;
+  font-family: Cinzel;
+  border-radius: 0.4em;
+  font-size: calc(var(--font-size-normal)*1.1);
+  box-sizing: border-box;
+  width: fit-content;
+  display: inline-block;
+}
+
+
+.date.secondary {
+  font-size: calc(var(--font-size-normal)*0.9);
+  background-color: color-mix(in srgb, transparent 85%, color-mix(in srgb, rgb(214, 236, 255) 10%,  var(--interactive-normal)));
+  color: rgb(255, 252, 235)
+}
+
+/* li:has(.date) .list-bullet:after {
+   content: url('<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M11 6v8h7v-2h-5v-6h-2zm10.854 7.683l1.998.159c-.132.854-.351 1.676-.652 2.46l-1.8-.905c.2-.551.353-1.123.454-1.714zm-2.548 7.826l-1.413-1.443c-.486.356-1.006.668-1.555.933l.669 1.899c.821-.377 1.591-.844 2.299-1.389zm1.226-4.309c-.335.546-.719 1.057-1.149 1.528l1.404 1.433c.583-.627 1.099-1.316 1.539-2.058l-1.794-.903zm-20.532-5.2c0 6.627 5.375 12 12.004 12 1.081 0 2.124-.156 3.12-.424l-.665-1.894c-.787.2-1.607.318-2.455.318-5.516 0-10.003-4.486-10.003-10s4.487-10 10.003-10c2.235 0 4.293.744 5.959 1.989l-2.05 2.049 7.015 1.354-1.355-7.013-2.184 2.183c-2.036-1.598-4.595-2.562-7.385-2.562-6.629 0-12.004 5.373-12.004 12zm23.773-2.359h-2.076c.163.661.261 1.344.288 2.047l2.015.161c-.01-.755-.085-1.494-.227-2.208z"/></svg>') 
+  content: url("/icons/iconmonstr-time-6.svg")
+}
+li:has(.date) .list-bullet:before {
+  content: url("/icons/iconmonstr-time-6.svg")
+}
+.cm-line:has(.date) .list-bullet:before {
+  content: url("/icons/iconmonstr-time-6.svg");
+  /* content: "bye"; 
+  color: white
+} */
