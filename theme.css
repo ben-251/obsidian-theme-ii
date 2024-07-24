@@ -39,7 +39,7 @@ body
 .theme-dark {
   --background-primary: #282a36;
   --background-primary-alt: #44475a;
-  --background-secondary: #44475a;
+  --background-secondary: #523a579a;
   --background-secondary-alt: #282a36;
   --background-accent: #f8f8f2;
   --background-modifier-border: #f8f8f2;
@@ -72,8 +72,8 @@ body
   --scrollbar-bg: rgba(255, 255, 255, 0.05);
   --scrollbar-thumb-bg: rgba(255, 255, 255, 0.1);
 
-  --text-title-h1:              #bd93f9;
-  --text-title-h2:              #d688fa;
+  --text-title-h1:              #c9aaf3;
+  --text-title-h2:              #cdb1f5;
   --text-title-h3:              #a6efff;
   --text-title-h4:              #fc91ea;
   --text-title-h5:              #a0f0b4;
@@ -273,11 +273,17 @@ strong, .cm-strong, .cm-quote.cm-strong {
   /* color: var(--text-muted); */
   color: #d5bdf7;
   font-style: italic;
+  font-weight: 600;
   font-family: var(--font-italics);
   font-size:  calc(var(--font-size-normal) * 1.1);
 }
 
 strong em, .cm-em.cm-strong, .cm-quote.cm-em.cm-strong {
+  /* NOTE: 
+      throughout the vault, 
+      bold-italics are used not just for big emphasis,
+      but also for mini-headings!
+   */
   font-weight: 800;
   color: #d5bdf7;
   font-style:italic;
@@ -426,7 +432,7 @@ pre code {
 .cm-quote:not(:is(.cm-em, .cm-strong))  {
   color: var(--text-normal) !important;
   /* font-style: italic; */
-  font-weight: bold;
+  font-weight: 500;
   line-height: 1.5;
 }
 .cm-quote, .cm-quote.cm-em, .cm-quote.cm-em, .cm-quote.cm-em.cm-strong {
@@ -840,10 +846,19 @@ code{
 }
 
 
+.date.tertiary {
+  font-size: calc(var(--font-size-normal)*0.9);
+  background-color: color-mix(in srgb, transparent 55%, color-mix(in srgb, rgb(173, 54, 70) 50%,  var(--interactive-normal)));
+  color: white;
+  font-weight: 500;
+}
+
 .date.secondary {
   font-size: calc(var(--font-size-normal)*0.9);
-  background-color: color-mix(in srgb, transparent 85%, color-mix(in srgb, rgb(214, 236, 255) 10%,  var(--interactive-normal)));
-  color: rgb(255, 252, 235)
+  background-color: color-mix(in srgb,aliceblue, transparent 20%);
+  color: rgb(21, 0, 46);
+  font-weight: 700;
+  padding: 0.2em 0,3em
 }
 
 /* li:has(.date) .list-bullet:after {
