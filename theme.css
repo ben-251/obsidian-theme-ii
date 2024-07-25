@@ -13,15 +13,15 @@ body
     --font-size-h4:                  21px;
     --font-size-h5:                  20px;
     --font-size-h6:                  19px;
-    --font-family-editor:            Avenir, Avenir Next, sans-serif;
-    --font-family-preview:           Avenir, Avenir Next, sans-serif;
+    --font-family-editor:            Avenir, "Avenir Next", sans-serif;
+    --font-family-preview:           Avenir, "Avenir Next", sans-serif;
     --font-title-new: "Varela Round";
     --font-header-new: "Varela Round","Lobster Two",  "DM sans";
     --font-italics: "Playfair", "latin modern roman dunhill";
     --font-bold: "Varela Round", "Lobster Two";
     --font-bold-italics: "Varela Round", "Lobster Two";
-    --font-blockquote:  "Playfair", "EB Garamond", "Playfair";
-    --font-blockquote-render:"EB Garamond", "Latin modern roman";    
+    --font-blockquote:  "Lora", "Playfair", "EB Garamond", "Playfair";
+    --font-blockquote-render:"Lora", "EB Garamond", "Latin modern roman";    
     --tag-bg: rgba(225, 128, 255, 0.144);
     --tag-font-color: rgb(239, 206, 255);
     --tag-radius: 2em;
@@ -39,7 +39,7 @@ body
 .theme-dark {
   --background-primary: #282a36;
   --background-primary-alt: #44475a;
-  --background-secondary: #523a579a;
+  --background-secondary: #4b445a;
   --background-secondary-alt: #282a36;
   --background-accent: #f8f8f2;
   --background-modifier-border: #f8f8f2;
@@ -73,14 +73,14 @@ body
   --scrollbar-thumb-bg: rgba(255, 255, 255, 0.1);
 
   --text-title-h1:              #c9aaf3;
-  --text-title-h2:              #cdb1f5;
+  --text-title-h2:              #ffb86c;
   --text-title-h3:              #a6efff;
   --text-title-h4:              #fc91ea;
   --text-title-h5:              #a0f0b4;
   --text-title-h6:              #e47096;
   --inline-code:                #ffb86c;
   --code-block:                 #8be9fd;
-  --pre-code:                   #44475a;
+  --pre-code:                   var(--background-secondary);
   --blockquote-border:          var(--interactive-normal);
   --vim-cursor:                 #ff5555;
   --border-color:               #2b2727; /*also like transparent*/
@@ -263,19 +263,22 @@ a:not(.internal-link) {
 /* bold in preview and editor */
 strong, .cm-strong, .cm-quote.cm-strong {
   font-weight: 800;
-  color: #ba9ce4;
+  color: #ff94dfec;
+  color: #7dc5e6;
   font-family: var(--font-bold);
-  font-size: calc(var(--font-size-normal) * 1);
+  font-size: calc(var(--font-size-normal) * 0.9);
 }
 
 /* italics/emphasis in preview and editor */
 .cm-s-obsidian .cm-quote.cm-em, .cm-em, em, .cm-em {
   /* color: var(--text-muted); */
-  color: #d5bdf7;
+  color: #FFB294;
+  color: #94C1FF;
+  
   font-style: italic;
   font-weight: 600;
   font-family: var(--font-italics);
-  font-size:  calc(var(--font-size-normal) * 1.1);
+  font-size:  calc(var(--font-size-normal) * 1.15);
 }
 
 strong em, .cm-em.cm-strong, .cm-quote.cm-em.cm-strong {
@@ -285,7 +288,7 @@ strong em, .cm-em.cm-strong, .cm-quote.cm-em.cm-strong {
       but also for mini-headings!
    */
   font-weight: 800;
-  color: #d5bdf7;
+  color: #94C1FF;
   font-style:italic;
   font-family: var(--font-bold-italics);
   font-size: calc(var(--font-size-normal) * 1);
@@ -466,6 +469,10 @@ pre code {
   padding: 0.5em .75em;
   font-family: var(--font-blockquote-render);
   font-size:  calc(var(--font-size-normal) * 1.4);
+}
+
+.markdown-preview-view blockquote em {
+  font-size: calc(var(--font-size-normal) * 1.4)
 }
 
 /***************************************/
@@ -861,6 +868,60 @@ code{
   padding: 0.2em 0,3em
 }
 
+.cm-line:has(.dinkus) {
+  /* width: 100%; */
+  display: block;
+  font-size: calc(var(--font-size-normal)*1.4);
+  text-align: center;
+  line-height: 1;
+}
+
+.cm-line:has(.dinkus.snowflake) {
+  /* width: 100%; */
+  display: block;
+  font-size: calc(var(--font-size-normal)*1.8);
+  text-align: center;
+  line-height: 1;
+}
+
+.cm-line:has(.dinkus.heart) {
+  /* width: 100%; */
+  display: block;
+  font-size: calc(var(--font-size-normal)*2);
+  text-align: center;
+  line-height: 1;
+}
+
+.dinkus {
+  display: flex;
+  align-items: center; /* Vertically center */
+  justify-content: center;
+  padding: 0
+}
+
+.dinkus:not(:is(.diamond, .snowflake, .sparkles, .heart))::before {
+  content: "✻ ✻ ✻";
+  color: thistle
+}
+
+.dinkus.diamond::before {
+  content: "❖ ❖ ❖";
+  color: plum
+}
+
+.dinkus.snowflake::before {
+  content: "❄ ❄ ❄";
+  color: lightblue
+}
+
+.dinkus.sparkles::before {
+  content: "✨ ✨ ✨";
+}
+
+.dinkus.heart::before{
+  content: "❧";
+  color: pink
+}
 /* li:has(.date) .list-bullet:after {
    content: url('<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M11 6v8h7v-2h-5v-6h-2zm10.854 7.683l1.998.159c-.132.854-.351 1.676-.652 2.46l-1.8-.905c.2-.551.353-1.123.454-1.714zm-2.548 7.826l-1.413-1.443c-.486.356-1.006.668-1.555.933l.669 1.899c.821-.377 1.591-.844 2.299-1.389zm1.226-4.309c-.335.546-.719 1.057-1.149 1.528l1.404 1.433c.583-.627 1.099-1.316 1.539-2.058l-1.794-.903zm-20.532-5.2c0 6.627 5.375 12 12.004 12 1.081 0 2.124-.156 3.12-.424l-.665-1.894c-.787.2-1.607.318-2.455.318-5.516 0-10.003-4.486-10.003-10s4.487-10 10.003-10c2.235 0 4.293.744 5.959 1.989l-2.05 2.049 7.015 1.354-1.355-7.013-2.184 2.183c-2.036-1.598-4.595-2.562-7.385-2.562-6.629 0-12.004 5.373-12.004 12zm23.773-2.359h-2.076c.163.661.261 1.344.288 2.047l2.015.161c-.01-.755-.085-1.494-.227-2.208z"/></svg>') 
   content: url("/icons/iconmonstr-time-6.svg")
