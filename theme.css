@@ -899,6 +899,11 @@ code{
   padding: 0
 }
 
+.dinkus.left::before {
+  /* make this more-suited to left-aligned text i.e don't align dinkus to centre */
+  margin-right: 6em
+}
+
 .dinkus:not(:is(.diamond, .snowflake, .sparkles, .heart))::before {
   content: "✻ ✻ ✻";
   color: thistle
