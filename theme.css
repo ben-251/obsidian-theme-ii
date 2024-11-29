@@ -1,5 +1,6 @@
  /* JS: ./script.js */
 
+
 body
 {
     --font-size-normal:              19px;
@@ -15,12 +16,12 @@ body
     --font-size-h6:                  19px;
     --font-family-editor:            Avenir, "Avenir Next", sans-serif;
     --font-family-preview:           Avenir, "Avenir Next", sans-serif;
-    --font-title-new: "Varela Round";
-    --font-header-new: "Varela Round","Lobster Two",  "DM sans";
-    --font-italics: "Playfair", "latin modern roman dunhill";
+    --font-title-new: var(--font-family-editor), "Garamond", "Varela Round";
+    --font-header-new:  var(--font-family-editor), "Garamond", "Varela Round","Lobster Two",  "DM sans";
+    --font-italics:"EB garamond", "Playfair", "latin modern roman dunhill";
     --font-bold: "Varela Round", "Lobster Two";
     --font-bold-italics: "Varela Round", "Lobster Two";
-    --font-blockquote:  "Lora", "Playfair", "EB Garamond", "Playfair";
+    --font-blockquote:  "Varela Round", "Playfair", "EB Garamond", "Playfair";
     --font-blockquote-render:"Lora", "EB Garamond", "Latin modern roman";    
     --tag-bg: rgba(225, 128, 255, 0.144);
     --tag-font-color: rgb(239, 206, 255);
@@ -67,7 +68,7 @@ body
 	--interactive-accent-hover: var(--interactive-hover);
 	/* --interactive-accent: #dd6cff; */
 	--interactive-normal: var(--interactive-accent);
-  --blockquote-background-color: var(--background-secondary);
+  --blockquote-background-color: color-mix(in srgb, var(--background-secondary), transparent 60%);
   --scrollbar-active-thumb-bg: rgba(255, 255, 255, 0.2);
   --scrollbar-bg: rgba(255, 255, 255, 0.05);
   --scrollbar-thumb-bg: rgba(255, 255, 255, 0.1);
@@ -261,24 +262,28 @@ a:not(.internal-link) {
 }
 
 /* bold in preview and editor */
-strong, .cm-strong, .cm-quote.cm-strong {
-  font-weight: 800;
+strong, .cm-strong {
   color: #ff94dfec;
-  color: #7dc5e6;
-  font-family: var(--font-bold);
-  font-size: calc(var(--font-size-normal) * 0.9);
+  color: #aee2fb; 
+}
+
+strong, .cm-strong, .cm-quote.cm-strong {
+	font-weight: 600;
+	font-size: calc(var(--font-size-normal) * 1); 
 }
 
 /* italics/emphasis in preview and editor */
 .cm-s-obsidian .cm-quote.cm-em, .cm-em, em, .cm-em {
   /* color: var(--text-muted); */
   color: #FFB294;
-  color: #94C1FF;
+  color: #cee3ff;
   
   font-style: italic;
   font-weight: 600;
   font-family: var(--font-italics);
-  font-size:  calc(var(--font-size-normal) * 1.15);
+  font-size:  calc(var(--font-size-normal) * 1);
+  letter-spacing: 0.01em;
+  /* text-shadow: 0 0 2px #9298e9de; */
 }
 
 strong em, .cm-em.cm-strong, .cm-quote.cm-em.cm-strong {
@@ -293,7 +298,7 @@ strong em, .cm-em.cm-strong, .cm-quote.cm-em.cm-strong {
   font-family: var(--font-bold-italics);
   font-size: calc(var(--font-size-normal) * 1);
   letter-spacing: 0.05em;
-  text-shadow: 0 0 3px #ff00ff9a;
+  /* text-shadow: 0 0 3px #a0ecff9a; */
 }
 
 /* strikethrough in preview and editor */
@@ -440,7 +445,7 @@ pre code {
 }
 .cm-quote, .cm-quote.cm-em, .cm-quote.cm-em, .cm-quote.cm-em.cm-strong {
   font-family: var(--font-blockquote);
-  font-size:  calc(var(--font-size-normal) * 1.1);
+  font-size:  calc(var(--font-size-normal) * 0.9);
 }
 .HyperMD-quote.HyperMD-quote-1.cm-line:has(+ .cm-quote) {
   /* background-color: var(--pre-code); */
@@ -938,4 +943,245 @@ li:has(.date) .list-bullet:before {
   content: url("/icons/iconmonstr-time-6.svg");
   /* content: "bye"; 
   color: white
+} */
+
+/* PROSE AND POETRY */
+.cm-callout:has(.callout[data-callout="poem"]) {
+	width: fit-content;
+}
+
+.callout[data-callout="poem"] {
+	--callout-color: attr(callout);
+	--callout-icon: lucide-leaf;
+	background-color: color-mix(in oklab, 
+		color-mix(in srgb, var(--interactive-accent), var(--background-secondary) 70%), 
+		transparent 85%
+	);
+	font-family: Garamond;
+	width: fit-content;
+}
+
+.callout[data-callout="poem"] .callout-icon {
+	display: none;
+}
+
+.callout[data-callout="poem"] .callout-title-inner {
+	font-size: larger;
+	font-family: Jost, 'Montserrat Medium', Garamond, 'Gill Sans', 'Gill Sans MT', sans-serif;
+	font-weight: 600;
+	opacity: 0.7;
+	position: relative;
+	width: clamp(20vw, fit-content, 70vw);
+	max-width: 70vw;
+	text-wrap: pretty;
+	color: var(--interactive-accent);
+}
+
+.callout[data-callout="poem"] .callout-title-inner::after {
+	content: '';
+	display: block;
+	width: 105%;
+	height: 2px;
+	background-color: var(--interactive-accent);
+	position: absolute;
+	bottom: -0.1em;
+	left: 15%;
+	transform: translateX(-15%);
+}
+
+.callout[data-callout="poem"] .callout-content {
+	letter-spacing: 0.02em;
+	opacity: 0.85;
+	margin-right: 5em;
+}
+
+/* 
+	signature
+.callout[data-callout="poem"] .callout-content::after {
+	content:"—Ben";
+	text-align: right;
+	margin-right: 12em;
+	display: block;
+	color:rgba(229, 251, 255, 0.667)
+} */
+
+.callout[data-callout="poem"] .callout-content p {
+	margin-block-start: 0.5em
+}
+
+.callout[data-callout="poem"] .cm-comment {
+	color: purple
+	/* won't work cuz once rendered it isn invisible and in reading mode it isnt' this class list */
+}
+
+.HyperMD-quote cm-comment {
+	color:purple 
+	/* doen't work but i can't investigate cuz once i click off it renders */
+}
+
+
+.callout[data-callout="poem"] .callout-content :is(em, strong) {
+	color: var(--text-muted);
+}
+
+/* PROSE */
+.callout[data-callout="prose"] {
+	background-color: color-mix(
+		in srgb, var(--background-secondary) 80%,
+		color-mix(in srgb, var(--text-accent), transparent 70%)
+	);
+}
+
+.callout[data-callout="prose"] .callout-content {
+	letter-spacing: 0.02em;
+	opacity: 0.85;
+	font-family: Garamond, Arial, Helvetica, sans-serif;
+}
+
+.callout[data-callout="prose"] .callout-title {
+	display: none;
+}
+
+.callout[data-callout="prose"] .callout-content p:first-child:first-letter{
+	--line-count: 2;
+	font-size: calc(var(--line-height-normal) * 1em * var(--line-count)); 
+	float: left;
+	line-height: 1;
+	margin-right: 0.1em; 
+	font-weight: normal;
+	/* font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif; */
+	color: color-mix(in srgb, var(--text-accent), rgba(255, 255, 255, 0.753) 70%)
+}
+
+.callout[data-callout="prose"] .callout-content :is(em, strong) {
+	color: var(--text-muted);
+	font-weight:200
+}
+
+.callout[data-callout="prose"] .callout-content hr {
+	color: var(--text-unset);
+	font-weight:200;
+	overflow: visible; /* For IE */
+	padding: 0;
+	border: none;
+	/* border-top: medium dashed var(--accent);*/
+	color: var(--accent);
+	text-align: center;
+}
+
+.callout[data-callout="prose"] .callout-content hr::after{
+	content: "✦·········• ✦ •·········✦";
+	content: "──── ⋆⋅☆⋅⋆ ────";
+	display: inline-block;
+	position: relative;
+	top: 0em;
+	font-size: 0.9em;
+	padding: 0 0.5em;
+	background-color: var(--mixed-bg-secondary);
+}
+
+
+/* character profiles */
+.callout[data-callout="profile"] {
+	--profile-bg-main: color-mix(in oklab, 
+		color-mix(in srgb, var(--interactive-accent), var(--background-secondary) 70%), 
+		transparent 85%
+	);
+	background-color: var(--profile-bg-main);
+	background: linear-gradient(
+		to bottom,
+		var(--profile-bg-main),
+		transparent
+	);
+	font-family: garamond, Georgia, 'Times New Roman', Times, serif;
+	--p-spacing: 0.5rem;
+}
+
+.callout[data-callout="profile"] .callout-icon  {
+	display: none;
+}
+
+.callout[data-callout="profile"]  .callout-title {
+	color: color-mix(in oklab,
+		var(--text-normal) 70%,
+		transparent
+	);
+	text-align: center;
+	width: 100%;
+	display: block;
+	position:relative;
+}
+
+.callout[data-callout="profile"]  .callout-title::after{
+	content: "2024";
+	position:absolute;
+	top:0;
+	right:0;
+	font-size: 1em;
+	opacity: 0.5;
+}
+
+.callout[data-callout="profile"] :is(h1,h2,h3,h4,h5,h6) {
+	font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+}
+
+.callout[data-callout="profile"] h1 {
+	font-size: 1.2rem;
+	line-height: 0.6;
+}
+
+.callout[data-callout="profile"] h2 {
+	font-size: 1.15rem;
+}
+
+.callout[data-callout="profile"] :is(strong, em) {
+	font-size: 0.9em;
+	color: var(--text-normal)
+}
+
+.callout[data-callout="profile"] hr {
+	opacity: 0.3;
+	border: 1px solid currentColor;
+}
+
+/* trying to style headers that come before profile stylespaces */
+.HyperMD-header-1.cm-line:has(+ .cm-callout .callout[data-callout="profile"]) .cm-header-1{
+	color: color-mix(
+		in srgb,
+		var(--text-accent),
+		rgba(255, 255, 255, 0.455)
+	);
+}
+
+:is(
+	.HyperMD-header-1.cm-line,
+	.HyperMD-header-2.cm-line,
+	.HyperMD-header-3.cm-line,
+	.HyperMD-header-4.cm-line,
+	.HyperMD-header-5.cm-line,
+	.HyperMD-header-6.cm-line
+	):has(+ .cm-callout .callout[data-callout="profile"]) :is(
+	.cm-header-1, .cm-header-2, .cm-header-3, .cm-header-4, .cm-header-5, .cm-header-6
+	) {
+	font-family: Cinzel, Garamond;
+	opacity: 1;
+
+}
+
+:is(
+	.HyperMD-header-1.cm-line,
+	.HyperMD-header-2.cm-line,
+	.HyperMD-header-3.cm-line,
+	.HyperMD-header-4.cm-line,
+	.HyperMD-header-5.cm-line,
+	.HyperMD-header-6.cm-line
+	):has(+ .cm-callout .callout[data-callout="profile"]){
+	display: block;
+	text-align: center;
+	padding-bottom: 0.5em;	
+	opacity: 0.7;
+}
+/* reprod
+.cm-line:has(+ .cm-callout) .cm-header-1{
+	color:red !important
 } */
