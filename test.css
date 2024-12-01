@@ -1010,12 +1010,12 @@
  }
  
  .callout[data-callout="poem"] .cm-comment {
-	 color: purple
+	 color: aqua
 	 /* won't work cuz once rendered it isn invisible and in reading mode it isnt' this class list */
  }
  
  .HyperMD-quote cm-comment {
-	 color:purple 
+	 color:aqua 
 	 /* doen't work but i can't investigate cuz once i click off it renders */
  }
  
