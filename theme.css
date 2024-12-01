@@ -1228,25 +1228,17 @@
  }
 
  /* trying to style headers that come before profile stylespaces */
- .HyperMD-header-1.cm-line:has(+ .cm-callout .callout[data-callout="profile"]) .cm-header-1 {
+.cm-line:has(+ .cm-callout .callout[data-callout="profile"]) .cm-header-1 {
  	color: color-mix(in srgb,
  			var(--text-accent),
  			rgba(255, 255, 255, 0.455));
  }
 
- :is(.HyperMD-header-1.cm-line,
- 	.HyperMD-header-2.cm-line,
- 	.HyperMD-header-3.cm-line,
- 	.HyperMD-header-4.cm-line,
- 	.HyperMD-header-5.cm-line,
- 	.HyperMD-header-6.cm-line):has(+ .cm-callout .callout[data-callout="profile"]) :is(.cm-header-1, .cm-header-2, .cm-header-3, .cm-header-4, .cm-header-5, .cm-header-6) {
+.cm-line:has(+ .cm-callout .callout[data-callout="profile"]) :is(.cm-header-1, .cm-header-2, .cm-header-3, .cm-header-4, .cm-header-5, .cm-header-6) {
  	font-family: Cinzel, Garamond;
  	opacity: 1;
  }
 
-.cm-line:has(+ .cm-callout .callout[data-callout="profile"]) .cm-header-1{
-    font-family: Cinzel, Garamond;
-}
  
  :is(.HyperMD-header-1.cm-line,
  	.HyperMD-header-2.cm-line,
