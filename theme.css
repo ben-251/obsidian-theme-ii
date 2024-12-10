@@ -8,12 +8,18 @@
 	--font-size-status-bar: 16px;
 	--font-size-h1: 22px; /* these don't actuallt do anything. see h2-size */
 	--font-size-h2: 21px;
-	--font-size-h3: 20px;
-	--font-size-h4: 19px;
+	--font-size-h3: 21px;
+	--font-size-h4: 1px;
 	--font-size-h5: 18px;
 	--font-size-h6: 18px;
 	--font-family-editor: Avenir, Avenir Next, sans-serif;
 	--font-family-preview: Avenir, Avenir Next, sans-serif;
+	--font-poem: Garamond;
+	--font-poem-title:  Jost, 'Montserrat Medium', Garamond, 'Gill Sans', 'Gill Sans MT', sans-serif;
+	--font-prose: Garamond;
+	--font-profile: Garamond;
+	--font-profile-heading:  Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+	--font-profile-fancy:  Cinzel, Garamond;
 	--tag-bg: rgba(225, 128, 255, 0.144);
 	--tag-font-color: rgb(239, 206, 255);
 	--tag-radius: 2em;
@@ -70,6 +76,7 @@
 	--text-title-h5: #50fa7b;
 	--text-title-h6: #ff5555;
 	--inline-code: #ff9ecb;
+	--hr-color: color-mix(in srgb, transparent 34%, var(--interactive-accent));
 	--code-block: #8be9fd;
 	--pre-code: #44475a;
 	--blockquote-border: var(--text-accent);
@@ -79,7 +86,12 @@
 }
 
 .HyperMD-header {
+	--h1-size: 1.28em;
 	--h2-size: 1.26em;
+	--h3-size: 1.23em;
+	--h4-size: 1.2em;
+	--h5-size: 1.15em;
+	--h6-size: 1.06em;
 }
 
 /*-------------------------------------*/
@@ -109,6 +121,7 @@
 /*    at a rule line before ul list    *
 /*  Hide Scrollbar (recommend for mac)  */
 /*-------------------------------------*/
+
 
 /***************************************/
 /*  resize-handle and borders          */
@@ -823,11 +836,28 @@ code {
 	--callout-icon: lucide-pencil;
 }
 
+
+ /* PROSE AND POETRY */
+ .cm-callout:has(.callout[data-callout="poem"]) {
+	width: fit-content;
+	display: block;
+	width: 100%;
+	min-width: 60%;
+	max-width: fit-content;
+}
+
+
+
 .callout[data-callout="poem"] {
 	--callout-color: attr(callout);
 	--callout-icon: lucide-leaf;
-	background-color: color-mix(in oklab, var(--text-faint), transparent 85%);
-	font-family: Garamond;
+	background-color: color-mix(in oklab,
+		var(--interactive-accent),
+		transparent 80%
+	);
+	font-family: var(--font-poem);
+	/* width: fit-content; */
+	box-sizing: border-box; 
 }
 
 .callout[data-callout="poem"] .callout-icon {
@@ -836,13 +866,17 @@ code {
 
 .callout[data-callout="poem"] .callout-title-inner {
 	font-size: larger;
-	font-family: Jost, 'Montserrat Medium', Garamond, 'Gill Sans', 'Gill Sans MT', sans-serif;
+	font-family: var(--font-poem-title);
 	font-weight: 600;
 	opacity: 0.7;
 	position: relative;
-	width: clamp(20vw, fit-content, 70vw);
-	max-width: 70vw;
+	width: fit-content; /* Ensures the width doesn't exceed 70vw */
+   /* min-width: 20vw;
+	max-width: 70vw; */
 	text-wrap: pretty;
+	color: var(--interactive-accent);
+   	/* color: color-mix(in srgb, var(--interactive-accent) 70%, white); */
+	filter: saturate(2) brightness(1.35) opacity(0.8);
 }
 
 .callout[data-callout="poem"] .callout-title-inner::after {
@@ -850,7 +884,7 @@ code {
 	display: block;
 	width: 105%;
 	height: 2px;
-	background-color: rgba(250, 227, 255, 0.449);
+	background-color: currentColor;
 	position: absolute;
 	bottom: -0.1em;
 	left: 15%;
@@ -859,33 +893,33 @@ code {
 
 .callout[data-callout="poem"] .callout-content {
 	letter-spacing: 0.02em;
-	opacity: 0.85
+	opacity: 0.85;
+	margin-right: 3em;
+
 }
 
-
-/* signature idea */
-/*
+/* 
+	signature
 .callout[data-callout="poem"] .callout-content::after {
 	content:"—Ben";
 	text-align: right;
 	margin-right: 12em;
 	display: block;
 	color:rgba(229, 251, 255, 0.667)
-}
-	*/
+} */
 
 .callout[data-callout="poem"] .callout-content p {
 	margin-block-start: 0.5em
 }
 
 .callout[data-callout="poem"] .cm-comment {
-	color: purple
-	/* won't work cuz once rendered it isn invisible and in reading mode it isnt' this class list */
+	color: red
+		/* won't work cuz once rendered it isn invisible and in reading mode it isnt' this class list */
 }
 
 .HyperMD-quote cm-comment {
-	color:purple 
-	/* doen't work but i can't investigate cuz once i click off it renders */
+	color: red
+		/* doen't work but i can't investigate cuz once i click off it renders */
 }
 
 
@@ -895,42 +929,46 @@ code {
 
 /* PROSE */
 .callout[data-callout="prose"] {
-	background-color: color-mix(
-		in srgb, var(--background-secondary) 80%,
-		color-mix(in srgb, var(--text-accent), transparent 70%)
-	);
+	background-color: color-mix(in srgb, var(--background-secondary) 80%,
+			color-mix(in srgb, var(--interactive-accent), transparent 70%));
 }
 
 .callout[data-callout="prose"] .callout-content {
 	letter-spacing: 0.02em;
 	opacity: 0.85;
-	font-family: Garamond, Arial, Helvetica, sans-serif;
+	font-family: var(--font-prose);
 }
 
 .callout[data-callout="prose"] .callout-title {
 	display: none;
 }
 
-.callout[data-callout="prose"] .callout-content p:first-child:first-letter{
+.callout[data-callout="prose"] .callout-content p:first-child:first-letter {
 	--line-count: 2;
-	font-size: calc(var(--line-height-normal) * 1em * var(--line-count)); 
+	font-size: calc(var(--line-height-normal) * 1em * var(--line-count));
 	float: left;
 	line-height: 1;
-	margin-right: 0.1em; 
+	margin-right: 0.1em;
 	font-weight: normal;
 	/* font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif; */
-	color: color-mix(in srgb, var(--text-accent), rgba(255, 255, 255, 0.753) 70%)
+   color: color-mix(in srgb, var(--text-accent), rgba(255, 255, 255, 0.753) 70%);
+   color: color-mix(in srgb, var(--interactive-accent) 60%, white);
+}
+
+.callout[data-callout="prose"] .callout-content p:first-child:first-letter {
+	filter: hue-rotate(280deg);
 }
 
 .callout[data-callout="prose"] .callout-content :is(em, strong) {
 	color: var(--text-muted);
-	font-weight:200
+	font-weight: 200
 }
 
 .callout[data-callout="prose"] .callout-content hr {
 	color: var(--text-unset);
-	font-weight:200;
-	overflow: visible; /* For IE */
+	font-weight: 200;
+	overflow: visible;
+	/* For IE */
 	padding: 0;
 	border: none;
 	/* border-top: medium dashed var(--accent);*/
@@ -938,7 +976,7 @@ code {
 	text-align: center;
 }
 
-.callout[data-callout="prose"] .callout-content hr::after{
+.callout[data-callout="prose"] .callout-content hr::after {
 	content: "✦·········• ✦ •·········✦";
 	content: "──── ⋆⋅☆⋅⋆ ────";
 	display: inline-block;
@@ -948,6 +986,7 @@ code {
 	padding: 0 0.5em;
 	background-color: var(--mixed-bg-secondary);
 }
+
 
 button.mod-warning {
 	color: var(--text-on-warning);
