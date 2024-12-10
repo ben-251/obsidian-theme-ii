@@ -6,12 +6,12 @@
 	--font-size-side-dock: 16px;
 	--font-size-side-dock-title: 18px;
 	--font-size-status-bar: 16px;
-	--font-size-h1: 24px;
-	--font-size-h2: 23px;
-	--font-size-h3: 22px;
-	--font-size-h4: 21px;
-	--font-size-h5: 20px;
-	--font-size-h6: 19px;
+	--font-size-h1: 22px; /* these don't actuallt do anything. see h2-size */
+	--font-size-h2: 21px;
+	--font-size-h3: 20px;
+	--font-size-h4: 19px;
+	--font-size-h5: 18px;
+	--font-size-h6: 18px;
 	--font-family-editor: Avenir, Avenir Next, sans-serif;
 	--font-family-preview: Avenir, Avenir Next, sans-serif;
 	--tag-bg: rgba(225, 128, 255, 0.144);
@@ -23,10 +23,12 @@
 .theme-light,
 .theme-dark {
 	--background-primary: #282a36;
-	--background-primary-alt: #44475a;
-	--background-secondary: #44475a;
-	--background-secondary-alt: #282a36;
-	--background-accent: #f8f8f2;
+	--background-primary: color-mix(in srgb, var(--interactive-accent), black 80%);
+ 	--background-primary-alt: #44475a;
+ 	--background-secondary: #4b445a;
+	--background-secondary: color-mix(in srgb, var(--interactive-accent), rgb(15, 14, 14) 70%);
+ 	--background-secondary-alt: #282a36;
+	--background-secondary-alt: color-mix(in srgb, var(--interactive-accent), rgb(15, 15, 15) 80%);
 	--background-modifier-border: #f8f8f2;
 	--background-modifier-form-field: rgba(0, 0, 0, 0.2);
 	--background-modifier-form-field-highlighted: rgba(0, 0, 0, 0.5);
@@ -34,6 +36,7 @@
 	--background-modifier-success: #50fa7b;
 	/*no sure*/
 	--background-modifier-error: #c00000;
+	--tab-text-color: white !important;
 	/*no sure*/
 	--background-modifier-error-rgb: 192, 0, 0;
 	--background-modifier-error-hover: #ff2727;
@@ -73,6 +76,10 @@
 	--vim-cursor: #ff5555;
 	--border-color: #2b2727;
 	/*also like transparent*/
+}
+
+.HyperMD-header {
+	--h2-size: 1.26em;
 }
 
 /*-------------------------------------*/
@@ -314,13 +321,15 @@ img:hover {
 	color: var(--text-title-h1);
 }
 
-.cm-header-2,
+.HyperMD-header .cm-header-2,
 .markdown-preview-view h2 {
 	font-family: var(--font-family-editor);
 	font-weight: 500;
-	font-size: var(--font-size-h2);
+	/* font-size: var(--font-size-h2) !important; */
 	color: var(--text-title-h2);
 }
+
+
 
 .cm-header-3,
 .markdown-preview-view h3 {
@@ -853,6 +862,9 @@ code {
 	opacity: 0.85
 }
 
+
+/* signature idea */
+/*
 .callout[data-callout="poem"] .callout-content::after {
 	content:"—Ben";
 	text-align: right;
@@ -860,6 +872,7 @@ code {
 	display: block;
 	color:rgba(229, 251, 255, 0.667)
 }
+	*/
 
 .callout[data-callout="poem"] .callout-content p {
 	margin-block-start: 0.5em
