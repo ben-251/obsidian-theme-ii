@@ -22,6 +22,14 @@
  	--font-bold-italics: "Varela Round", "Lobster Two";
  	--font-blockquote: "Varela Round", "Playfair", "EB Garamond", "Playfair";
  	--font-blockquote-render: "Lora", "EB Garamond", "Latin modern roman";
+	--font-timeline-accent: "Cinzel";
+	--font-timeline-main: Garamond; 
+	--font-poem: Garamond;
+	--font-poem-title:  Jost, 'Montserrat Medium', Garamond, 'Gill Sans', 'Gill Sans MT', sans-serif;
+	--font-prose: Garamond;
+	--font-profile: Garamond;
+	--font-profile-heading:  Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+	--font-profile-fancy:  Cinzel, Garamond;
  	--tag-bg: rgba(225, 128, 255, 0.144);
  	--tag-font-color: rgb(239, 206, 255);
  	--tag-radius: 2em;
@@ -39,9 +47,12 @@
  .theme-light,
  .theme-dark {
  	--background-primary: #282a36;
+	--background-primary: color-mix(in srgb, var(--interactive-accent), black 80%);
  	--background-primary-alt: #44475a;
  	--background-secondary: #4b445a;
+	--background-secondary: color-mix(in srgb, var(--interactive-accent), rgb(15, 14, 14) 70%);
  	--background-secondary-alt: #282a36;
+	--background-secondary-alt: color-mix(in srgb, var(--interactive-accent), rgb(15, 15, 15) 80%);
  	--background-accent: #f8f8f2;
  	--background-modifier-border: #f8f8f2;
  	--background-modifier-form-field: rgba(0, 0, 0, 0.2);
@@ -59,10 +70,11 @@
  	--text-normal: #f8f8f2;
  	--text-muted: #f8f8f2;
  	--text-faint: #bd93f9;
+	--text-faint: var(--interactive-accent);
  	--text-highlight-bg: #ff5555;
  	--text-error: #ff79c6;
  	--text-error-hover: #ff79c6;
- 	--text-selection: #6272a4;
+ 	--text-selection: color-mix(in srgb, var(--interactive-accent), rgba(54, 54, 54, 0.507) 70%);
  	/* Chromium precess this color with alpha channel */
  	--text-on-accent: #2b031a;
  	--text-on-warning: #ffffff;
@@ -75,13 +87,14 @@
  	--scrollbar-active-thumb-bg: rgba(255, 255, 255, 0.2);
  	--scrollbar-bg: rgba(255, 255, 255, 0.05);
  	--scrollbar-thumb-bg: rgba(255, 255, 255, 0.1);
-
+	--tab-text-color: white !important;
  	--text-title-h1: #c9aaf3;
  	--text-title-h2: #ffb86c;
  	--text-title-h3: #a6efff;
  	--text-title-h4: #fc91ea;
  	--text-title-h5: #a0f0b4;
  	--text-title-h6: #e47096;
+	--text-italics: color-mix(in srgb, var(--interactive-accent) 70%, white);
  	--inline-code: #ffb86c;
  	--code-block: #8be9fd;
  	--pre-code: var(--background-secondary);
@@ -91,7 +104,7 @@
  	/*also like transparent*/
 
 
-	--timeline-color-basis: rgb(130, 215, 255);
+	--timeline-color-basis: var(--interactive-accent);
 	--timeline-bg-color:  color-mix(in srgb, transparent 80%, color-mix(in srgb, var(--timeline-color-basis) 20%, var(--interactive-normal)));
 	--timeline-fg-color:  color-mix(in srgb, var(--timeline-color-basis) 20%, #ffffffc9);
 	--profile-bg-main: color-mix(in oklab,
@@ -308,6 +321,7 @@ hr, .hr.cm-line  hr{
  	/* color: var(--text-muted); */
  	color: #FFB294;
  	color: #cee3ff;
+	color: var(--text-italics);
 
  	font-style: italic;
  	font-weight: 400;
@@ -350,6 +364,7 @@ hr, .hr.cm-line  hr{
  	background-color: var(--text-faint) !important;
  }
 
+
  /* embedded images */
  img:not(.emoji) {
  	display: block;
@@ -370,7 +385,14 @@ hr, .hr.cm-line  hr{
  /*********************************/
  /* Headings - EDITOR and PREVIEW */
  /*********************************/
-
+ .HyperMD-header {
+	--h1-size: 1.28em;
+	--h2-size: 1.26em;
+	--h3-size: 1.23em;
+	--h4-size: 1.2em;
+	--h5-size: 1.15em;
+	--h6-size: 1.06em;
+}
 
  /* headings for editor and preview */
  .cm-header-1,
@@ -1022,8 +1044,11 @@ hr, .hr.cm-line  hr{
 
  /* PROSE AND POETRY */
  .cm-callout:has(.callout[data-callout="poem"]) {
- 	width: fit-content;
- }
+	display: block;
+	width: 100%;
+	min-width: 60%;
+	max-width: fit-content;
+}
 
  .callout[data-callout="poem"] {
  	--callout-color: attr(callout);
@@ -1031,8 +1056,8 @@ hr, .hr.cm-line  hr{
  	background-color: color-mix(in oklab,
  			color-mix(in srgb, var(--interactive-accent), var(--background-secondary) 70%),
  			transparent 85%);
- 	font-family: Garamond;
- 	width: fit-content;
+ 	font-family: var(--font-poem);
+ 	width: 100%;
  }
 
  .callout[data-callout="poem"] .callout-icon {
@@ -1041,15 +1066,16 @@ hr, .hr.cm-line  hr{
 
  .callout[data-callout="poem"] .callout-title-inner {
  	font-size: larger;
- 	font-family: Jost, 'Montserrat Medium', Garamond, 'Gill Sans', 'Gill Sans MT', sans-serif;
+ 	font-family: var(--font-poem-title);
  	font-weight: 600;
  	opacity: 0.7;
  	position: relative;
  	width: fit-content; /* Ensures the width doesn't exceed 70vw */
-	min-width: 20vw;
- 	max-width: 70vw;
+	/* min-width: 20vw; */
+ 	max-width: 70%;
  	text-wrap: pretty;
  	color: var(--interactive-accent);
+	color: color-mix(in srgb, var(--interactive-accent) 60%, white)
  }
 
  .callout[data-callout="poem"] .callout-title-inner::after {
@@ -1057,7 +1083,7 @@ hr, .hr.cm-line  hr{
  	display: block;
  	width: 105%;
  	height: 2px;
- 	background-color: var(--interactive-accent);
+ 	background-color: currentColor;
  	position: absolute;
  	bottom: -0.1em;
  	left: 15%;
@@ -1067,7 +1093,7 @@ hr, .hr.cm-line  hr{
  .callout[data-callout="poem"] .callout-content {
  	letter-spacing: 0.02em;
  	opacity: 0.85;
- 	margin-right: 5em;
+ 	margin-right: 2em;
  }
 
  /* 
@@ -1085,12 +1111,12 @@ hr, .hr.cm-line  hr{
  }
 
  .callout[data-callout="poem"] .cm-comment {
- 	color: aqua
+ 	color: red
  		/* won't work cuz once rendered it isn invisible and in reading mode it isnt' this class list */
  }
 
  .HyperMD-quote cm-comment {
- 	color: aqua
+ 	color: red
  		/* doen't work but i can't investigate cuz once i click off it renders */
  }
 
@@ -1099,16 +1125,41 @@ hr, .hr.cm-line  hr{
  	color: var(--text-muted);
  }
 
+ .callout[data-callout="poem"] .callout-content hr {
+	color: var(--text-unset);
+	font-weight: 200;
+	overflow: visible;
+	/* For IE */
+	padding: 0;
+	border: none;
+	/* border-top: medium dashed var(--accent);*/
+	color: var(--accent);
+	text-align: center;
+}
+
+.callout[data-callout="poem"] .callout-content hr::after {
+	content: "✦·········• ✦ •·········✦";
+	content: "──── ⋆⋅☆⋅⋆ ────";
+	display: inline-block;
+	position: relative;
+	top: 0em;
+	transform: translateX(-15%);
+	font-size: 0.9em;
+	padding: 0 0.5em 0 0.5em;
+	background-color: var(--mixed-bg-secondary);
+}
+
+
  /* PROSE */
  .callout[data-callout="prose"] {
  	background-color: color-mix(in srgb, var(--background-secondary) 80%,
- 			color-mix(in srgb, var(--text-accent), transparent 70%));
+ 			color-mix(in srgb, var(--interactive-accent), transparent 70%));
  }
 
  .callout[data-callout="prose"] .callout-content {
  	letter-spacing: 0.02em;
  	opacity: 0.85;
- 	font-family: Garamond, Arial, Helvetica, sans-serif;
+ 	font-family: var(--font-prose)
  }
 
  .callout[data-callout="prose"] .callout-title {
@@ -1123,9 +1174,14 @@ hr, .hr.cm-line  hr{
  	margin-right: 0.1em;
  	font-weight: normal;
  	/* font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif; */
- 	color: color-mix(in srgb, var(--text-accent), rgba(255, 255, 255, 0.753) 70%)
+	color: color-mix(in srgb, var(--text-accent), rgba(255, 255, 255, 0.753) 70%);
+	color: color-mix(in srgb, var(--interactive-accent) 60%, white);
  }
 
+ .callout[data-callout="prose"] .callout-content p:first-child:first-letter {
+ 	filter: hue-rotate(280deg);
+ }
+ 
  .callout[data-callout="prose"] .callout-content :is(em, strong) {
  	color: var(--text-muted);
  	font-weight: 200
@@ -1167,7 +1223,7 @@ hr, .hr.cm-line  hr{
  			rgba(255, 255, 255, 0.1));
  	background-size: 200% 200%;
  	/* cuz it needs to be bigger */
- 	font-family: garamond, Georgia, 'Times New Roman', Times, serif;
+ 	font-family: var(--font-profile);
  	--p-spacing: 0.5rem;
  }
 
@@ -1224,7 +1280,7 @@ hr, .hr.cm-line  hr{
  }
 
  .callout[data-callout="profile"] :is(h1, h2, h3, h4, h5, h6) {
- 	font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+ 	font-family: var(--font-profile-heading)
  }
 
  .callout[data-callout="profile"] h1 {
@@ -1254,7 +1310,7 @@ hr, .hr.cm-line  hr{
  }
 
 .cm-line:has(+ .cm-callout .callout[data-callout="profile"]) :is(.cm-header-1, .cm-header-2, .cm-header-3, .cm-header-4, .cm-header-5, .cm-header-6) {
- 	font-family: Cinzel, Garamond;
+ 	font-family: var(--font-profile-fancy);
  	opacity: 1;
  }
 
@@ -1285,7 +1341,7 @@ hr, .hr.cm-line  hr{
 			rgba(255, 255, 255, 0.1));
 	background-size: 200% 200%;
 	/* cuz it needs to be bigger */
-	font-family: garamond, Georgia, 'Times New Roman', Times, serif;
+	font-family: var(--font-timeline-main);
 	--p-spacing: 0.5rem;
 }
 
@@ -1295,7 +1351,7 @@ hr, .hr.cm-line  hr{
 	background-color: var(--timeline-bg-color);
  	color: var(--timeline-color-basis);
  	padding: 0.25em 0.4em;
- 	font-family: Cinzel;
+ 	font-family: var(--font-timeline-accent);
  	border-radius: 0.4em;
  	font-size: calc(var(--font-size-normal)*0.9);
  	box-sizing: border-box;
@@ -1361,35 +1417,92 @@ hr, .hr.cm-line  hr{
 	font-family: Montserrat;
 	font-weight: 400;
 	margin-top: 0.6em;
+	--hue-rotation: 0deg;
+	filter: hue-rotate(var(--hue-rotation)) saturate(3);
 	/* text-transform: uppercase; */
 }
 
 .callout[data-callout="timeline"] h1 {
+	--hue-rotation: -45deg;
 	font-size: 1.2rem;
 	line-height: 0.8;
 }
 
 .callout[data-callout="timeline"] h2 {
-	color: color-mix(in oklab, var(--timeline-fg-color) 50%, #e182d1);
+	--hue-rotation: 10deg;
 	font-size: 1.15rem;
 }
 
 .callout[data-callout="timeline"] h3 {
-	color: color-mix(in oklab, var(--timeline-fg-color) 50%, #a684c1);
+	--hue-rotation: 50deg;
 	font-size: 1.15rem;
 }
 
 
 /* unstructured brain dump file */
-/* the hr tags that come before new days (lines with code and tags) should be styled stronger */
 
-.hr.cm-line:has(+ .cm-line .cm-inline-code):has(+ .cm-line .cm-hashtag) hr {
-	border-color: green;
+/* HR BEFORE NEW DAY = .hr.cm-line:has(+ .cm-line .cm-inline-code):has(+ .cm-line .cm-hashtag) hr */
+/* HR DURING DAY =     .hr.cm-line:has(+ .cm-line .cm-hashtag):not(:has(+ .cm-line .cm-inline-code)) hr */
+
+.hr.cm-line:has(+ .cm-line .cm-inline-code):has(+ .cm-line .cm-hashtag) hr,
+.hr.cm-line:has(+ .cm-line .cm-hashtag):not(:has(+ .cm-line .cm-inline-code)) hr {
+	/* border-color: var(--timeline-fg-color);
 	display: flex;
 	align-items: center;
-	/* Vertically center */
 	justify-content: center;
-	padding: 0
+	padding: 0; */
+
+	font-weight: 200;
+	overflow: visible;
+	/* For IE */
+	padding: 0;
+	border: none;
+	text-align: center;
+}
+
+.hr.cm-line:has(+ .cm-line .cm-hashtag) br{
+	display: none
+}
+
+.hr.cm-line:has(+ .cm-line .cm-inline-code):has(+ .cm-line .cm-hashtag) hr:after {
+	content: "────────────── ⋆⋅∙✿∙⋅⋆ ──────────────";
+	display: inline-block;
+	position: relative;
+	top: 0em;
+	font-size: 1.7rem;
+	padding: 0.7em 0.5em;
+	background: linear-gradient(
+		to right,
+		transparent 0%,
+			#fff6 25%,
+				var(--text-muted) 50%,
+			#fff6 75%,
+		transparent 100%
+	);
+	background-clip: text;
+	-webkit-background-clip: text;
+	color: transparent;
+}
+
+.hr.cm-line:has(+ .cm-line .cm-hashtag):not(:has(+ .cm-line .cm-inline-code)) hr:after {
+	content: "──── ⋆⋅☆⋅⋆ ────";
+	display: inline-block;
+	position: relative;
+	top: 0em;
+	font-size: 1.3rem;
+	padding: 1em 0.5em 0.8em;
+	margin-right: 0em;	/* probably silly but idea to make more aligned with non-full page text*/
+	background: linear-gradient(
+		to right,
+		transparent 0%,
+			var(--interactive-accent) 45%,
+			white 50%,
+			var(--interactive-accent) 55%,
+		transparent 100%
+	);
+	background-clip: text;
+	-webkit-background-clip: text;
+	color: transparent;
 }
 
 .hr.cm-line:has(+ .cm-line .cm-inline-code):has(+ .cm-line .cm-hashtag) {
@@ -1400,16 +1513,64 @@ hr, .hr.cm-line  hr{
 	line-height: 1;
 }
 
-/* dodo */
-.dinkus.left::before {
-	/* make this more-suited to left-aligned text i.e don't align dinkus to centre */
-	margin-right: 6em
-}
-
-
-.cm-line:has(.cm-hashtag) .cm-inline-code {
+.cm-line:has(.cm-hashtag) :is(.cm-inline-code) {
 	--inline-code: var(--timeline-fg-color) !important;
 	--pre-code-bg: var(--timeline-bg-color) !important;
 	/* color: var(--timeline-color-basis) !important */
 }
+
+.hr.cm-line:has(+ .cm-line .cm-inline-code):has(+ .cm-line .cm-hashtag) + .cm-line:has(.cm-hashtag) .cm-hashtag {
+	/* this only works when it comes after an hr to avoid accidentally recolouring in other files */
+	color: var(--timeline-fg-color) !important;
+	background-color: var(--timeline-bg-color);
+}
+
+
+/* MOBILE FRIENDLY */
+/* HR BEFORE NEW DAY = .hr.cm-line:has(+ .cm-line .cm-inline-code):has(+ .cm-line .cm-hashtag) hr */
+/* HR DURING DAY =     .hr.cm-line:has(+ .cm-line .cm-hashtag):not(:has(+ .cm-line .cm-inline-code)) hr */
+@media only screen and (max-width: 600px) {
+	.hr.cm-line:has(+ .cm-line .cm-inline-code):has(+ .cm-line .cm-hashtag) hr:after {
+		font-size: 1.4rem;
+		content: "────── ⋆ ✿ ⋆ ──────";
+	}
+	.hr.cm-line:has(+ .cm-line .cm-hashtag):not(:has(+ .cm-line .cm-inline-code)) hr:after {
+		content: "⋅⋅⋅∙✿∙⋅⋅⋅";
+		background: linear-gradient(
+			to right,
+			transparent 0%,
+				#fff6 25%,
+					var(--text-muted) 50%,
+				#fff6 75%,
+			transparent 100%
+		  );
+		  background-clip: text;
+		  -webkit-background-clip: text;
+		  color: transparent;
+
+	}
+	.callout[data-callout="profile"] .callout-title {
+		text-align: left;
+		font-size: 1.6rem;
+	}
+
+	.callout[data-callout="profile"] .callout-title:after {
+		display: none;
+	}
+
+	.callout[data-callout="profile"] h1 {
+		font-size: 1.15rem;
+		line-height: 0.6;
+	}
+   
+	.callout[data-callout="profile"] h2 {
+		font-size: 1.1rem;
+	}
+   
+	
+	/* Test that breakpoint works
+	.cm-line {
+		color:red 
+	} */
+} 
 
