@@ -1192,15 +1192,15 @@ button.mod-warning {
   position: relative;
 }
 
-.callout[data-callout=profile] .callout-title::after {
-  content: "2024";
-  position: absolute;
-  top: 0;
-  right: 0;
-  font-size: 1em;
-  opacity: 0.5;
-}
-
+/*
+.callout[data-callout="profile"] .callout-title::after {
+	content: "2024";
+	position: absolute;
+	top: 0;
+	right: 0;
+	font-size: 1em;
+	opacity: 0.5;
+} */
 .callout[data-callout=profile] :is(h1, h2, h3, h4, h5, h6) {
   font-family: var(--font-profile-heading);
 }
@@ -1377,19 +1377,10 @@ button.mod-warning {
 .hr.cm-line:has(+ .cm-line .cm-inline-code) hr {
   width: 100%;
   border: none;
+  height: 2px;
+  background: linear-gradient(to right, transparent 0%, rgba(255, 255, 255, 0.4) 25%, rgba(255, 255, 255, 0.5333333333) 50%, rgba(255, 255, 255, 0.4) 75%, transparent 100%);
+  margin-block: 2rem;
   display: block;
-}
-.hr.cm-line:has(+ .cm-line .cm-inline-code) hr::after {
-  content: "⋅⋅⋅∙✿∙⋅⋅⋅";
-  display: inline-block;
-  position: relative;
-  top: 0em;
-  font-size: 1.7rem;
-  padding: 0.7em 0.5em;
-  background: linear-gradient(to right, transparent 0%, rgba(255, 255, 255, 0.4) 25%, var(--text-muted) 50%, rgba(255, 255, 255, 0.4) 75%, transparent 100%);
-  background-clip: text;
-  -webkit-background-clip: text;
-  color: transparent;
 }
 
 .hr.cm-line:has(+ .cm-line .cm-hashtag):not(:has(+ .cm-line .cm-inline-code)) hr {
