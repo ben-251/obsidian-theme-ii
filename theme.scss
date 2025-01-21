@@ -5,6 +5,8 @@
  @import url('https://fonts.googleapis.com/css2?family=Marcellus&display=swap');
  @import url('https://fonts.googleapis.com/css2?family=Unna:ital,wght@0,400;0,700;1,400;1,700&display=swap');
  @import url('https://fonts.googleapis.com/css2?family=Rosarivo:ital@0;1&display=swap');
+ @import url('https://fonts.googleapis.com/css2?family=Baskervville&display=swap');
+ @import url('https://fonts.googleapis.com/css2?family=Arvo&display=swap');
 
  body {
  	--font-size-normal: 19px;
@@ -12,6 +14,14 @@
  	--font-size-side-dock: 16px;
  	--font-size-side-dock-title: 18px;
  	--font-size-status-bar: 16px;
+ 	--base-heading-size: calc(var(--font-size-normal) * 1.2);
+ 	--inline-title-size: calc(var(--base-heading-size)*1.5);
+ 	--h1-size: calc(var(--base-heading-size)*1.35);
+ 	--h2-size: calc(var(--base-heading-size)*1.2);
+ 	--h3-size: calc(var(--base-heading-size)*1.16);
+ 	--h4-size: calc(var(--base-heading-size)*1.12);
+ 	--h5-size: calc(var(--base-heading-size)*1.1);
+ 	--h6-size: calc(var(--base-heading-size)*1);
  	--base-heading-size: calc(var(--font-size-normal) * 1.2);
  	--inline-title-size: calc(var(--base-heading-size)*1.5);
  	--h1-size: calc(var(--base-heading-size)*1.35);
@@ -47,6 +57,7 @@
 
 
  .inline-title {
+ 	--inline-title-color: #fffe;
  	--inline-title-color: #fffe;
  	font-family: var(--font-title-new);
  	text-shadow: 0 0 10px #ffffff41;
@@ -250,7 +261,7 @@
 
  /* the url string in editor */
  .cm-s-obsidian span.cm-string {
- 	color: var(--text-accent-hover) !important;
+ 	color: var(--text-accent-hover)
  }
 
  /* make external links italics to differentiate */
@@ -399,6 +410,7 @@
 
 
 
+
  /* headings for editor and preview */
  .cm-header-1,
  .markdown-preview-view h1 {
@@ -499,15 +511,6 @@
  	line-height: 1.5;
  }
 
- //  .cm-line:has(.cm-quote) {
- // 	display: block;
- // 	height: auto;
- //  }
-
- //  .cm-line .cm-quote:not(.cm-formatting) {
- // 	padding-inline: 1em;
- //  }
-
  .cm-quote,
  .cm-quote.cm-em,
  .cm-quote.cm-em,
@@ -516,22 +519,24 @@
  	// font-size: calc(var(--font-size-normal) * 0.9);
  }
 
- .HyperMD-quote.HyperMD-quote-1.cm-line:has(+ .cm-quote) {
- 	/* background-color: var(--pre-code); */
- 	background-color: red;
- 	/* obviously a test, not intended coloir*/
+ .HyperMD-quote.HyperMD-quote-1.cm-line:has(.cm-quote) {
+ 	/* background color is defined automatically as blockquote-background-color */
  	border-radius: 0 8px 8px 0;
  	line-height: 1.5em;
  	margin: 30px 0px;
  	margin: 0;
  	font-style: italic;
  	font-family: var(--font-blockquote);
- 	// padding: 0.5em;
+ 	padding: .1em 0.5em;
+ 	display: flex;
+ 	box-sizing: border-box;
+
+ 	>* {
+ 		display: inline-block;
+ 		box-sizing: border-box;
+ 	}
  }
 
-
-
- /*TODO: finish making the blockquotes in editing resemble the ones in final */
 
  /* for preview */
  .markdown-preview-view blockquote {
@@ -870,6 +875,59 @@
  	color: var(--code-block) !important;
  	font-weight: 500;
  	text-indent: 0px !important;
+ }
+
+ /* manual codeblock override */
+ .HyperMD-codeblock {
+ 	&.HyperMD-codeblock-bg {
+ 		--code-background: color-mix(in srgb, var(--background-secondary), transparent 60%);
+ 	}
+
+	/* syntax highlights */
+	span.cm-hmd-codeblock {
+		--selected-color: white;
+		--syntax-color: color-mix(in oklab, var(--selected-color), var(--interactive-accent) 50%);
+		color: var(--syntax-color);	
+
+		&.cm-property {
+			--selected-color: #d999f3;
+		}
+
+		&.cm-comment {
+			--selected-color: #fff2;
+		}
+		&.cm-string {
+			--selected-color: white;
+		}
+		&.cm-qualifier {
+			--selected-color: #b5f2ad;
+		}
+		&.cm-tag {
+			--selected-color: #f18a8a;
+		}
+		&.cm-keyword {
+			--selected-color: #b2b3f8;
+		}
+		&.cm-variable, &.cm-variable-2 {
+			--selected-color: #81e4f3;
+		}
+		&.cm-number {
+			--selected-color: rgb(254, 219, 101);
+		}
+		&.cm-def {
+			--selected-color: palegreen;
+		}
+		&.cm-builtin {
+			--selected-color: rgb(247, 247, 89);
+		}
+		&.cm-meta {
+			--selected-color: rgb(244, 182, 244);
+		}
+		&.cm-atom {
+			--selected-color: #fdd6a9;
+		}
+
+	}
  }
 
  /*remove the border of codeblock in editor */
@@ -1444,13 +1502,18 @@
 
  /*  EQUATIONS */
  .callout[data-callout="eq"] {
- 	background-color: color-mix(in srgb, var(--background-secondary) 80%,
- 			color-mix(in srgb, var(--interactive-accent), transparent 70%));
+ 	--bg-color: color-mix(in oklab,
+ 			color-mix(in srgb,
+ 				var(--timeline-color-basis),
+ 				var(--background-secondary) 10%),
+ 			transparent 85%);
+ 	background-color: var(--bg-color);
+ 	font-family: Baskervville;
+	padding-block: 1em;
 
-
- 	.callout-icon {
- 		display: none;
- 	}
+  	.callout-icon {
+  		display: none;
+  	}
 
  }
 

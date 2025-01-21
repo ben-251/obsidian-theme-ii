@@ -6,12 +6,22 @@
 @import url("https://fonts.googleapis.com/css2?family=Marcellus&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Unna:ital,wght@0,400;0,700;1,400;1,700&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Rosarivo:ital@0;1&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Baskervville&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Arvo&display=swap");
 body {
   --font-size-normal: 19px;
   --font-size-code: 16px;
   --font-size-side-dock: 16px;
   --font-size-side-dock-title: 18px;
   --font-size-status-bar: 16px;
+  --base-heading-size: calc(var(--font-size-normal) * 1.2);
+  --inline-title-size: calc(var(--base-heading-size)*1.5);
+  --h1-size: calc(var(--base-heading-size)*1.35);
+  --h2-size: calc(var(--base-heading-size)*1.2);
+  --h3-size: calc(var(--base-heading-size)*1.16);
+  --h4-size: calc(var(--base-heading-size)*1.12);
+  --h5-size: calc(var(--base-heading-size)*1.1);
+  --h6-size: calc(var(--base-heading-size)*1);
   --base-heading-size: calc(var(--font-size-normal) * 1.2);
   --inline-title-size: calc(var(--base-heading-size)*1.5);
   --h1-size: calc(var(--base-heading-size)*1.35);
@@ -46,6 +56,7 @@ body {
 }
 
 .inline-title {
+  --inline-title-color: #fffe;
   --inline-title-color: #fffe;
   font-family: var(--font-title-new);
   text-shadow: 0 0 10px rgba(255, 255, 255, 0.2549019608);
@@ -240,7 +251,7 @@ a,
 
 /* the url string in editor */
 .cm-s-obsidian span.cm-string {
-  color: var(--text-accent-hover) !important;
+  color: var(--text-accent-hover);
 }
 
 /* make external links italics to differentiate */
@@ -482,19 +493,23 @@ pre code {
   font-family: var(--font-blockquote);
 }
 
-.HyperMD-quote.HyperMD-quote-1.cm-line:has(+ .cm-quote) {
-  /* background-color: var(--pre-code); */
-  background-color: red;
-  /* obviously a test, not intended coloir*/
+.HyperMD-quote.HyperMD-quote-1.cm-line:has(.cm-quote) {
+  /* background color is defined automatically as blockquote-background-color */
   border-radius: 0 8px 8px 0;
   line-height: 1.5em;
   margin: 30px 0px;
   margin: 0;
   font-style: italic;
   font-family: var(--font-blockquote);
+  padding: 0.1em 0.5em;
+  display: flex;
+  box-sizing: border-box;
+}
+.HyperMD-quote.HyperMD-quote-1.cm-line:has(.cm-quote) > * {
+  display: inline-block;
+  box-sizing: border-box;
 }
 
-/*TODO: finish making the blockquotes in editing resemble the ones in final */
 /* for preview */
 .markdown-preview-view blockquote {
   background-color: var(--pre-code);
@@ -818,6 +833,55 @@ ul .task-list-item ul::before {
   color: var(--code-block) !important;
   font-weight: 500;
   text-indent: 0px !important;
+}
+
+/* manual codeblock override */
+.HyperMD-codeblock {
+  /* syntax highlights */
+}
+.HyperMD-codeblock.HyperMD-codeblock-bg {
+  --code-background: color-mix(in srgb, var(--background-secondary), transparent 60%);
+}
+.HyperMD-codeblock span.cm-hmd-codeblock {
+  --selected-color: white;
+  --syntax-color: color-mix(in oklab, var(--selected-color), var(--interactive-accent) 50%);
+  color: var(--syntax-color);
+}
+.HyperMD-codeblock span.cm-hmd-codeblock.cm-property {
+  --selected-color: #d999f3;
+}
+.HyperMD-codeblock span.cm-hmd-codeblock.cm-comment {
+  --selected-color: #fff2;
+}
+.HyperMD-codeblock span.cm-hmd-codeblock.cm-string {
+  --selected-color: white;
+}
+.HyperMD-codeblock span.cm-hmd-codeblock.cm-qualifier {
+  --selected-color: #b5f2ad;
+}
+.HyperMD-codeblock span.cm-hmd-codeblock.cm-tag {
+  --selected-color: #f18a8a;
+}
+.HyperMD-codeblock span.cm-hmd-codeblock.cm-keyword {
+  --selected-color: #b2b3f8;
+}
+.HyperMD-codeblock span.cm-hmd-codeblock.cm-variable, .HyperMD-codeblock span.cm-hmd-codeblock.cm-variable-2 {
+  --selected-color: #81e4f3;
+}
+.HyperMD-codeblock span.cm-hmd-codeblock.cm-number {
+  --selected-color: rgb(254, 219, 101);
+}
+.HyperMD-codeblock span.cm-hmd-codeblock.cm-def {
+  --selected-color: palegreen;
+}
+.HyperMD-codeblock span.cm-hmd-codeblock.cm-builtin {
+  --selected-color: rgb(247, 247, 89);
+}
+.HyperMD-codeblock span.cm-hmd-codeblock.cm-meta {
+  --selected-color: rgb(244, 182, 244);
+}
+.HyperMD-codeblock span.cm-hmd-codeblock.cm-atom {
+  --selected-color: #fdd6a9;
 }
 
 /*remove the border of codeblock in editor */
@@ -1349,7 +1413,14 @@ button.mod-warning {
 
 /*  EQUATIONS */
 .callout[data-callout=eq] {
-  background-color: color-mix(in srgb, var(--background-secondary) 80%, color-mix(in srgb, var(--interactive-accent), transparent 70%));
+  --bg-color: color-mix(in oklab,
+  		color-mix(in srgb,
+  			var(--timeline-color-basis),
+  			var(--background-secondary) 10%),
+  		transparent 85%);
+  background-color: var(--bg-color);
+  font-family: Baskervville;
+  padding-block: 1em;
 }
 .callout[data-callout=eq] .callout-icon {
   display: none;
