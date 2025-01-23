@@ -110,6 +110,7 @@
  	--tab-text-color: white !important;
  	--text-title-h1: #c9aaf3;
  	--text-title-h2: #ffb86c;
+ 	--text-title-h2: #f5f792; // oklab is interesting in that the boundary between these two is enough to completely change the mix?
  	--text-title-h3: #a6efff;
  	--text-title-h4: #fc91ea;
  	--text-title-h5: #a0f0b4;
@@ -415,8 +416,8 @@
 
  /* headings for editor and preview */
 .cm-header, .markdown-preview-view :is(h1,h2,h3,h4,h5,h6) {
-	color: color-mix(in oklab, var(--h-color), var(--interactive-accent) 50%);
-	filter: saturate(1.2)
+	color: color-mix(in oklch, var(--h-color), var(--interactive-accent) 50%);
+	// filter: saturate(1.2)
 }
 
  .cm-header-1,
