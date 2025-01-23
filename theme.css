@@ -502,11 +502,9 @@ pre code {
   font-style: italic;
   font-family: var(--font-blockquote);
   padding: 0.1em 0.5em;
-  display: flex;
   box-sizing: border-box;
 }
 .HyperMD-quote.HyperMD-quote-1.cm-line:has(.cm-quote) > * {
-  display: inline-block;
   box-sizing: border-box;
 }
 
