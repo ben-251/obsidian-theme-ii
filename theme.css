@@ -333,7 +333,6 @@ em,
   font-weight: 400;
   font-family: var(--font-italics);
   font-size: calc(var(--font-size-normal) * 1);
-  font-size: 1.2em;
   letter-spacing: 0.01em;
   line-height: 1;
   /* text-shadow: 0 0 2px #9298e9de; */
@@ -393,46 +392,51 @@ img:hover {
 /* Headings - EDITOR and PREVIEW */
 /*********************************/
 /* headings for editor and preview */
+.cm-header, .markdown-preview-view :is(h1, h2, h3, h4, h5, h6) {
+  color: color-mix(in oklab, var(--h-color), var(--interactive-accent) 50%);
+  filter: saturate(1.2);
+}
+
 .cm-header-1,
 .markdown-preview-view h1 {
   font-family: var(--font-header-new);
   font-weight: 500;
-  color: var(--text-title-h1);
+  --h-color: var(--text-title-h1);
 }
 
 .cm-header-2,
 .markdown-preview-view h2 {
   font-family: var(--font-header-new);
   font-weight: 500;
-  color: var(--text-title-h2);
+  --h-color: var(--text-title-h2);
 }
 
 .cm-header-3,
 .markdown-preview-view h3 {
   font-family: var(--font-header-new);
   font-weight: 500;
-  color: var(--text-title-h3);
+  --h-color: var(--text-title-h3);
 }
 
 .cm-header-4,
 .markdown-preview-view h4 {
   font-family: var(--font-header-new);
   font-weight: 500;
-  color: var(--text-title-h4);
+  --h-color: var(--text-title-h4);
 }
 
 .cm-header-5,
 .markdown-preview-view h5 {
   font-family: var(--font-header-new);
   font-weight: 500;
-  color: var(--text-title-h5);
+  --h-color: var(--text-title-h5);
 }
 
 .cm-header-6,
 .markdown-preview-view h6 {
   font-family: var(--font-header-new);
   font-weight: 500;
-  color: var(--text-title-h6);
+  --h-color: var(--text-title-h6);
 }
 
 /***************************************/
@@ -835,6 +839,7 @@ ul .task-list-item ul::before {
 
 /* manual codeblock override */
 .HyperMD-codeblock {
+  display: inline;
   /* syntax highlights */
 }
 .HyperMD-codeblock.HyperMD-codeblock-bg {
@@ -1149,19 +1154,21 @@ button.mod-warning {
 
 /* PROSE */
 .callout[data-callout=prose] {
-  background-color: color-mix(in srgb, var(--background-secondary) 80%, color-mix(in srgb, var(--interactive-accent), transparent 70%));
+  --temp: color-mix(in srgb, var(--background-primary) 90%, var(--interactive-accent));
+  background-color: color-mix(in srgb, var(--temp) 100%, transparent);
 }
 
 .callout[data-callout=prose] .callout-content {
   letter-spacing: 0.02em;
   opacity: 0.85;
   font-family: var(--font-prose);
+  font-weight: 500;
+  color: white;
 }
-
-.callout[data-callout=prose] .callout-title {
-  display: none;
+.callout[data-callout=prose] .callout-content p:not(:first-child) {
+  text-indent: 1.5em;
+  margin-top: -0.7em;
 }
-
 .callout[data-callout=prose] .callout-content p:first-child:first-letter {
   --line-count: 2;
   font-size: calc(var(--line-height-normal) * 1em * var(--line-count));
@@ -1172,17 +1179,12 @@ button.mod-warning {
   /* font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif; */
   color: color-mix(in srgb, var(--text-accent), rgba(255, 255, 255, 0.753) 70%);
   color: color-mix(in srgb, var(--interactive-accent) 60%, white);
-}
-
-.callout[data-callout=prose] .callout-content p:first-child:first-letter {
   filter: hue-rotate(280deg);
 }
-
 .callout[data-callout=prose] .callout-content :is(em, strong) {
   color: var(--text-muted);
   font-weight: 200;
 }
-
 .callout[data-callout=prose] .callout-content hr {
   color: var(--text-unset);
   font-weight: 200;
@@ -1194,7 +1196,6 @@ button.mod-warning {
   color: var(--accent);
   text-align: center;
 }
-
 .callout[data-callout=prose] .callout-content hr::after {
   content: "✦·········• ✦ •·········✦";
   content: "──── ⋆⋅☆⋅⋆ ────";
@@ -1204,6 +1205,10 @@ button.mod-warning {
   font-size: 0.9em;
   padding: 0 0.5em;
   background-color: var(--mixed-bg-secondary);
+}
+
+.callout[data-callout=prose] .callout-title {
+  display: none;
 }
 
 /* profiles */
