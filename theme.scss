@@ -417,7 +417,7 @@
  /* headings for editor and preview */
 .cm-header, .markdown-preview-view :is(h1,h2,h3,h4,h5,h6) {
 	color: color-mix(in oklch, var(--h-color), var(--interactive-accent) 50%);
-	// filter: saturate(1.2)
+	filter: saturate(0.7)
 }
 
  .cm-header-1,
