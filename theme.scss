@@ -88,7 +88,7 @@
  	--main-text-accent: color-mix(in srgb, var(--interactive-accent) 55%, white);
  	--text-accent: #ffb86c;
  	--text-accent: var(--main-text-accent);
- 	--text-accent-hover: #8be9fd;
+ 	--text-accent-hover: color-mix(in oklab, #8be9fd 60%, var(--text-accent));
  	--text-normal: #f8f8f2;
  	--text-muted: #f8f8f2;
  	--text-faint: #bd93f9;
