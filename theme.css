@@ -52,7 +52,7 @@ body {
   --tag-radius: 2em;
   --callout-question-new: 168, 130, 255;
   --file-line-width: 900px;
-  --blockquote-border-thickness: 4px ;
+  --blockquote-border-thickness: 4px;
 }
 
 .inline-title {
@@ -83,12 +83,14 @@ body {
   --background-modifier-error-rgb: 192, 0, 0;
   --background-modifier-error-hover: #ff2727;
   --background-modifier-cover: rgba(0, 0, 0, 0.6);
+  --main-text-accent: color-mix(in srgb, var(--interactive-accent) 55%, white);
   --text-accent: #ffb86c;
+  --text-accent: var(--main-text-accent);
   --text-accent-hover: #8be9fd;
   --text-normal: #f8f8f2;
   --text-muted: #f8f8f2;
   --text-faint: #bd93f9;
-  --text-faint: var(--interactive-accent);
+  --text-faint: color-mix(in srgb, var(--main-text-accent), white);
   --text-highlight-bg: #ff5555;
   --text-error: #ff79c6;
   --text-error-hover: #ff79c6;
@@ -106,6 +108,9 @@ body {
   --scrollbar-bg: rgba(255, 255, 255, 0.05);
   --scrollbar-thumb-bg: rgba(255, 255, 255, 0.1);
   --tab-text-color: white !important;
+  --list-marker-color: var(--main-text-accent);
+  --icon-color: color-mix(in srgb, var(--main-text-accent), white);
+  --nav-collapse-icon-color: var(--main-text-accent);
   --text-title-h1: #c9aaf3;
   --text-title-h2: #ffb86c;
   --text-title-h2: #f5f792;
@@ -113,9 +118,9 @@ body {
   --text-title-h4: #fc91ea;
   --text-title-h5: #a0f0b4;
   --text-title-h6: #e47096;
-  --text-italics: color-mix(in srgb, var(--interactive-accent) 65%, white);
+  --text-italics: var(--main-text-accent);
   --inline-code: #ffb86c;
-  --inline-code: var(--text-italics);
+  --inline-code: var(--main-text-accent);
   --code-block: #8be9fd;
   --pre-code: var(--background-secondary);
   --blockquote-border: var(--interactive-normal);
@@ -393,7 +398,8 @@ img:hover {
 /* Headings - EDITOR and PREVIEW */
 /*********************************/
 /* headings for editor and preview */
-.cm-header, .markdown-preview-view :is(h1, h2, h3, h4, h5, h6) {
+.cm-header,
+.markdown-preview-view :is(h1, h2, h3, h4, h5, h6) {
   color: color-mix(in oklch, var(--h-color), var(--interactive-accent) 50%);
   filter: saturate(0.7);
 }
