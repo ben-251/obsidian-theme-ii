@@ -74,8 +74,8 @@
  	--background-secondary: color-mix(in srgb, var(--interactive-accent), rgb(15, 14, 14) 70%);
  	--background-secondary-alt: #282a36;
  	--background-secondary-alt: color-mix(in srgb, var(--interactive-accent), rgb(15, 15, 15) 80%);
- 	--background-accent: #f8f8f2;
- 	--background-modifier-border: #f8f8f2;
+ 	--background-accent: color-mix(in srgb, var(--interactive-accent), #fff5);
+ 	--background-modifier-border: var(--background-accent);
  	--background-modifier-form-field: rgba(0, 0, 0, 0.2);
  	--background-modifier-form-field-highlighted: rgba(0, 0, 0, 0.5);
  	--background-modifier-box-shadow: rgba(0, 0, 0, 0.3);
