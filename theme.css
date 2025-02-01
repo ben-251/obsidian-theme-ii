@@ -44,6 +44,7 @@ body {
   --font-poem: Garamond, "EB Garamond";
   --font-poem-title: Rosarivo, Unna, Marcellus, Quicksand, Jost, "Montserrat Medium", Garamond, "Gill Sans", "Gill Sans MT", sans-serif;
   --font-prose: Garamond, "EB Garamond";
+  --font-prose-title: Cinzel;
   --font-profile: Garamond, "EB Garamond";
   --font-profile-heading: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
   --font-profile-fancy: Cinzel, Garamond;
@@ -119,6 +120,7 @@ body {
   --text-title-h5: #a0f0b4;
   --text-title-h6: #e47096;
   --text-italics: var(--main-text-accent);
+  --bold-color: var(--main-text-accent);
   --inline-code: #ffb86c;
   --inline-code: var(--main-text-accent);
   --code-block: #8be9fd;
@@ -317,6 +319,7 @@ strong,
 .cm-strong {
   color: rgba(255, 148, 223, 0.9254901961);
   color: #aee2fb;
+  color: var(--bold-color);
 }
 
 strong,
@@ -1163,14 +1166,17 @@ button.mod-warning {
 .callout[data-callout=prose] {
   --temp: color-mix(in srgb, var(--background-primary) 90%, var(--interactive-accent));
   background-color: color-mix(in srgb, var(--temp) 100%, transparent);
+  padding-inline: 2rem;
 }
 
 .callout[data-callout=prose] .callout-content {
   letter-spacing: 0.02em;
+  text-align: justify;
   opacity: 0.85;
   font-family: var(--font-prose);
   font-weight: 500;
   color: white;
+  padding-inline: 5em;
 }
 .callout[data-callout=prose] .callout-content p:not(:first-child) {
   text-indent: 1.5em;
@@ -1215,7 +1221,21 @@ button.mod-warning {
 }
 
 .callout[data-callout=prose] .callout-title {
+  width: 100%;
+}
+.callout[data-callout=prose] .callout-title .callout-icon {
   display: none;
+}
+.callout[data-callout=prose] .callout-title .callout-title-inner {
+  font-family: var(--font-prose-title);
+  color: var(--text-accent);
+  font-weight: 100;
+  text-align: left;
+  width: 100%;
+  opacity: 0.7;
+}
+.callout[data-callout=prose] .callout-title .callout-title-inner::before, .callout[data-callout=prose] .callout-title .callout-title-inner::after {
+  content: " - ";
 }
 
 /* profiles */

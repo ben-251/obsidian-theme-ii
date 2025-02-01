@@ -44,6 +44,7 @@
  	--font-poem: Garamond, "EB Garamond";
  	--font-poem-title: Rosarivo, Unna, Marcellus, Quicksand, Jost, 'Montserrat Medium', Garamond, 'Gill Sans', 'Gill Sans MT', sans-serif;
  	--font-prose: Garamond, "EB Garamond";
+	--font-prose-title: Cinzel;
  	--font-profile: Garamond, "EB Garamond";
  	--font-profile-heading: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
  	--font-profile-fancy: Cinzel, Garamond;
@@ -125,6 +126,7 @@
  	// might need to modify these to make it work with the accent-blending
  	// 9ca9dd
  	--text-italics: var(--main-text-accent);
+	--bold-color: var(--main-text-accent);
  	--inline-code: #ffb86c;
  	--inline-code: var(--main-text-accent);
  	--code-block: #8be9fd;
@@ -334,6 +336,7 @@
  .cm-strong {
  	color: #ff94dfec;
  	color: #aee2fb;
+	color: var(--bold-color);
  }
 
  strong,
@@ -1243,15 +1246,21 @@
  /* PROSE */
  .callout[data-callout="prose"] {
  	--temp: color-mix(in srgb, var(--background-primary) 90%, var(--interactive-accent));
- 	background-color: color-mix(in srgb, var(--temp) 100%, transparent)
+ 	background-color: color-mix(in srgb, var(--temp) 100%, transparent);
+
+	padding-inline: 2rem;
  }
 
  .callout[data-callout="prose"] .callout-content {
  	letter-spacing: 0.02em;
+	text-align: justify;
+
  	opacity: 0.85;
  	font-family: var(--font-prose);
  	font-weight: 500;
  	color: white;
+
+	padding-inline: 5em;
 
  	p:not(:first-child) {
  		text-indent: 1.5em;
@@ -1301,7 +1310,28 @@
  }
 
  .callout[data-callout="prose"] .callout-title {
- 	display: none;
+	width: 100%;
+
+	.callout-icon {display: none;}
+
+	.callout-title-inner{
+		// display: block;
+		font-family: var(--font-prose-title);
+		color: var(--text-accent);
+		font-weight: 100;
+		text-align: left;
+		width: 100%;
+
+		opacity: 0.7;
+		//padding-inline: 2em;
+
+		// text-decoration: underline 1px var(--interactive-accent);
+		// text-underline-offset: 0.3em;
+
+		&::before, &::after {
+			content: " - ";
+		}
+	}
  }
 
 
@@ -1698,6 +1728,9 @@
  		font-size: 1.1rem;
  	}
 
+	.callout[data-callout="prose"] .callout-content {
+		padding: .5rem;
+	}
 
  	/* Test that breakpoint works
 	.cm-line {
