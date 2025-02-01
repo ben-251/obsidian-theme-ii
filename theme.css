@@ -1163,6 +1163,13 @@ button.mod-warning {
 }
 
 /* PROSE */
+.cm-callout:has(.callout[data-callout=prose]):hover {
+  --background-modifier-border: color-mix(in srgb, var(--interactive-accent), rgba(255, 255, 255, 0.312));
+  --embed-block-shadow-hover: none;
+  --embed-block-shadow-hover: 0 0 0 1px var(--background-modifier-border),
+  					inset 0 0 0 1px var(--background-modifier-border);
+}
+
 .callout[data-callout=prose] {
   --temp: color-mix(in srgb, var(--background-primary) 90%, var(--interactive-accent));
   background-color: color-mix(in srgb, var(--temp) 100%, transparent);
@@ -1177,6 +1184,7 @@ button.mod-warning {
   font-weight: 500;
   color: white;
   padding-inline: 5em;
+  padding-bottom: 1.4em;
 }
 .callout[data-callout=prose] .callout-content p:not(:first-child) {
   text-indent: 1.5em;
@@ -1556,10 +1564,11 @@ button.mod-warning {
   .callout[data-callout=profile] h2 {
     font-size: 1.1rem;
   }
-  /* Test that breakpoint works
-  .cm-line {
-  	color:red 
-  } */
+  .callout[data-callout=prose] .callout-content {
+    padding: 0.2rem;
+    letter-spacing: 0;
+    line-height: 1.45;
+  }
 }
 
 /*# sourceMappingURL=theme.css.map */
