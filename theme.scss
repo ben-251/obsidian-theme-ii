@@ -36,7 +36,7 @@
  	--font-header-new: var(--font-family-editor), "Garamond", "Varela Round", "Lobster Two", "DM sans";
  	--font-italics: "EB garamond", "Playfair", "latin modern roman dunhill";
  	--font-bold: "Varela Round", "Lobster Two";
- 	--font-bold-italics: "Varela Round", "Lobster Two";
+ 	--font-bold-italics: "Eb garamond", "Varela Round", "Lobster Two";
  	--font-blockquote: "Varela Round", "Playfair", "EB Garamond", "Playfair";
  	--font-blockquote-render: "Lora", "EB Garamond", "Latin modern roman";
  	--font-timeline-accent: "Cinzel";
@@ -374,8 +374,9 @@
 	   bold-italics are used not just for big emphasis,
 	   but also for mini-headings!
 	*/
- 	font-weight: 800;
+ 	font-weight: 700;
  	color: #94C1FF;
+	color: var(--bold-color);
  	font-style: italic;
  	font-family: var(--font-bold-italics);
  	font-size: calc(var(--font-size-normal) * 1);
