@@ -8,6 +8,9 @@
 @import url("https://fonts.googleapis.com/css2?family=Rosarivo:ital@0;1&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Baskervville&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Arvo&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Poiret+One&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Source+Serif+4&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Cormorant&display=swap");
 body {
   --font-size-normal: 19px;
   --font-size-code: 16px;
@@ -30,14 +33,15 @@ body {
   --h4-size: calc(var(--base-heading-size)*1.12);
   --h5-size: calc(var(--base-heading-size)*1.1);
   --h6-size: calc(var(--base-heading-size)*1);
-  --font-family-editor: Avenir, "Avenir Next", sans-serif;
+  --font-family-editor: "Fira Mono", Avenir, "Avenir Next", sans-serif;
+  --font-text: "Cormorant", "Baskervville", "Source Serif 4", "Poiret One", "Anonymous Pro";
   --font-family-preview: Avenir, "Avenir Next", sans-serif;
   --font-title-new: var(--font-family-editor), "Garamond", "Varela Round";
   --font-header-new: var(--font-family-editor), "Garamond", "Varela Round", "Lobster Two", "DM sans";
-  --font-italics: "EB garamond", "Playfair", "latin modern roman dunhill";
-  --font-bold: "Varela Round", "Lobster Two";
-  --font-bold-italics: "Varela Round", "Lobster Two";
-  --font-blockquote: "Varela Round", "Playfair", "EB Garamond", "Playfair";
+  --font-italics: "Poiret One", "EB garamond", "Playfair", "latin modern roman dunhill";
+  --font-bold: "Cormorant", "Varela Round", "Lobster Two";
+  --font-bold-italics: "Cormorant", "Varela Round", "Lobster Two";
+  --font-blockquote: "Cormorant", "Varela Round", "Playfair", "EB Garamond", "Playfair";
   --font-blockquote-render: "Lora", "EB Garamond", "Latin modern roman";
   --font-timeline-accent: "Cinzel";
   --font-timeline-main: Garamond, "EB Garamond";
@@ -166,9 +170,14 @@ body {
 /*    at a rule line before ul list    *
 /*  Hide Scrollbar (recommend for mac)  */
 /*-------------------------------------*/
+/* global */
 hr,
 .hr.cm-line hr {
   border-color: rgba(255, 255, 255, 0.3);
+}
+
+body .cm-line {
+  font-weight: 100;
 }
 
 /***************************************/
