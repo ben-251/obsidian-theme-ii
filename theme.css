@@ -11,6 +11,9 @@
 @import url("https://fonts.googleapis.com/css2?family=Poiret+One&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Source+Serif+4&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Cormorant&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Fira+Mono&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Fira+Sans&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Karla&display=swap");
 body {
   --font-size-normal: 19px;
   --font-size-code: 16px;
@@ -33,15 +36,18 @@ body {
   --h4-size: calc(var(--base-heading-size)*1.12);
   --h5-size: calc(var(--base-heading-size)*1.1);
   --h6-size: calc(var(--base-heading-size)*1);
-  --font-family-editor: "Fira Mono", Avenir, "Avenir Next", sans-serif;
-  --font-text: "Cormorant", "Baskervville", "Source Serif 4", "Poiret One", "Anonymous Pro";
-  --font-family-preview: Avenir, "Avenir Next", sans-serif;
-  --font-title-new: var(--font-family-editor), "Garamond", "Varela Round";
-  --font-header-new: var(--font-family-editor), "Garamond", "Varela Round", "Lobster Two", "DM sans";
-  --font-italics: "Poiret One", "EB garamond", "Playfair", "latin modern roman dunhill";
-  --font-bold: "Cormorant", "Varela Round", "Lobster Two";
-  --font-bold-italics: "Cormorant", "Varela Round", "Lobster Two";
-  --font-blockquote: "Cormorant", "Varela Round", "Playfair", "EB Garamond", "Playfair";
+  --font-serif: Unna, "Cormorant";
+  --font-sans: Karla, Quicksand, "FIra Sans";
+  --font-family-editor: var(--font-sans), var(--font-sans), Avenir, "Avenir Next", sans-serif;
+  --font-text: var(--font-sans), "Baskervville", "Source Serif 4", "Poiret One", "Anonymous Pro";
+  --font-italics: var(--font-text), var(--font-serif), "Poiret One", "EB garamond", "Playfair", "latin modern roman dunhill";
+  --font-bold: var(--font-text), var(--font-serif), "Varela Round", "Lobster Two";
+  --font-bold-italics: var(--font-text), var(--font-serif), "Varela Round", "Lobster Two";
+  --font-family-preview: var(--font-sans), Avenir, "Avenir Next", sans-serif;
+  --font-title-new: var(--font-sans), var(--font-family-editor), "Garamond", "Varela Round";
+  --inline-title-font: var(--font-title-new);
+  --font-headings: var(--font-serif), Rosarivo, Unna, var(--font-sans);
+  --font-blockquote: var(--font-serif),Marcellus, "Varela Round", "Playfair", "EB Garamond", "Playfair";
   --font-blockquote-render: "Lora", "EB Garamond", "Latin modern roman";
   --font-timeline-accent: "Cinzel";
   --font-timeline-main: Garamond, "EB Garamond";
@@ -60,31 +66,14 @@ body {
   --blockquote-border-thickness: 4px;
 }
 
-.inline-title {
-  --inline-title-color: #fffe;
-  --inline-title-color: #fffe;
-  font-family: var(--font-title-new);
-  text-shadow: 0 0 10px rgba(255, 255, 255, 0.2549019608);
-}
-
 .theme-light,
 .theme-dark {
-  --background-primary: #282a36;
-  --background-primary: color-mix(in srgb, var(--interactive-accent), black 80%);
-  --background-primary-alt: #44475a;
-  --background-secondary: #4b445a;
-  --background-secondary: color-mix(in srgb, var(--interactive-accent), rgb(15, 14, 14) 70%);
-  --background-secondary-alt: #282a36;
-  --background-secondary-alt: color-mix(in srgb, var(--interactive-accent), rgb(15, 15, 15) 80%);
-  --background-accent: color-mix(in srgb, var(--interactive-accent), #fff5);
   --background-modifier-border: var(--background-accent);
   --background-modifier-form-field: rgba(0, 0, 0, 0.2);
   --background-modifier-form-field-highlighted: rgba(0, 0, 0, 0.5);
   --background-modifier-box-shadow: rgba(0, 0, 0, 0.3);
   --background-modifier-success: #50fa7b;
-  /*no sure*/
   --background-modifier-error: #c00000;
-  /*no sure*/
   --background-modifier-error-rgb: 192, 0, 0;
   --background-modifier-error-hover: #ff2727;
   --background-modifier-cover: rgba(0, 0, 0, 0.6);
@@ -114,8 +103,6 @@ body {
   --scrollbar-thumb-bg: rgba(255, 255, 255, 0.1);
   --tab-text-color: white !important;
   --list-marker-color: var(--main-text-accent);
-  --icon-color: color-mix(in srgb, var(--main-text-accent), white);
-  --nav-collapse-icon-color: var(--main-text-accent);
   --text-title-h1: #c9aaf3;
   --text-title-h2: #ffb86c;
   --text-title-h2: #f5f792;
@@ -141,6 +128,37 @@ body {
   			var(--timeline-color-basis),
   			var(--background-secondary) 10%),
   		transparent 85%);
+}
+
+.theme-dark {
+  --background-primary: #282a36;
+  --background-primary: color-mix(in srgb, var(--interactive-accent), black 80%);
+  --background-primary-alt: #44475a;
+  --background-secondary: #4b445a;
+  --background-secondary: color-mix(in srgb, var(--interactive-accent), rgb(15, 14, 14) 70%);
+  --background-secondary-alt: #282a36;
+  --background-secondary-alt: color-mix(in srgb, var(--interactive-accent), rgb(15, 15, 15) 80%);
+  --background-accent: color-mix(in srgb, var(--interactive-accent), #fff5);
+  --inline-title-color: color-mix(in srgb, var(--interactive-accent), white 40%);
+  --hr-color: rgba(255, 255, 255, 0.3);
+  --icon-color: color-mix(in srgb, var(--main-text-accent), white);
+  --nav-collapse-icon-color: var(--main-text-accent);
+}
+
+.theme-light {
+  --background-primary: #282a36;
+  --background-primary: color-mix(in srgb, var(--interactive-accent), white 40%);
+  --background-primary-alt: var(var(--background-primary));
+  --background-secondary: color-mix(in srgb, var(--interactive-accent), white 20%);
+  --background-secondary-alt: color-mix(in oklab, var(--background-secondary), white);
+  --background-accent: color-mix(in srgb, var(--interactive-accent), rgba(122, 122, 122, 0.333));
+  --text-normal: color-mix(in srgb, var(--interactive-accent), black 70%);
+  --text-muted: color-mix(in srgb, var(--interactive-accent), rgba(0, 0, 0, 0.836) 70%);
+  --main-text-accent: color-mix(in srgb, var(--interactive-accent) 50%, rgba(84, 84, 84, 0.384));
+  --inline-title-color: var(--main-text-accent);
+  --hr-color: var(--main-text-accent);
+  --icon-color: color-mix(in srgb, var(--main-text-accent), rgb(23, 23, 23));
+  --nav-collapse-icon-color: var(--main-text-accent);
 }
 
 /*-------------------------------------*/
@@ -173,11 +191,15 @@ body {
 /* global */
 hr,
 .hr.cm-line hr {
-  border-color: rgba(255, 255, 255, 0.3);
+  border-color: var(--hr-color);
 }
 
 body .cm-line {
   font-weight: 100;
+}
+
+.inline-title {
+  font-weight: 200;
 }
 
 /***************************************/
@@ -336,6 +358,7 @@ strong,
 .cm-quote.cm-strong {
   font-weight: 600;
   font-size: calc(var(--font-size-normal) * 1);
+  font-family: inherit;
 }
 
 /* italics/emphasis in preview and editor */
@@ -349,8 +372,8 @@ em,
   color: var(--text-italics);
   font-style: italic;
   font-weight: 400;
-  font-family: var(--font-italics);
-  font-size: calc(var(--font-size-normal) * 1.15);
+  font-family: inherit;
+  font-size: calc(var(--font-size-normal) * 1);
   letter-spacing: 0.01em;
   line-height: 1;
   /* text-shadow: 0 0 2px #9298e9de; */
@@ -369,7 +392,7 @@ strong em,
   color: #94C1FF;
   color: var(--text-italics);
   font-style: italic;
-  font-family: var(--font-bold-italics);
+  font-family: inherit;
   font-size: calc(var(--font-size-normal) * 1);
   /* text-shadow: 0 0 3px #a0ecff9a; */
 }
@@ -415,47 +438,37 @@ img:hover {
 .markdown-preview-view :is(h1, h2, h3, h4, h5, h6) {
   color: color-mix(in oklab, var(--h-color), var(--interactive-accent) 50%);
   filter: saturate(0.7);
+  font-weight: 500;
+  font-family: var(--font-headings);
 }
 
 .cm-header-1,
 .markdown-preview-view h1 {
-  font-family: var(--font-header-new);
-  font-weight: 500;
   --h-color: var(--text-title-h1);
 }
 
 .cm-header-2,
 .markdown-preview-view h2 {
-  font-family: var(--font-header-new);
-  font-weight: 500;
   --h-color: var(--text-title-h2);
 }
 
 .cm-header-3,
 .markdown-preview-view h3 {
-  font-family: var(--font-header-new);
-  font-weight: 500;
   --h-color: var(--text-title-h3);
 }
 
 .cm-header-4,
 .markdown-preview-view h4 {
-  font-family: var(--font-header-new);
-  font-weight: 500;
   --h-color: var(--text-title-h4);
 }
 
 .cm-header-5,
 .markdown-preview-view h5 {
-  font-family: var(--font-header-new);
-  font-weight: 500;
   --h-color: var(--text-title-h5);
 }
 
 .cm-header-6,
 .markdown-preview-view h6 {
-  font-family: var(--font-header-new);
-  font-weight: 500;
   --h-color: var(--text-title-h6);
 }
 
@@ -515,8 +528,19 @@ pre code {
 .cm-quote.cm-em,
 .cm-quote.cm-em.cm-strong {
   font-family: var(--font-blockquote);
+  font-style: italic;
+  opacity: 0.9;
 }
 
+.cm-line:not(:has(.cm-quote)) + .HyperMD-quote:has(+ .HyperMD-quote) {
+  padding-top: 0.4em !important;
+}
+.HyperMD-quote + .HyperMD-quote:has(+ :is(.hr, .cm-line:not(:has(.cm-quote)))) {
+  padding-bottom: 0.8em !important;
+}
+.cm-line:not(:has(span.cm-em)) + .HyperMD-quote:has(+ .cm-line:not(:has(span.cm-em))) {
+  padding-block: 0.8em !important;
+}
 .HyperMD-quote.HyperMD-quote-1.cm-line:has(.cm-quote) {
   /* background color is defined automatically as blockquote-background-color */
   border-radius: 0 8px 8px 0;
@@ -844,6 +868,7 @@ ul .task-list-item ul::before {
   background-color: var(--pre-code-bg);
   color: var(--inline-code) !important;
   bottom: 0px !important;
+  font-weight: 500;
 }
 
 /* Editor CodeBlock TEXT Appearance */
@@ -1098,9 +1123,8 @@ button.mod-warning {
   /* min-width: 20vw; */
   max-width: 70%;
   text-wrap: pretty;
-  color: var(--interactive-accent);
+  color: var(--main-text-accent);
   /* color: color-mix(in srgb, var(--interactive-accent) 70%, white); */
-  filter: saturate(2) brightness(1.35) opacity(0.8);
 }
 
 .callout[data-callout=poem] .callout-title-inner::after {
@@ -1121,6 +1145,10 @@ button.mod-warning {
   letter-spacing: 0.02em;
   opacity: 0.85;
   margin-right: 2em;
+}
+.callout[data-callout=poem] .callout-content em, .callout[data-callout=poem] .callout-content strong {
+  font-family: var(--font-poem);
+  font-size: inherit;
 }
 
 /* 
