@@ -1076,6 +1076,29 @@ body {
  	--callout-icon: lucide-pencil;
  }
 
+.callout {
+	--for-convenient-color-picking: rgb(255, 128, 128);
+ 	--callout-bug: var(--color-red-rgb);
+    --callout-default: var(--color-blue-rgb);
+    --callout-error: var(--color-red-rgb);
+    --callout-example: var(--color-purple-rgb);
+    --callout-fail: var(--color-red-rgb);
+    --callout-important: 255, 128, 128;
+    --callout-info: var(--color-blue-rgb);
+    --callout-question: var(--color-orange-rgb);
+    --callout-success: var(--color-green-rgb);
+    --callout-summary: var(--color-cyan-rgb);
+    --callout-tip: var(--color-cyan-rgb);
+    --callout-todo: var(--color-blue-rgb);
+    --callout-warning: var(--color-orange-rgb);
+    --callout-quote: 158, 158, 158;
+	background-color: var(--background-secondary);
+
+// 	&[data-callout="important"] {
+// 		color: red !important
+// 	}
+}
+
  button.mod-warning {
  	color: var(--text-on-warning);
  	font-weight: bold;
@@ -1824,3 +1847,5 @@ body {
  	// 	color:red !important
  	// } 
  }
+
+ 
