@@ -14,6 +14,8 @@
 @import url("https://fonts.googleapis.com/css2?family=Fira+Mono&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Fira+Sans&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Karla&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Indie+Flower&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Gamja+Flower&display=swap");
 body {
   --font-size-normal: 19px;
   --font-size-code: 16px;
@@ -30,9 +32,9 @@ body {
   --h6-size: calc(var(--base-heading-size)*1);
   --base-heading-size: calc(var(--font-size-normal) * 1.2);
   --inline-title-size: calc(var(--base-heading-size)*1.5);
-  --h1-size: calc(var(--base-heading-size)*1.35);
-  --h2-size: calc(var(--base-heading-size)*1.2);
-  --h3-size: calc(var(--base-heading-size)*1.16);
+  --h1-size: calc(var(--base-heading-size)*1.5);
+  --h2-size: calc(var(--base-heading-size)*1.25);
+  --h3-size: calc(var(--base-heading-size)*1.18);
   --h4-size: calc(var(--base-heading-size)*1.12);
   --h5-size: calc(var(--base-heading-size)*1.1);
   --h6-size: calc(var(--base-heading-size)*1);
@@ -110,8 +112,10 @@ body {
   --text-title-h4: #fc91ea;
   --text-title-h5: #a0f0b4;
   --text-title-h6: #e47096;
-  --text-italics: var(--main-text-accent);
-  --bold-color: var(--main-text-accent);
+  --special-text-color: color-mix(in oklab, white, var(--main-text-accent));
+  --text-italics: var(--special-text-color);
+  --bold-color: var(--special-text-color);
+  --bold-color: color-mix(in oklab, var(--main-text-accent), white 30%);
   --inline-code: #ffb86c;
   --inline-code: var(--main-text-accent);
   --code-block: #8be9fd;
@@ -1523,6 +1527,52 @@ button.mod-warning {
 }
 .callout[data-callout=eq] .callout-icon {
   display: none;
+}
+
+/* notebook simulation */
+.callout[data-callout=nb] {
+  --bg-color: color-mix(in oklab,
+  		color-mix(in srgb,
+  			var(--timeline-color-basis),
+  			var(--background-secondary) 10%),
+  		transparent 98%);
+  background-color: var(--bg-color);
+  font-family: "gamja flower", "Indie Flower";
+  padding-block: 1em;
+  position: relative;
+}
+.callout[data-callout=nb] .callout-title {
+  display: block;
+  position: absolute;
+  right: 1em;
+  color: rgba(255, 255, 255, 0.421);
+}
+.callout[data-callout=nb] .callout-icon {
+  display: none;
+}
+.callout[data-callout=nb] .callout-content > p {
+  --line-height: 1.75em;
+  --nb-bg: transparent;
+  --nb-line: color-mix(in srgb, rgba(255, 255, 255, 0.473), var(--main-text-accent) 100%);
+  --fg-color: color-mix(in srgb, var(--main-text-accent) 30%, white);
+  color: var(--fg-color);
+  line-height: var(--line-height);
+  padding-bottom: var(--line-height);
+  font-size: 1.1rem;
+  background: repeating-linear-gradient(var(--nb-bg) 0px, var(--nb-bg) calc(var(--line-height) - 1px), var(--nb-line) calc(var(--line-height)), var(--nb-bg) calc(var(--line-height) + 1px));
+  margin-bottom: 0;
+}
+.callout[data-callout=nb] .callout-content > p em {
+  color: var(--fg-color);
+  font-weight: 500;
+}
+.callout[data-callout=nb] .callout-content > p strong {
+  color: var(--fg-color);
+  font-weight: bold;
+}
+
+.cm-callout:has(.callout[data-callout=nb]):hover {
+  --embed-block-shadow-hover: 0 0 0 1px rgba(255, 255, 255, 0.373);
 }
 
 /* HR BEFORE NEW DAY = .hr.cm-line:has(+ .cm-line .cm-inline-code):has(+ .cm-line .cm-hashtag) hr */
