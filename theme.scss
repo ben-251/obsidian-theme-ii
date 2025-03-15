@@ -212,7 +212,7 @@
 
 body {
 	.cm-line {
-		font-weight: 100;
+		// font-weight: 100;
 	}
 }
 
@@ -220,6 +220,27 @@ body {
 	font-weight: 200;
 	// text-shadow: 0 0 10px #ffffff41;
 	;
+}
+
+.inline-badge {
+	--font-weight: 500;
+	--font-size: 1em;
+	font-size: var(--font-size);
+	padding-inline: 0.3em;
+	padding-left: 0.1em;
+	padding-right: 0.15em;
+
+	.inline-badge-icon svg {
+		--icon-size: calc(var(--font-size) * 1);
+		stroke-width: 2px;
+		width: var(--icon-size);
+		height: var(--icon-size);
+	}
+
+	.inline-badge-title-inner {
+		font-weight: var(--font-weight);
+		font-size: var(--font-size);
+	}
 }
 
  /***************************************/

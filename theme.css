@@ -198,12 +198,27 @@ hr,
   border-color: var(--hr-color);
 }
 
-body .cm-line {
-  font-weight: 100;
-}
-
 .inline-title {
   font-weight: 200;
+}
+
+.inline-badge {
+  --font-weight: 500;
+  --font-size: 1em;
+  font-size: var(--font-size);
+  padding-inline: 0.3em;
+  padding-left: 0.1em;
+  padding-right: 0.15em;
+}
+.inline-badge .inline-badge-icon svg {
+  --icon-size: calc(var(--font-size) * 1);
+  stroke-width: 2px;
+  width: var(--icon-size);
+  height: var(--icon-size);
+}
+.inline-badge .inline-badge-title-inner {
+  font-weight: var(--font-weight);
+  font-size: var(--font-size);
 }
 
 /***************************************/
