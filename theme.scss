@@ -49,7 +49,7 @@
  	--font-family-preview: var(--font-sans), Avenir, "Avenir Next", sans-serif;
  	--font-title-new: var(--font-sans), var(--font-family-editor), "Garamond", "Varela Round";
 	--inline-title-font: var(--font-title-new);
-	--font-headings: var(--font-serif),  Rosarivo, Unna, var(--font-sans);
+	--font-headings: var(--font-sans),  Rosarivo, Unna, var(--font-sans);
  	--font-blockquote: var(--font-serif),Marcellus, "Varela Round", "Playfair", "EB Garamond", "Playfair";
  	--font-blockquote-render: "Lora", "EB Garamond", "Latin modern roman";
  	--font-timeline-accent: "Cinzel";
@@ -216,6 +216,15 @@ body {
 	}
 }
 
+// .markdown-source-view.mod-cm6.is-readable-line-width 
+
+.cm-sizer {
+	max-width: var(--file-line-width);
+	margin-left: auto;
+	margin-right: auto;
+  }
+
+
 .inline-title {
 	font-weight: 200;
 	// text-shadow: 0 0 10px #ffffff41;
@@ -224,10 +233,10 @@ body {
 
 .inline-badge {
 	--font-weight: 500;
-	--font-size: 1em;
+	--font-size: 0.9em;
 	font-size: var(--font-size);
-	padding-inline: 0.3em;
-	padding-left: 0.1em;
+	padding-inline: 0.25em;
+	padding-left: 0.075em;
 	padding-right: 0.15em;
 
 	.inline-badge-icon svg {
