@@ -1940,3 +1940,28 @@ body {
  }
 
  
+
+ // Nav bar
+.tree-item {
+
+	&.nav-file {
+	// border-bottom: solid 2px var(--interactive-accent);
+	// background-color: color-mix(in srgb, var(--interactive-accent), transparent 90%);
+	// ——- idea 2 - rounded left edges
+	// border-top-left-radius: .8em;
+	// border-bottom-left-radius: .8em;
+	// border-top: solid 1px color-mix(in srgb, var(--interactive-accent), transparent 60%);
+// — - - idea 3 - - - - 
+		opacity: 0.8;
+		font-weight: 300;
+	}
+
+	&.nav-folder {
+		font-weight: 500;
+		.tree-item-inner {
+			font-size: calc(var(--main-nav-font-size)*1.4)
+		}
+		// --nav-item-size: 1em;
+	}
+	
+}

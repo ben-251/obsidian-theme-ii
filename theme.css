@@ -1702,5 +1702,15 @@ button.mod-warning {
     line-height: 1.45;
   }
 }
+.tree-item.nav-file {
+  opacity: 0.8;
+  font-weight: 300;
+}
+.tree-item.nav-folder {
+  font-weight: 500;
+}
+.tree-item.nav-folder .tree-item-inner {
+  font-size: calc(var(--main-nav-font-size) * 1.4);
+}
 
 /*# sourceMappingURL=theme.css.map */
