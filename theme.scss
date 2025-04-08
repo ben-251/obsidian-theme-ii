@@ -1942,24 +1942,57 @@ body {
  
 
  // Nav bar
+
+// main container
+.nav-files-container {
+	padding-inline: 4px;
+	margin: auto;
+}
+
+// root level folders
+.nav-files-container  > div > .tree-item.nav-folder {
+	//background-color: color-mix(in srgb, var(--interactive-accent), transparent 90%);
+	border-bottom: solid 1px color-mix(in srgb, var(--interactive-accent), transparent 60%);
+
+	> .tree-item-self {
+		> .tree-item-inner {
+			color: color-mix(in srgb, var(--interactive-accent), var(--nav-item-color) 80%) !important;
+		}
+		// border-bottom: solid 1px red
+	
+	}
+
+	&.is-collapsed {
+		background-color: color-mix(in srgb, var(--interactive-accent), transparent 97%);
+	}
+
+	&:not(.is-collapsed) {
+		background-color: color-mix(in srgb, var(--interactive-accent), transparent 90%);
+
+		> .tree-item-self {
+			border-bottom: dotted 2px color-mix(in srgb, var(--interactive-accent), transparent 80%);
+		}
+	}
+}
+
+ // general items
 .tree-item {
+	--nav-item-font-size: calc(var(--font-size-normal) * 0.65);
+	--nav-item-font-size: 13px;
 
 	&.nav-file {
-	// border-bottom: solid 2px var(--interactive-accent);
-	// background-color: color-mix(in srgb, var(--interactive-accent), transparent 90%);
-	// ——- idea 2 - rounded left edges
-	// border-top-left-radius: .8em;
-	// border-bottom-left-radius: .8em;
-	// border-top: solid 1px color-mix(in srgb, var(--interactive-accent), transparent 60%);
-// — - - idea 3 - - - - 
-		opacity: 0.8;
+		opacity: 0.9;
 		font-weight: 300;
+
+		.tree-item-inner {
+			font-size: var(--nav-item-font-size);
+		}
 	}
 
 	&.nav-folder {
 		font-weight: 500;
-		.tree-item-inner {
-			font-size: calc(var(--main-nav-font-size)*1.4)
+		> .tree-item-self {
+			font-size: calc(var(--nav-item-font-size)*1.05);
 		}
 		// --nav-item-size: 1em;
 	}
