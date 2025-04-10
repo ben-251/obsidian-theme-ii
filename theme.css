@@ -1704,6 +1704,7 @@ button.mod-warning {
 }
 .nav-files-container {
   padding-inline: 4px;
+  width: 100%;
   margin: auto;
 }
 
