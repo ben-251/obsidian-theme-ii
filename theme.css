@@ -1715,13 +1715,17 @@ button.mod-warning {
   color: color-mix(in srgb, var(--interactive-accent), var(--nav-item-color) 80%) !important;
 }
 .nav-files-container > div > .tree-item.nav-folder.is-collapsed {
-  background-color: color-mix(in srgb, var(--interactive-accent), transparent 97%);
+  background-color: color-mix(in srgb, var(--interactive-accent), transparent 83%);
 }
 .nav-files-container > div > .tree-item.nav-folder:not(.is-collapsed) {
   background-color: color-mix(in srgb, var(--interactive-accent), transparent 90%);
 }
 .nav-files-container > div > .tree-item.nav-folder:not(.is-collapsed) > .tree-item-self {
+  background-color: color-mix(in srgb, var(--interactive-accent), transparent 88%);
   border-bottom: dotted 2px color-mix(in srgb, var(--interactive-accent), transparent 80%);
+}
+.nav-files-container > div > .tree-item.nav-folder:not(.is-collapsed) > .tree-item-self:hover {
+  background-color: color-mix(in srgb, var(--interactive-accent), transparent 80%);
 }
 
 .tree-item {
@@ -1735,11 +1739,23 @@ button.mod-warning {
 .tree-item.nav-file .tree-item-inner {
   font-size: var(--nav-item-font-size);
 }
+.tree-item.nav-file > .tree-item-self.is-active {
+  background-color: inherit;
+  color: var(--interactive-accent);
+  font-weight: 800;
+}
+.tree-item.nav-file > .tree-item-self.is-active:hover {
+  color: var(--interactive-accent);
+  font-weight: 800;
+}
 .tree-item.nav-folder {
   font-weight: 500;
 }
 .tree-item.nav-folder > .tree-item-self {
   font-size: calc(var(--nav-item-font-size) * 1.05);
+}
+.tree-item.nav-folder > .tree-item-children {
+  border-inline-start: 1px dotted color-mix(in srgb, var(--interactive-accent), transparent 60%);
 }
 
 /*# sourceMappingURL=theme.css.map */

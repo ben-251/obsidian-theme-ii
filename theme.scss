@@ -1964,14 +1964,19 @@ body {
 	}
 
 	&.is-collapsed {
-		background-color: color-mix(in srgb, var(--interactive-accent), transparent 97%);
+		background-color: color-mix(in srgb, var(--interactive-accent), transparent 83%);
 	}
 
 	&:not(.is-collapsed) {
 		background-color: color-mix(in srgb, var(--interactive-accent), transparent 90%);
 
 		> .tree-item-self {
+			background-color: color-mix(in srgb, var(--interactive-accent), transparent 88%);
 			border-bottom: dotted 2px color-mix(in srgb, var(--interactive-accent), transparent 80%);
+
+			&:hover {
+				background-color: color-mix(in srgb, var(--interactive-accent), transparent 80%);
+			}
 		}
 	}
 }
@@ -1988,6 +1993,17 @@ body {
 		.tree-item-inner {
 			font-size: var(--nav-item-font-size);
 		}
+
+		> .tree-item-self.is-active {
+			background-color: inherit;
+			color: var(--interactive-accent);
+			font-weight: 800;
+
+			&:hover{
+				color: var(--interactive-accent);
+				font-weight: 800;
+			}
+		}
 	}
 
 	&.nav-folder {
@@ -1996,6 +2012,10 @@ body {
 			font-size: calc(var(--nav-item-font-size)*1.05);
 		}
 		// --nav-item-size: 1em;
+
+		> .tree-item-children {
+			border-inline-start: 1px dotted color-mix(in srgb, var(--interactive-accent), transparent 60%);
+		}
 	}
 	
 }
