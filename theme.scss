@@ -49,6 +49,7 @@
  	--font-family-preview: var(--font-sans), Avenir, "Avenir Next", sans-serif;
  	--font-title-new: var(--font-sans), var(--font-family-editor), "Garamond", "Varela Round";
 	--inline-title-font: var(--font-title-new);
+	--font-comments: Quicksand;
 	--font-headings: var(--font-sans),  Rosarivo, Unna, var(--font-sans);
  	--font-blockquote: var(--font-serif),Marcellus, "Varela Round", "Playfair", "EB Garamond", "Playfair";
  	--font-blockquote-render: "Lora", "EB Garamond", "Latin modern roman";
@@ -131,6 +132,7 @@
  	--vim-cursor: #ff5555;
  	--border-color: #2b2727;
  	/*also like transparent*/
+	--code-comment: var(--bold-color);
 
 
  	--timeline-color-basis: var(--interactive-accent);
@@ -213,6 +215,16 @@
 body {
 	.cm-line {
 		// font-weight: 100;
+	}
+}
+
+.cm-comment {
+	color: var(--code-comment);
+	font-family: var(--font-comments);
+	font-weight: 100;
+
+	&:is(.cm-comment-start, .cm-comment-end) {
+		opacity: 0.5;
 	}
 }
 
