@@ -18,6 +18,7 @@
 
 
  body {
+	// FONT SIZES
  	--font-size-normal: 19px;
  	--font-size-code: 16px;
  	--font-size-side-dock: 16px;
@@ -39,6 +40,8 @@
  	--h4-size: calc(var(--base-heading-size)*1.12);
  	--h5-size: calc(var(--base-heading-size)*1.1);
  	--h6-size: calc(var(--base-heading-size)*1);
+
+	// FONT FAMILIES
 	--font-serif: Unna, "Cormorant";
 	--font-sans: Karla, Quicksand, "FIra Sans";
  	--font-family-editor: var(--font-sans), var(--font-sans), Avenir, "Avenir Next", sans-serif;
@@ -62,9 +65,13 @@
  	--font-profile: Garamond, "EB Garamond";
  	--font-profile-heading: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
  	--font-profile-fancy: Cinzel, Garamond;
+
+	// TAG STYLING
  	--tag-bg: rgba(225, 128, 255, 0.144);
  	--tag-font-color: rgb(239, 206, 255);
  	--tag-radius: 2em;
+
+	// MISCELLANEOUS
  	--callout-question-new: 168, 130, 255;
  	--file-line-width: 900px;
  	--blockquote-border-thickness: 4px;
@@ -82,6 +89,8 @@
  	--background-modifier-error-rgb: 192, 0, 0;
  	--background-modifier-error-hover: #ff2727;
  	--background-modifier-cover: rgba(0, 0, 0, 0.6);
+
+
  	--main-text-accent: color-mix(in srgb, var(--interactive-accent) 50%, white);
  	--text-accent: #ffb86c;
  	--text-accent: var(--main-text-accent);
@@ -89,19 +98,15 @@
  	--text-normal: #f8f8f2;
  	--text-muted: #f8f8f2;
  	--text-faint: #bd93f9;
- 	// --text-faint: var(--interactive-accent);
  	--text-faint: color-mix(in srgb, var(--main-text-accent), white);
  	--text-highlight-bg: #ff5555;
  	--text-error: #ff79c6;
  	--text-error-hover: #ff79c6;
  	--text-selection: color-mix(in srgb, var(--interactive-accent), rgba(54, 54, 54, 0.507) 70%);
- 	/* Chromium precess this color with alpha channel */
  	--text-on-accent: #2b031a;
  	--text-on-warning: #ffffff;
- 	/* --interactive-normal: #dd6cff; */
  	--interactive-hover: var(--interactive-accent);
  	--interactive-accent-hover: var(--interactive-hover);
- 	/* --interactive-accent: #dd6cff; */
  	--interactive-normal: var(--interactive-accent);
  	--blockquote-background-color: color-mix(in srgb, var(--background-secondary), transparent 60%);
  	--scrollbar-active-thumb-bg: rgba(255, 255, 255, 0.2);
@@ -111,48 +116,34 @@
  	--list-marker-color: var(--main-text-accent);
 
  	--text-title-h1: #c9aaf3;
- 	--text-title-h2: #ffb86c;
- 	--text-title-h2: #f5f792; // oklab is interesting in that the boundary between these two is enough to completely change the mix?
+ 	--text-title-h2: #f5f792; 
  	--text-title-h3: #a6efff;
  	--text-title-h4: #fc91ea;
  	--text-title-h5: #a0f0b4;
  	--text-title-h6: #e47096;
- 	// might need to modify these to make it work with the accent-blending
- 	// 9ca9dd
 
 	--special-text-color: color-mix(in oklab, white, var(--main-text-accent));
- 	--text-italics: var(--special-text-color);
+ 	--italics-color: var(--special-text-color);
  	--bold-color: var(--special-text-color);
-	--bold-color: color-mix(in oklab, var(--main-text-accent), white 30%);
- 	--inline-code: #ffb86c;
  	--inline-code: var(--main-text-accent);
- 	--code-block: #8be9fd;
+ 	--code-block: var(--main-text-accent);
  	--pre-code: var(--background-secondary);
  	--blockquote-border: var(--interactive-normal);
  	--vim-cursor: #ff5555;
  	--border-color: #2b2727;
- 	/*also like transparent*/
-	--code-comment: var(--bold-color);
-
-
- 	--timeline-color-basis: var(--interactive-accent);
- 	--timeline-bg-color: color-mix(in srgb, transparent 80%, color-mix(in srgb, var(--timeline-color-basis) 20%, var(--interactive-normal)));
- 	--timeline-fg-color: color-mix(in srgb, var(--timeline-color-basis) 20%, #ffffffc9);
- 	--profile-bg-main: color-mix(in oklab,
- 			color-mix(in srgb,
- 				var(--timeline-color-basis),
- 				var(--background-secondary) 10%),
- 			transparent 85%);
+	--code-comment: var(--special-text-color);
  }
 
 
  .theme-dark {
-	--background-primary: #282a36;
-	--background-primary: color-mix(in srgb, var(--interactive-accent), black 80%);
-	--background-primary-alt: #44475a;
-	--background-secondary: #4b445a;
+	// --background-primary: color-mix(in srgb, var(--interactive-accent), black 80%);
+	--background-primary: 
+		hsl(from var(--interactive-accent) h s 20%);
+	--background-primary-alt:	
+		hsl(from var(--interactive-accent) h s 40%);
+
+	--background-primary-alt: color-mix(in srgb, var(--interactive-accent), black 60%);
 	--background-secondary: color-mix(in srgb, var(--interactive-accent), rgb(15, 14, 14) 70%);
-	--background-secondary-alt: #282a36;
 	--background-secondary-alt: color-mix(in srgb, var(--interactive-accent), rgb(15, 15, 15) 80%);
 	--background-accent: color-mix(in srgb, var(--interactive-accent), #fff5); 
 	--inline-title-color: color-mix(in srgb, var(--interactive-accent), white 40%);
@@ -212,17 +203,16 @@
  }
 
 
-body {
-	.cm-line {
-		// font-weight: 100;
-	}
-}
 
 .cm-comment {
 	color: var(--code-comment);
 	font-family: var(--font-comments);
 	font-weight: 100;
-
+	font-size: 0.8em;
+	// attempt to make it centered vertically
+	// margin-block: 0.7em;
+	// box-sizing: border-box;
+	// display: inline-block;
 	&:is(.cm-comment-start, .cm-comment-end) {
 		opacity: 0.5;
 	}
@@ -434,10 +424,7 @@ body {
  .cm-em,
  em,
  .cm-em {
- 	/* color: var(--text-muted); */
- 	color: #FFB294;
- 	color: #cee3ff;
- 	color: var(--text-italics);
+	color: var(--italics-color);
 
  	font-style: italic;
  	font-weight: 400;
@@ -508,10 +495,6 @@ body {
  /* Headings - EDITOR and PREVIEW */
  /*********************************/
 
-
-
-
- /* headings for editor and preview */
  .cm-header,
  .markdown-preview-view :is(h1, h2, h3, h4, h5, h6) {
  	color: color-mix(in oklab, var(--h-color), var(--interactive-accent) 50%);
@@ -549,7 +532,6 @@ body {
  .markdown-preview-view h6 {
  	--h-color: var(--text-title-h6);
  }
-
 
  /***************************************/
  /*         Code block in  Preview      */
@@ -621,27 +603,16 @@ body {
 //  blockquote lines that are at the start of their chain
 .cm-line:not(:has(.cm-quote)) + .HyperMD-quote:has(+ .HyperMD-quote) {
 	padding-top: 0.4em !important;
-
-	.cm-quote{
-		// color: blue !important
-	}
 }
 
 //  blockquote lines that are at the end of their chain
 .HyperMD-quote + .HyperMD-quote:has( + :is(.hr, .cm-line:not(:has(.cm-quote)))) {
 	padding-bottom: 0.8em !important;
-	.cm-quote {
-		// color: green !important
-	}
 }
 
 //  blockquote lines that are 'islands'
 .cm-line:not(:has(span.cm-em)) + .HyperMD-quote:has( + .cm-line:not(:has(span.cm-em))) {
 	padding-block: 0.8em !important;
-
-	.cm-quote {
-		// color: red !important
-	}	
 }
 
  .HyperMD-quote.HyperMD-quote-1.cm-line:has(.cm-quote) {
