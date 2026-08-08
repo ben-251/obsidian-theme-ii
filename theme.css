@@ -79,8 +79,6 @@ body {
   --text-title-h5: #00ff40;
   --text-title-h6: #ff0055;
   --text-highlight-bg: #ff5555;
-  --text-error: #ff79c6;
-  --text-error-hover: #ff79c6;
   --italics-color: var(--text-faint);
   --bold-color: var(--text-weak-accent);
   --inline-code: var(--text-accent);
@@ -117,13 +115,14 @@ body {
   --text-accent-hover: hsl(from var(--main-accent) h calc(0.1 + s * 0.3) 70%);
   --text-strong-accent: hsl(from var(--main-accent) h calc(0.1 + s * 0.5) 70%);
   --text-heading-accent: hsl(from var(--main-accent) h calc(0.05 + s * 0.1) 60%);
-  --text-weak-accent: hsl(from var(--main-accent) h 80% 95%);
   --text-weak-accent: #fff;
   --text-on-accent: hsl(from var(--main-accent) h calc(0.7 + s * 0.3) 90%);
   --text-on-accent-inverted: hsl(from var(--main-accent) h calc(0.7 + s * 0.3) 90%);
   --text-on-error: #f1a885;
-  --nav-item-color:color-mix(in oklch, var(--text-normal), var(--background-secondary) 10%);
+  --nav-item-color: color-mix(in oklch, var(--text-normal), var(--background-secondary) 10%);
   --nav-item-color-hover: var(--nav-item-color);
+  --text-error: #d04d4d;
+  --text-error-hover: #ff79c6;
   --inline-title-color: var(--text-strong-accent);
   --hr-color: rgba(255, 255, 255, 0.3);
   --icon-color: color-mix(in srgb, var(--main-text-accent), white);
@@ -139,7 +138,7 @@ body {
   --background-primary-alt: hsl(from var(--main-accent) h calc(0.3 + s * 0.1) 90%);
   --background-secondary: hsl(from var(--main-accent) h calc(0.4 + s * 0.1) 87%);
   --background-secondary-alt: hsl(from var(--main-accent) h calc(0.45 + s * 0.1) 85%);
-  --background-accent: hsl(from var(--main-accent) h calc(0.1 + s * 0.1) 50%);
+  --background-accent: hsl(from var(--main-accent) h calc(0.4 + s * 0.1) 70%);
   --background-error: rgb(156, 30, 53);
   --background-modifier-hover: color-mix(in oklch, var(--background-primary-alt), transparent);
   --text-normal: #252525f9;
@@ -155,6 +154,10 @@ body {
   --text-on-accent: hsl(from var(--main-accent) h calc(0.7 + s * 0.3) 30%);
   --text-on-accent-inverted: hsl(from var(--main-accent) h calc(0.3 + s * 0.3) 30%);
   --text-on-error: #f1a885;
+  --nav-item-color:color-mix(in oklch, var(--text-normal), var(--background-secondary) 10%);
+  --nav-item-color-hover: var(--nav-item-color);
+  --text-error: #a50c0c;
+  --text-error-hover: #b11c70;
   --inline-title-color: var(--text-strong-accent);
   --hr-color: rgba(255, 255, 255, 0.3);
   --icon-color: color-mix(in srgb, var(--main-text-accent), white);
@@ -201,9 +204,7 @@ hr,
   font-size: 0.9em;
 }
 .cm-comment:is(.cm-comment-start, .cm-comment-end) {
-  display: none;
   opacity: 0.6;
-  font-size: 0.1em;
 }
 
 .cm-sizer {
