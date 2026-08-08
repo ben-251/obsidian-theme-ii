@@ -1,21 +1,9 @@
 @charset "UTF-8";
 /* JS: ./script.js */
 @import url("https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400..800;1,400..800&display=swap");
-@import url("https://fonts.googleapis.com/css2?family=Jost:ital,wght@0,100..900;1,100..900&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Quicksand:wght@300..700&display=swap");
-@import url("https://fonts.googleapis.com/css2?family=Marcellus&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Unna:ital,wght@0,400;0,700;1,400;1,700&display=swap");
-@import url("https://fonts.googleapis.com/css2?family=Rosarivo:ital@0;1&display=swap");
-@import url("https://fonts.googleapis.com/css2?family=Baskervville&display=swap");
-@import url("https://fonts.googleapis.com/css2?family=Arvo&display=swap");
-@import url("https://fonts.googleapis.com/css2?family=Poiret+One&display=swap");
-@import url("https://fonts.googleapis.com/css2?family=Source+Serif+4&display=swap");
-@import url("https://fonts.googleapis.com/css2?family=Cormorant&display=swap");
-@import url("https://fonts.googleapis.com/css2?family=Fira+Mono&display=swap");
-@import url("https://fonts.googleapis.com/css2?family=Fira+Sans&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Karla&display=swap");
-@import url("https://fonts.googleapis.com/css2?family=Indie+Flower&display=swap");
-@import url("https://fonts.googleapis.com/css2?family=Gamja+Flower&display=swap");
 body {
   --font-size-normal: 19px;
   --font-size-code: 16px;
@@ -38,28 +26,28 @@ body {
   --h4-size: calc(var(--base-heading-size)*1.12);
   --h5-size: calc(var(--base-heading-size)*1.1);
   --h6-size: calc(var(--base-heading-size)*1);
-  --font-serif: Unna, "Cormorant";
-  --font-sans: Karla, Quicksand, "FIra Sans";
-  --font-family-editor: var(--font-sans), var(--font-sans), Avenir, "Avenir Next", sans-serif;
-  --font-text: var(--font-sans), "Baskervville", "Source Serif 4", "Poiret One", "Anonymous Pro";
-  --font-italics: var(--font-text), var(--font-serif), "Poiret One", "EB garamond", "Playfair", "latin modern roman dunhill";
-  --font-bold: var(--font-text), var(--font-serif), "Varela Round", "Lobster Two";
-  --font-bold-italics: var(--font-text), var(--font-serif), "Varela Round", "Lobster Two";
-  --font-family-preview: var(--font-sans), Avenir, "Avenir Next", sans-serif;
-  --font-title-new: var(--font-sans), var(--font-family-editor), "Garamond", "Varela Round";
+  --font-serif: Unna, "Cormorant", serif;
+  --font-sans: Karla, sans-serif;
+  --font-family-editor: var(--font-sans);
+  --font-text: var(--font-sans);
+  --font-italics: var(--font-text);
+  --font-bold: var(--font-text);
+  --font-bold-italics: var(--font-text);
+  --font-family-preview: var(--font-sans), sans-serif;
+  --font-title-new: var(--font-sans), var(--font-family-editor);
   --inline-title-font: var(--font-title-new);
-  --font-comments: Quicksand;
-  --font-headings: var(--font-sans), Rosarivo, Unna, var(--font-sans);
-  --font-blockquote: var(--font-serif),Marcellus, "Varela Round", "Playfair", "EB Garamond", "Playfair";
-  --font-blockquote-render: "Lora", "EB Garamond", "Latin modern roman";
+  --font-comments: var(--font-sans);
+  --font-headings: var(--font-sans);
+  --font-blockquote: var(--font-serif);
+  --font-blockquote-render: "Lora";
   --font-timeline-accent: "Cinzel";
   --font-timeline-main: Garamond, "EB Garamond";
   --font-poem: Garamond, "EB Garamond";
-  --font-poem-title: Rosarivo, Unna, Marcellus, Quicksand, Jost, "Montserrat Medium", Garamond, "Gill Sans", "Gill Sans MT", sans-serif;
+  --font-poem-title: var(--font-sans);
   --font-prose: Garamond, "EB Garamond";
   --font-prose-title: Cinzel;
   --font-profile: Garamond, "EB Garamond";
-  --font-profile-heading: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
+  --font-profile-heading: var(--font-serif);
   --font-profile-fancy: Cinzel, Garamond;
   --tag-bg: rgba(225, 128, 255, 0.144);
   --tag-font-color: rgb(239, 206, 255);
@@ -111,24 +99,24 @@ body {
 }
 
 .theme-dark {
-  --background-primary: hsl(from var(--main-accent) h calc(0.3 + s * 0.1) 15%);
-  --background-primary-alt: hsl(from var(--main-accent) h calc(0.3 + s * 0.1) 20%);
-  --background-secondary: hsl(from var(--main-accent) h calc(0.3 + s * 0.1) 22%);
-  --background-secondary-alt: hsl(from var(--main-accent) h calc(0.35 + s * 0.1) 25%);
-  --background-accent: hsl(from var(--main-accent) h calc(0.1 + s * 0.1) 70%);
+  --background-primary: hsl(from var(--main-accent) h calc(0.2 + s * 0.2) 12%);
+  --background-primary-alt: hsl(from var(--main-accent) h calc(0.3 + s * 0.1) 15%);
+  --background-secondary: hsl(from var(--main-accent) h calc(0.25 + s * 0.2) 17%);
+  --background-secondary-alt: hsl(from var(--main-accent) h calc(0.25 + s * 0.2) 20%);
+  --background-accent: hsl(from var(--main-accent) h calc(0.2 + s * 0.1) 40%);
   --background-error: rgb(156, 30, 53);
-  --interactive-normal: hsl(from var(--main-accent) h calc(0.3 + s * 0.3) 60%);
-  --interactive-accent: hsl(from var(--main-accent) h calc(0.4 + s * 0.3) 35%);
-  --interactive-hover: hsl(from var(--main-accent) h calc(s * 0.8) 40%);
+  --interactive-normal: hsl(from var(--main-accent) h calc(0.1 + s * 0.3) 30%);
+  --interactive-accent: hsl(from var(--main-accent) h calc(0.1 + s * 0.3) 35%);
+  --interactive-hover: hsl(from var(--main-accent) h calc(s * 0.4) 40%);
   --interactive-accent-hover: hsl(from var(--main-accent) h calc(s * 0.8) 40%);
   --text-normal: color-mix(in oklch, var(--background-primary), #fff 90%);
   --text-muted: #ecececf0;
   --text-faint: color-mix(in srgb, var(--text-normal) 85%, transparent);
   --text-selection: color-mix(in srgb, var(--interactive-accent), rgba(54, 54, 54, 0.507) 60%);
-  --text-accent: hsl(from var(--main-accent) h calc(0.6 + s * 0.3) 80%);
-  --text-accent-hover: hsl(from var(--main-accent) h calc(0.3 + s * 0.3) 70%);
-  --text-strong-accent: hsl(from var(--main-accent) h calc(0.4 + s * 0.5) 70%);
-  --text-heading-accent: var(--main-accent);
+  --text-accent: hsl(from var(--main-accent) h calc(0.2 + s * 0.2) 80%);
+  --text-accent-hover: hsl(from var(--main-accent) h calc(0.1 + s * 0.3) 70%);
+  --text-strong-accent: hsl(from var(--main-accent) h calc(0.1 + s * 0.5) 70%);
+  --text-heading-accent: hsl(from var(--main-accent) h calc(0.05 + s * 0.1) 60%);
   --text-weak-accent: hsl(from var(--main-accent) h 80% 95%);
   --text-weak-accent: #fff;
   --text-on-accent: hsl(from var(--main-accent) h calc(0.7 + s * 0.3) 90%);
@@ -737,7 +725,7 @@ thead {
   border-bottom: solid 1px color-mix(in srgb, var(--interactive-accent), transparent 60%);
 }
 .nav-files-container > div > .tree-item.nav-folder > .tree-item-self > .tree-item-inner {
-  color: color-mix(in srgb, var(--interactive-accent), var(--nav-item-color) 90%);
+  color: color-mix(in srgb, transparent, var(--nav-item-color) 90%);
 }
 .nav-files-container > div > .tree-item.nav-folder.is-collapsed {
   background-color: var(--background-secondary-alt);
