@@ -239,15 +239,20 @@
 
 .cm-comment {
 	color: var(--code-comment);
-	font-family: var(--font-comments);
+	//  font-family: var(--font-comments);
 	font-weight: 100;
-	font-size: 0.8em;
-	// attempt to make it centered vertically
-	// margin-block: 0.7em;
-	// box-sizing: border-box;
-	// display: inline-block;
+	opacity: 0.5;
+	font-size: 0.9em;
+
 	&:is(.cm-comment-start, .cm-comment-end) {
-		opacity: 0.5;
+		display: none;
+
+		opacity: 0.6;
+		font-size: 0.1em;
+		
+		// &::before { // I had planned to try to cut off the %%s and replace them with //s
+		// 	content: "//";
+		// }
 	}
 }
 
