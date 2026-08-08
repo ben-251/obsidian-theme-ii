@@ -80,75 +80,93 @@ body {
   --background-modifier-error-rgb: 192, 0, 0;
   --background-modifier-error-hover: #ff2727;
   --background-modifier-cover: rgba(0, 0, 0, 0.6);
-  --main-text-accent: color-mix(in srgb, var(--interactive-accent) 50%, white);
-  --text-accent: #ffb86c;
-  --text-accent: var(--main-text-accent);
-  --text-accent-hover: color-mix(in oklab, #8be9fd 60%, var(--text-accent));
-  --text-normal: #f8f8f2;
-  --text-muted: #f8f8f2;
-  --text-faint: #bd93f9;
-  --text-faint: color-mix(in srgb, var(--main-text-accent), white);
-  --text-highlight-bg: #ff5555;
-  --text-error: #ff79c6;
-  --text-error-hover: #ff79c6;
-  --text-selection: color-mix(in srgb, var(--interactive-accent), rgba(54, 54, 54, 0.507) 70%);
-  --text-on-accent: #2b031a;
-  --text-on-warning: #ffffff;
-  --interactive-hover: var(--interactive-accent);
-  --interactive-accent-hover: var(--interactive-hover);
-  --interactive-normal: var(--interactive-accent);
   --blockquote-background-color: color-mix(in srgb, var(--background-secondary), transparent 60%);
   --scrollbar-active-thumb-bg: rgba(255, 255, 255, 0.2);
   --scrollbar-bg: rgba(255, 255, 255, 0.05);
   --scrollbar-thumb-bg: rgba(255, 255, 255, 0.1);
-  --tab-text-color: white !important;
-  --list-marker-color: var(--main-text-accent);
   --text-title-h1: #c9aaf3;
   --text-title-h2: #f5f792;
   --text-title-h3: #a6efff;
   --text-title-h4: #fc91ea;
   --text-title-h5: #a0f0b4;
   --text-title-h6: #e47096;
-  --special-text-color: color-mix(in oklab, white, var(--main-text-accent));
-  --italics-color: var(--special-text-color);
-  --bold-color: var(--special-text-color);
-  --inline-code: var(--main-text-accent);
-  --code-block: var(--main-text-accent);
+  --text-highlight-bg: #ff5555;
+  --text-error: #ff79c6;
+  --text-error-hover: #ff79c6;
+  --italics-color: var(--text-faint);
+  --bold-color: var(--text-weak-accent);
+  --inline-code: var(--text-accent);
+  --code-block: var(--text-accent);
+  --code-comment: var(--text-faint);
+  --list-marker-color: var(--text-accent);
   --pre-code: var(--background-secondary);
   --blockquote-border: var(--interactive-normal);
   --vim-cursor: #ff5555;
   --border-color: #2b2727;
-  --code-comment: var(--special-text-color);
+  --main-accent: hsl(
+         var(--accent-h),
+         var(--accent-s),
+         var(--accent-l)
+     );
 }
 
 .theme-dark {
-  --background-primary:
-  	hsl(from var(--interactive-accent) h s 20%);
-  --background-primary-alt:
-  	hsl(from var(--interactive-accent) h s 40%);
-  --background-primary-alt: color-mix(in srgb, var(--interactive-accent), black 60%);
-  --background-secondary: color-mix(in srgb, var(--interactive-accent), rgb(15, 14, 14) 70%);
-  --background-secondary-alt: color-mix(in srgb, var(--interactive-accent), rgb(15, 15, 15) 80%);
-  --background-accent: color-mix(in srgb, var(--interactive-accent), #fff5);
-  --inline-title-color: color-mix(in srgb, var(--interactive-accent), white 40%);
+  --background-primary: hsl(from var(--main-accent) h calc(0.3 + s * 0.1) 15%);
+  --background-primary-alt: hsl(from var(--main-accent) h calc(0.3 + s * 0.1) 20%);
+  --background-secondary: hsl(from var(--main-accent) h calc(0.3 + s * 0.1) 22%);
+  --background-secondary-alt: hsl(from var(--main-accent) h calc(0.35 + s * 0.1) 25%);
+  --background-accent: hsl(from var(--main-accent) h calc(0.1 + s * 0.1) 70%);
+  --background-error: rgb(156, 30, 53);
+  --interactive-normal: hsl(from var(--main-accent) h calc(0.3 + s * 0.3) 60%);
+  --interactive-accent: hsl(from var(--main-accent) h calc(0.4 + s * 0.3) 35%);
+  --interactive-hover: hsl(from var(--main-accent) h calc(s * 0.8) 40%);
+  --interactive-accent-hover: hsl(from var(--main-accent) h calc(s * 0.8) 40%);
+  --text-normal: color-mix(in oklch, var(--background-primary), #fff 90%);
+  --text-muted: #ecececf0;
+  --text-faint: color-mix(in srgb, var(--text-normal) 85%, transparent);
+  --text-selection: color-mix(in srgb, var(--interactive-accent), rgba(54, 54, 54, 0.507) 60%);
+  --text-accent: hsl(from var(--main-accent) h calc(0.6 + s * 0.3) 80%);
+  --text-accent-hover: hsl(from var(--main-accent) h calc(0.3 + s * 0.3) 70%);
+  --text-strong-accent: hsl(from var(--main-accent) h calc(0.4 + s * 0.5) 70%);
+  --text-weak-accent: hsl(from var(--main-accent) h 80% 95%);
+  --text-weak-accent: #fff;
+  --text-on-accent: hsl(from var(--main-accent) h calc(0.7 + s * 0.3) 90%);
+  --text-on-accent-inverted: hsl(from var(--main-accent) h calc(0.7 + s * 0.3) 90%);
+  --text-on-error: #f1a885;
+  --nav-item-color:color-mix(in oklch, var(--text-normal), var(--background-secondary) 10%);
+  --nav-item-color-hover: var(--nav-item-color);
+  --inline-title-color: var(--text-strong-accent);
   --hr-color: rgba(255, 255, 255, 0.3);
   --icon-color: color-mix(in srgb, var(--main-text-accent), white);
   --nav-collapse-icon-color: var(--main-text-accent);
 }
 
 .theme-light {
-  --background-primary: #282a36;
-  --background-primary: color-mix(in srgb, var(--interactive-accent), white 40%);
-  --background-primary-alt: var(var(--background-primary));
-  --background-secondary: color-mix(in srgb, var(--interactive-accent), white 20%);
-  --background-secondary-alt: color-mix(in oklab, var(--background-secondary), white);
-  --background-accent: color-mix(in srgb, var(--interactive-accent), rgba(122, 122, 122, 0.333));
-  --text-normal: color-mix(in srgb, var(--interactive-accent), black 70%);
-  --text-muted: color-mix(in srgb, var(--interactive-accent), rgba(0, 0, 0, 0.836) 70%);
-  --main-text-accent: color-mix(in srgb, var(--interactive-accent) 50%, rgba(84, 84, 84, 0.384));
-  --inline-title-color: var(--main-text-accent);
-  --hr-color: var(--main-text-accent);
-  --icon-color: color-mix(in srgb, var(--main-text-accent), rgb(23, 23, 23));
+  --background-primary: hsl(from var(--main-accent) h calc(0.16 + s * 0.1) 93%);
+  --background-primary-alt: hsl(from var(--main-accent) h calc(0.3 + s * 0.1) 90%);
+  --background-secondary: hsl(from var(--main-accent) h calc(0.4 + s * 0.1) 87%);
+  --background-secondary-alt: hsl(from var(--main-accent) h calc(0.45 + s * 0.1) 85%);
+  --background-accent: hsl(from var(--main-accent) h calc(0.1 + s * 0.1) 50%);
+  --background-error: rgb(156, 30, 53);
+  --interactive-normal: hsl(from var(--main-accent) h calc(0.4 + s * 0.3) 76%);
+  --interactive-hover: hsl(from var(--main-accent) h calc(0.4 + s * 0.3) 80%);
+  --interactive-accent: hsl(from var(--main-accent) h calc(0.35 + s * 0.1) 75%);
+  --interactive-accent-hover: hsl(from var(--main-accent) h calc(0.5 + s * 0.3) 75%);
+  --text-normal: #252525f9;
+  --text-muted: #292929d8;
+  --text-faint: color-mix(in srgb, var(--text-normal) 85%, transparent);
+  --text-selection: color-mix(in srgb, var(--interactive-accent), var(--background-primary) 80%);
+  --text-accent: hsl(from var(--main-accent) h calc(0.65 + s * 0.1) 40%);
+  --text-accent-hover: hsl(from var(--main-accent) h calc(0.6 + s * 0.3) 40%);
+  --text-strong-accent: hsl(from var(--main-accent) h calc(0.4 + s * 0.5) 40%);
+  --text-weak-accent: hsl(from var(--main-accent) h 80% 95%);
+  --text-weak-accent: #000000;
+  --text-on-accent: hsl(from var(--main-accent) h calc(0.7 + s * 0.3) 30%);
+  --text-on-accent-inverted: hsl(from var(--main-accent) h calc(0.3 + s * 0.3) 30%);
+  --text-on-error: #f1a885;
+  --inline-title-color: var(--text-strong-accent);
+  --hr-color: rgba(255, 255, 255, 0.3);
+  --icon-color: color-mix(in srgb, var(--main-text-accent), white);
   --nav-collapse-icon-color: var(--main-text-accent);
 }
 
@@ -454,40 +472,41 @@ img:hover {
 /*********************************/
 .cm-header,
 .markdown-preview-view :is(h1, h2, h3, h4, h5, h6) {
-  color: color-mix(in oklab, var(--h-color), var(--interactive-accent) 50%);
-  filter: saturate(0.7);
+  --heading-color: color-mix(in oklab, var(--h-hue), var(--main-accent) 77%);
+  filter: saturate(1.2);
+  color: var(--heading-color);
   font-weight: 500;
   font-family: var(--font-headings);
 }
 
 .cm-header-1,
 .markdown-preview-view h1 {
-  --h-color: var(--text-title-h1);
+  --h-hue: var(--text-title-h1);
 }
 
 .cm-header-2,
 .markdown-preview-view h2 {
-  --h-color: var(--text-title-h2);
+  --h-hue: var(--text-title-h2);
 }
 
 .cm-header-3,
 .markdown-preview-view h3 {
-  --h-color: var(--text-title-h3);
+  --h-hue: var(--text-title-h3);
 }
 
 .cm-header-4,
 .markdown-preview-view h4 {
-  --h-color: var(--text-title-h4);
+  --h-hue: var(--text-title-h4);
 }
 
 .cm-header-5,
 .markdown-preview-view h5 {
-  --h-color: var(--text-title-h5);
+  --h-hue: var(--text-title-h5);
 }
 
 .cm-header-6,
 .markdown-preview-view h6 {
-  --h-color: var(--text-title-h6);
+  --h-hue: var(--text-title-h6);
 }
 
 /***************************************/
@@ -703,6 +722,61 @@ thead {
   font-size: var(--font-size-side-dock);
 }
 
+.nav-files-container {
+  padding-inline: 4px;
+  width: 100%;
+  margin: auto;
+}
+
+.nav-files-container > div > .tree-item.nav-folder {
+  border-bottom: solid 1px color-mix(in srgb, var(--interactive-accent), transparent 60%);
+}
+.nav-files-container > div > .tree-item.nav-folder > .tree-item-self > .tree-item-inner {
+  color: color-mix(in srgb, var(--interactive-accent), var(--nav-item-color) 90%);
+}
+.nav-files-container > div > .tree-item.nav-folder.is-collapsed {
+  background-color: var(--background-secondary-alt);
+}
+.nav-files-container > div > .tree-item.nav-folder:not(.is-collapsed) {
+  background-color: var(--background-secondary);
+}
+.nav-files-container > div > .tree-item.nav-folder:not(.is-collapsed) > .tree-item-self {
+  background-color: var(--background-secondary-alt);
+  border-bottom: dotted 2px color-mix(in srgb, var(--interactive-accent), transparent 80%);
+}
+.nav-files-container > div > .tree-item.nav-folder:not(.is-collapsed) > .tree-item-self:hover {
+  background-color: color-mix(in srgb, var(--background-secondary-alt), white 2%);
+}
+
+.tree-item {
+  --nav-item-font-size: calc(var(--font-size-normal) * 0.65);
+  --nav-item-font-size: 13px;
+}
+.tree-item.nav-file {
+  opacity: 0.9;
+  font-weight: 300;
+}
+.tree-item.nav-file .tree-item-inner {
+  font-size: var(--nav-item-font-size);
+}
+.tree-item.nav-file > .tree-item-self.is-active {
+  background-color: inherit;
+  color: var(--text-accent);
+  font-weight: 500;
+}
+.tree-item.nav-file > .tree-item-self.is-active:hover {
+  color: var(--text-accent);
+}
+.tree-item.nav-folder {
+  font-weight: 500;
+}
+.tree-item.nav-folder > .tree-item-self {
+  font-size: calc(var(--nav-item-font-size) * 1.05);
+}
+.tree-item.nav-folder > .tree-item-children {
+  border-inline-start: 1px dotted color-mix(in srgb, var(--interactive-accent), transparent 60%);
+}
+
 /***************************************/
 /* internal embedded link in preview   */
 /***************************************/
@@ -768,13 +842,24 @@ thead {
 /***************************************/
 /*            settings                 */
 /***************************************/
-.modal.mod-settings button:not(.mod-cta):hover {
-  background-color: var(--interactive-accent-hover);
+@media (hover: hover) {
+  .modal.mod-settings button:not(.mod-cta):hover {
+    background-color: var(--interactive-hover);
+    color: var(--text-accent-hover);
+    font-weight: bold;
+    opacity: 1 !important;
+  }
 }
-
-.dropdown,
-button:not(.clickable-icon) {
-  color: black;
+.setting-item :is(.dropdown, button, select) {
+  color: var(--text-on-accent);
+  font-weight: 600;
+}
+.setting-item :is(.dropdown, button, select):is(.mod-warning, .mod-destructive) {
+  color: var(--text-on-error);
+  background-color: var(--background-error);
+}
+.setting-item :is(.dropdown, button, select):is(.mod-warning, .mod-destructive):hover {
+  background-color: var(--background-error-hover);
 }
 
 select option {
@@ -819,40 +904,40 @@ select option {
   margin-right: 30px;
 }
 
-/* header */
-.theme-dark .view-header {
-  background-color: var(--background-primary) !important;
+/* Tab header */
+.workspace-tabs {
+  --active-bg: color-mix(in oklch, var(--background-secondary-alt), var(--background-primary) 80%);
+}
+.workspace-tabs .view-header {
+  background-color: var(--background-primary);
   border-top: 1px solid var(--border-color) !important;
   border-bottom: 1px solid var(--border-color) !important;
 }
-
-.theme-dark .view-header-title-container:after {
+.workspace-tabs .view-header-title-container:after {
   background: linear-gradient(to bottom, transparent, var(--background-primary)) !important;
 }
-
-.theme-dark .workspace-leaf.mod-active .view-header {
-  background-color: var(--background-secondary-alt) !important;
+.workspace-tabs .workspace-leaf.mod-active .view-header {
+  background-color: var(--active-bg);
   border-top: 0px !important;
   border-bottom: 3px solid var(--interactive-accent) !important;
 }
-
-.workspace-leaf.mod-active .view-header-title-container:after {
+.workspace-tabs .workspace-leaf.mod-active .view-header-title-container:after {
   background: linear-gradient(to bottom, transparent, var(--background-secondary-alt)) !important;
 }
-
-.workspace-leaf.mod-active .view-header-title,
-.workspace-leaf.mod-active .view-header-icon {
-  color: var(--background-modifier-border);
+.workspace-tabs .workspace-leaf.mod-active .view-header-title,
+.workspace-tabs .workspace-leaf.mod-active .view-header-icon {
+  color: var(--text-accent);
 }
-
-.view-header-title,
-.view-header-icon,
-.view-action {
+.workspace-tabs .view-header-title,
+.workspace-tabs .view-header-icon,
+.workspace-tabs .view-action {
   color: var(--text-faint);
 }
-
-.view-header-title {
+.workspace-tabs .view-header-title {
   font-size: 20px;
+}
+.workspace-tabs .workspace-tab-header.mod-active {
+  background-color: var(--active-bg);
 }
 
 /***************************************/
@@ -1025,12 +1110,7 @@ code {
   background-color: var(--background-secondary);
 }
 
-button.mod-warning {
-  color: var(--text-on-warning);
-  font-weight: bold;
-}
-
-/* HOver */
+/* Hover */
 @media (hover: hover) {
   select:hover,
   .dropdown:hover {
@@ -1164,7 +1244,6 @@ button.mod-warning {
   max-width: 70%;
   text-wrap: pretty;
   color: var(--main-text-accent);
-  /* color: color-mix(in srgb, var(--interactive-accent) 70%, white); */
 }
 
 .callout[data-callout=poem] .callout-title-inner::after {
@@ -1372,15 +1451,6 @@ button.mod-warning {
   position: relative;
 }
 
-/*
-.callout[data-callout="profile"] .callout-title::after {
-	content: "2024";
-	position: absolute;
-	top: 0;
-	right: 0;
-	font-size: 1em;
-	opacity: 0.5;
-} */
 .callout[data-callout=profile] :is(h1, h2, h3, h4, h5, h6) {
   font-family: var(--font-profile-heading);
 }
@@ -1461,7 +1531,6 @@ button.mod-warning {
 .callout[data-callout=timeline] li::marker {
   color: var(--timeline-fg-color);
 }
-
 .callout[data-callout=timeline] .callout-title {
   color: color-mix(in oklab, var(--text-normal) 90%, transparent);
   width: 100%;
@@ -1471,7 +1540,6 @@ button.mod-warning {
   font-size: 1.2em;
   margin-bottom: 0.4em;
 }
-
 .callout[data-callout=timeline] .callout-title-inner {
   font-weight: 100;
   position: relative;
@@ -1479,8 +1547,7 @@ button.mod-warning {
   /* Ensures the width doesn't exceed 70vw */
   /* margin: auto; */
 }
-
-.callout[data-callout=timeline] .callout-title-inner::after {
+.callout[data-callout=timeline]::after {
   content: "";
   background-color: var(--interactive-normal);
   display: block;
@@ -1492,15 +1559,9 @@ button.mod-warning {
   left: 15%;
   transform: translateX(-15%);
 }
-
 .callout[data-callout=timeline] .callout-icon {
   display: none;
 }
-
-.callout[data-callout=timeline] :is(h1, h2, h3, h4, h5, h6) {
-  color: var(--timeline-fg-color);
-}
-
 .callout[data-callout=timeline] :is(h1, h2, h3, h4, h5, h6) {
   font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
   font-family: Montserrat;
@@ -1508,20 +1569,17 @@ button.mod-warning {
   margin-top: 0.6em;
   --hue-rotation: 0deg;
   filter: hue-rotate(var(--hue-rotation)) saturate(3);
-  /* text-transform: uppercase; */
+  color: var(--timeline-fg-color);
 }
-
 .callout[data-callout=timeline] h1 {
   --hue-rotation: -45deg;
   font-size: 1.2rem;
   line-height: 0.8;
 }
-
 .callout[data-callout=timeline] h2 {
   --hue-rotation: 10deg;
   font-size: 1.15rem;
 }
-
 .callout[data-callout=timeline] h3 {
   --hue-rotation: 50deg;
   font-size: 1.15rem;
@@ -1596,11 +1654,6 @@ button.mod-warning {
 /* HR DURING DAY =     .hr.cm-line:has(+ .cm-line .cm-hashtag):not(:has(+ .cm-line .cm-inline-code)) hr */
 .hr.cm-line:has(+ .cm-line .cm-inline-code):has(+ .cm-line .cm-hashtag) hr,
 .hr.cm-line:has(+ .cm-line .cm-hashtag):not(:has(+ .cm-line .cm-inline-code)) hr {
-  /* border-color: var(--timeline-fg-color);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 0; */
   font-weight: 200;
   overflow: visible;
   padding: 0;
@@ -1697,61 +1750,6 @@ button.mod-warning {
     letter-spacing: 0;
     line-height: 1.45;
   }
-}
-.nav-files-container {
-  padding-inline: 4px;
-  width: 100%;
-  margin: auto;
-}
-
-.nav-files-container > div > .tree-item.nav-folder {
-  border-bottom: solid 1px color-mix(in srgb, var(--interactive-accent), transparent 60%);
-}
-.nav-files-container > div > .tree-item.nav-folder > .tree-item-self > .tree-item-inner {
-  color: color-mix(in srgb, var(--interactive-accent), var(--nav-item-color) 80%) !important;
-}
-.nav-files-container > div > .tree-item.nav-folder.is-collapsed {
-  background-color: color-mix(in srgb, var(--interactive-accent), transparent 83%);
-}
-.nav-files-container > div > .tree-item.nav-folder:not(.is-collapsed) {
-  background-color: color-mix(in srgb, var(--interactive-accent), transparent 90%);
-}
-.nav-files-container > div > .tree-item.nav-folder:not(.is-collapsed) > .tree-item-self {
-  background-color: color-mix(in srgb, var(--interactive-accent), transparent 88%);
-  border-bottom: dotted 2px color-mix(in srgb, var(--interactive-accent), transparent 80%);
-}
-.nav-files-container > div > .tree-item.nav-folder:not(.is-collapsed) > .tree-item-self:hover {
-  background-color: color-mix(in srgb, var(--interactive-accent), transparent 80%);
-}
-
-.tree-item {
-  --nav-item-font-size: calc(var(--font-size-normal) * 0.65);
-  --nav-item-font-size: 13px;
-}
-.tree-item.nav-file {
-  opacity: 0.9;
-  font-weight: 300;
-}
-.tree-item.nav-file .tree-item-inner {
-  font-size: var(--nav-item-font-size);
-}
-.tree-item.nav-file > .tree-item-self.is-active {
-  background-color: inherit;
-  color: var(--interactive-accent);
-  font-weight: 800;
-}
-.tree-item.nav-file > .tree-item-self.is-active:hover {
-  color: var(--interactive-accent);
-  font-weight: 800;
-}
-.tree-item.nav-folder {
-  font-weight: 500;
-}
-.tree-item.nav-folder > .tree-item-self {
-  font-size: calc(var(--nav-item-font-size) * 1.05);
-}
-.tree-item.nav-folder > .tree-item-children {
-  border-inline-start: 1px dotted color-mix(in srgb, var(--interactive-accent), transparent 60%);
 }
 
 /*# sourceMappingURL=theme.css.map */
