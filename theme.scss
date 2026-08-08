@@ -96,12 +96,12 @@
  	--scrollbar-thumb-bg: rgba(255, 255, 255, 0.1);
 
 	// Raw Hues for Headings 
- 	--text-title-h1: #c9aaf3;
- 	--text-title-h2: #f5f792; 
- 	--text-title-h3: #a6efff;
- 	--text-title-h4: #fc91ea;
- 	--text-title-h5: #a0f0b4;
- 	--text-title-h6: #e47096;
+ 	--text-title-h1: #6a00ff;
+ 	--text-title-h2: #fbff00; 
+ 	--text-title-h3: #00d0ff;
+ 	--text-title-h4: #ff00d4;
+ 	--text-title-h5: #00ff40;
+ 	--text-title-h6: #ff0055;
 
 	--text-highlight-bg: #ff5555;
 	--text-error: #ff79c6;
@@ -150,6 +150,7 @@
 	--text-accent: hsl(from var(--main-accent) h calc(0.6 + s * 0.3) 80%);
 	--text-accent-hover: hsl(from var(--main-accent) h calc(0.3 + s * 0.3) 70%);
 	--text-strong-accent: hsl(from var(--main-accent) h calc(0.4 + s * 0.5) 70%);
+	--text-heading-accent: var(--main-accent);
 	--text-weak-accent: hsl(from var(--main-accent) h 80% 95%);
 	--text-weak-accent: #fff;
 	--text-on-accent: hsl(from var(--main-accent) h calc(0.7 + s * 0.3) 90%);
@@ -165,19 +166,19 @@
 	--nav-collapse-icon-color: var(--main-text-accent);
 }
 
- .theme-light {
-	--background-primary: hsl(from var(--main-accent) h calc(0.16 + s * 0.1) 93%);
+ .theme-light {	
+	--interactive-normal: hsl(from var(--main-accent) h calc(0.4 + s * 0.3) 76%);
+	--interactive-hover: hsl(from var(--main-accent) h calc(0.4 + s * 0.3) 80%);
+	--interactive-accent: hsl(from var(--main-accent) h calc(0.35 + s * 0.1) 75%);
+	--interactive-accent-hover: hsl(from var(--main-accent) h calc(0.5 + s * 0.3) 75%);
+
+	--background-primary: hsl(from var(--main-accent) h calc(0.2 + s * 0.1) 95%);
 	--background-primary-alt: hsl(from var(--main-accent) h calc(0.3 + s * 0.1) 90%);
 	--background-secondary: hsl(from var(--main-accent) h calc(0.4 + s * 0.1) 87%);
 	--background-secondary-alt: hsl(from var(--main-accent) h calc(0.45 + s * 0.1) 85%);
 	--background-accent: hsl(from var(--main-accent) h calc(0.1 + s * 0.1) 50%);
 	--background-error: rgb(156, 30, 53);
-
-	
-	--interactive-normal: hsl(from var(--main-accent) h calc(0.4 + s * 0.3) 76%);
-	--interactive-hover: hsl(from var(--main-accent) h calc(0.4 + s * 0.3) 80%);
-	--interactive-accent: hsl(from var(--main-accent) h calc(0.35 + s * 0.1) 75%);
-	--interactive-accent-hover: hsl(from var(--main-accent) h calc(0.5 + s * 0.3) 75%);
+	--background-modifier-hover: color-mix(in oklch, var(--background-primary-alt), transparent);
 	
 	--text-normal: #252525f9;
 	--text-muted: #292929d8;
@@ -186,6 +187,7 @@
 
 	--text-accent: hsl(from var(--main-accent) h calc(0.65 + s * 0.1) 40%);
 	--text-accent-hover: hsl(from var(--main-accent) h calc(0.6 + s * 0.3) 40%);
+	--text-heading-accent:  hsl(from var(--main-accent) h calc(0.7 + s * 0.3) 38%);
 	--text-strong-accent: hsl(from var(--main-accent) h calc(0.4 + s * 0.5) 40%);
 	--text-weak-accent: hsl(from var(--main-accent) h 80% 95%);
 	--text-weak-accent: #000000;
@@ -528,7 +530,7 @@
 
  .cm-header,
  .markdown-preview-view :is(h1, h2, h3, h4, h5, h6) {
-	--heading-color: color-mix(in oklab, var(--h-hue), var(--main-accent) 77%);
+	--heading-color: color-mix(in oklab, var(--h-hue), var(--text-heading-accent) 75%);
 	filter: saturate(1.2);
  	color: var(--heading-color);
 	font-weight: 500;
