@@ -4,6 +4,7 @@
 @import url("https://fonts.googleapis.com/css2?family=Quicksand:wght@300..700&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Unna:ital,wght@0,400;0,700;1,400;1,700&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Karla&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Spectral&display=swap");
 body {
   --font-size-normal: 19px;
   --font-size-code: 16px;
@@ -42,7 +43,7 @@ body {
   --font-blockquote-render: "Lora";
   --font-timeline-accent: "Cinzel";
   --font-timeline-main: Garamond, "EB Garamond";
-  --font-poem: Garamond, "EB Garamond";
+  --font-poem: "EB Garamond", Spectral;
   --font-poem-title: var(--font-sans);
   --font-prose: Garamond, "EB Garamond";
   --font-prose-title: Cinzel;
@@ -147,10 +148,9 @@ body {
   --text-selection: color-mix(in srgb, var(--interactive-accent), var(--background-primary) 80%);
   --text-accent: hsl(from var(--main-accent) h calc(0.65 + s * 0.1) 40%);
   --text-accent-hover: hsl(from var(--main-accent) h calc(0.6 + s * 0.3) 40%);
-  --text-heading-accent: hsl(from var(--main-accent) h calc(0.7 + s * 0.3) 38%);
+  --text-heading-accent: hsl(from var(--main-accent) h calc(0.3 + s * 0.3) 28%);
   --text-strong-accent: hsl(from var(--main-accent) h calc(0.4 + s * 0.5) 40%);
-  --text-weak-accent: hsl(from var(--main-accent) h 80% 95%);
-  --text-weak-accent: #000000;
+  --text-weak-accent: hsl(from var(--main-accent) h 5% 10%);
   --text-on-accent: hsl(from var(--main-accent) h calc(0.7 + s * 0.3) 30%);
   --text-on-accent-inverted: hsl(from var(--main-accent) h calc(0.3 + s * 0.3) 30%);
   --text-on-error: #f1a885;
@@ -382,8 +382,6 @@ a:not(.internal-link) {
 /* bold in preview and editor */
 strong,
 .cm-strong {
-  color: rgba(255, 148, 223, 0.9254901961);
-  color: #aee2fb;
   color: var(--bold-color);
 }
 
@@ -391,7 +389,6 @@ strong,
 .cm-strong,
 .cm-quote.cm-strong {
   font-weight: 600;
-  font-size: calc(var(--font-size-normal) * 1);
   font-family: inherit;
 }
 
@@ -1221,11 +1218,9 @@ code {
   font-family: var(--font-poem);
   width: 100%;
 }
-
 .callout[data-callout=poem] .callout-icon {
   display: none;
 }
-
 .callout[data-callout=poem] .callout-title-inner {
   font-size: 1.5em;
   font-family: var(--font-poem-title);
@@ -1238,51 +1233,31 @@ code {
   max-width: 70%;
   text-wrap: pretty;
   color: var(--main-text-accent);
+  text-decoration: none;
 }
-
-.callout[data-callout=poem] .callout-title-inner::after {
-  content: "";
-  display: block;
-  width: 105%;
-  height: 2px;
-  background-color: currentColor;
-  position: absolute;
-  bottom: 0em;
-  /* would otherwise set this to -0.05 but honestly 0 is fine */
-  left: 15%;
-  transform: translateX(-15%);
-  opacity: 0.7;
-}
-
 .callout[data-callout=poem] .callout-content {
-  letter-spacing: 0.02em;
-  opacity: 0.85;
   margin-right: 2em;
+  font-size: 1.05em;
+  /* 
+  signature
+  &::after {
+  	content:"—Ben";
+  	text-align: right;
+  	margin-right: 12em;
+  	display: block;
+  	color:rgba(229, 251, 255, 0.667)
+  } */
 }
 .callout[data-callout=poem] .callout-content em, .callout[data-callout=poem] .callout-content strong {
   font-family: var(--font-poem);
   font-size: inherit;
 }
-
-/* 
- signature
-.callout[data-callout="poem"] .callout-content::after {
- content:"—Ben";
- text-align: right;
- margin-right: 12em;
- display: block;
- color:rgba(229, 251, 255, 0.667)
-} */
 .callout[data-callout=poem] .callout-content p {
   margin-block-start: 0.5em;
+  line-height: 1.3;
 }
-
-.callout[data-callout=poem] .cm-comment {
-  color: red;
-}
-
-.HyperMD-quote cm-comment {
-  color: red;
+.callout[data-callout=poem] .callout-content p:first-child {
+  margin-top: 0.2em;
 }
 
 .callout[data-callout=poem] .callout-content :is(em, strong) {
