@@ -12,6 +12,7 @@
  @import url('https://fonts.googleapis.com/css2?family=Cormorant&display=swap');
  @import url('https://fonts.googleapis.com/css2?family=Fira+Mono&display=swap');
  @import url('https://fonts.googleapis.com/css2?family=Fira+Sans&display=swap');
+ @import url('https://fonts.googleapis.com/css2?family=Cochin&display=swap');
  @import url('https://fonts.googleapis.com/css2?family=Karla&display=swap');
  @import url('https://fonts.googleapis.com/css2?family=Indie+Flower&display=swap');
  @import url('https://fonts.googleapis.com/css2?family=Gamja+Flower&display=swap');
@@ -50,7 +51,7 @@
  	--font-title-new: var(--font-sans), var(--font-family-editor), "Garamond", "Varela Round";
 	--inline-title-font: var(--font-title-new);
 	--font-headings: var(--font-sans),  Rosarivo, Unna, var(--font-sans);
- 	--font-blockquote: var(--font-serif),Marcellus, "Varela Round", "Playfair", "EB Garamond", "Playfair";
+ 	--font-blockquote: Karla, Quicksand, var(--font-serif), Marcellus, "Varela Round", "Playfair", "EB Garamond", "Playfair";
  	--font-blockquote-render: "Lora", "EB Garamond", "Latin modern roman";
  	--font-timeline-accent: "Cinzel";
  	--font-timeline-main: Garamond, "EB Garamond";
@@ -58,8 +59,8 @@
  	--font-poem-title: Rosarivo, Unna, Marcellus, Quicksand, Jost, 'Montserrat Medium', Garamond, 'Gill Sans', 'Gill Sans MT', sans-serif;
  	--font-prose: Garamond, "EB Garamond";
  	--font-prose-title: Cinzel;
- 	--font-profile: Garamond, "EB Garamond";
- 	--font-profile-heading: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+ 	--font-profile: Karla, "Fira Sans", Quicksand, Garamond, "EB Garamond";
+ 	--font-profile-heading: Cochin, Cambria, Georgia, Times, 'Times New Roman', serif;
  	--font-profile-fancy: Cinzel, Garamond;
  	--tag-bg: rgba(225, 128, 255, 0.144);
  	--tag-font-color: rgb(239, 206, 255);
@@ -1384,7 +1385,7 @@ body {
  }
 
  .callout[data-callout="prose"] .callout-content {
- 	letter-spacing: 0.02em;
+ 	letter-spacing: 0.01em;
  	text-align: justify;
 
  	opacity: 0.85;
@@ -1393,7 +1394,7 @@ body {
  	color: white;
 
  	padding-inline: 5em;
- 	padding-bottom: 1.4em;
+ 	padding-bottom: 1em;
 
 
  	p:not(:first-child) {
@@ -1401,6 +1402,7 @@ body {
  		margin-top: -.7em;
  	}
 
+	/* // drop cap ( don't delete )
  	p:first-child:first-letter {
  		--line-count: 2;
  		font-size: calc(var(--line-height-normal) * 1em * var(--line-count));
@@ -1408,11 +1410,13 @@ body {
  		line-height: 1;
  		margin-right: 0.1em;
  		font-weight: normal;
- 		/* font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif; */
+
+
+ 		// font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif; 
  		color: color-mix(in srgb, var(--text-accent), rgba(255, 255, 255, 0.753) 70%);
  		color: color-mix(in srgb, var(--interactive-accent) 60%, white);
  		filter: hue-rotate(280deg);
- 	}
+ 	} */
 
  	:is(em, strong) {
  		color: var(--text-muted);
@@ -1481,88 +1485,87 @@ body {
  	background: radial-gradient(at 50% 0%,
  			/*var(--profile-bg-main) 20%, */
  			var(--profile-bg-main) 50%,
- 			rgba(255, 255, 255, 0.1));
+ 			rgba(255, 255, 255, 0.05));
  	background-size: 200% 200%;
  	/* cuz it needs to be bigger */
  	font-family: var(--font-profile);
- 	--p-spacing: 0.5rem;
- }
 
- .callout[data-callout="profile"]:hover {
- 	animation: movetransparent 4s 1 forwards;
- }
+
+	line-height: 1.4;
+	font-size: 0.98em; // these three are specific to font 'Karla'
+	font-weight: 100;
+
+
+ 	--p-spacing: 0.5rem;
+ 
+	&:hover {
+ 		animation: movetransparent 6s 1 forwards;
+ 	}
+
+
+ 	.callout-icon {
+ 		display: none;
+ 	}
+
+	.callout-title {
+		color: color-mix(in oklab,
+				var(--text-normal) 70%,
+				transparent);
+		text-align: center;
+		width: 100%;
+		display: block;
+		position: relative;
+ 	}
+
+ 	:is(h1, h2, h3, h4, h5, h6) {
+ 		font-family: var(--font-profile-heading)
+ 	}
+
+	h1 {
+ 		font-size: 1.16rem;
+ 		line-height: 0.5;
+		font-weight: 600;
+ 	}
+
+ 	h2 {
+ 		font-size: 1.15rem;
+ 	}
+
+ 	strong {
+ 		font-size: 0.9em;
+ 		color: var(--text-normal)
+ 	}
+
+ 	hr {
+ 		opacity: 0.3;
+ 		border: 1px solid currentColor;
+ 	}
+}
 
 
  @keyframes movetransparent {
- 	0% {
- 		background-position: 0% 0%;
- 	}
+	0% {
+		background-position: 0% 0%;
+	}
 
- 	100% {
- 		background-position: 250% 50%;
- 	}
- }
+	100% {
+		background-position: 250% 50%;
+	}
+}
 
- @keyframes bothways {
- 	0% {
- 		background-position: 0% 0%;
- 	}
+@keyframes bothways {
+	0% {
+		background-position: 0% 0%;
+	}
 
- 	50% {
- 		background-position: 250% 50%;
- 	}
+	50% {
+		background-position: 250% 50%;
+	}
 
- 	100% {
- 		background-position: 0% 0%;
- 	}
- }
-
- .callout[data-callout="profile"] .callout-icon {
- 	display: none;
- }
-
- .callout[data-callout="profile"] .callout-title {
- 	color: color-mix(in oklab,
- 			var(--text-normal) 70%,
- 			transparent);
- 	text-align: center;
- 	width: 100%;
- 	display: block;
- 	position: relative;
- }
-
- /*
- .callout[data-callout="profile"] .callout-title::after {
- 	content: "2024";
- 	position: absolute;
- 	top: 0;
- 	right: 0;
- 	font-size: 1em;
- 	opacity: 0.5;
- } */
-
- .callout[data-callout="profile"] :is(h1, h2, h3, h4, h5, h6) {
- 	font-family: var(--font-profile-heading)
- }
-
- .callout[data-callout="profile"] h1 {
- 	font-size: 1.2rem;
- 	line-height: 0.6;
- }
-
- .callout[data-callout="profile"] h2 {
- 	font-size: 1.15rem;
- }
-
- .callout[data-callout="profile"] :is(strong, em) {
- 	font-size: 0.9em;
- 	color: var(--text-normal)
- }
-
- .callout[data-callout="profile"] hr {
- 	opacity: 0.3;
- 	border: 1px solid currentColor;
- }
+	100% {
+		background-position: 0% 0%;
+	}
+}
 
  /* trying to style headers that come before profile stylespaces */
  .cm-line:has(+ .cm-callout .callout[data-callout="profile"]) .cm-header-1 {
@@ -1588,10 +1591,6 @@ body {
  	opacity: 0.7;
  }
 
- /* reprod
- .cm-line:has(+ .cm-callout) .cm-header-1{
-	 color:red !important
- } */
 
 
  /* PLot timelines */
