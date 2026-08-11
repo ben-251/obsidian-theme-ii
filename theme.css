@@ -64,7 +64,7 @@ body {
   --tag-font-color: rgb(239, 206, 255);
   --tag-radius: 2em;
   --callout-question-new: 168, 130, 255;
-  --file-line-width: 900px;
+  --file-line-width: 100vw;
   --blockquote-border-thickness: 4px;
 }
 
