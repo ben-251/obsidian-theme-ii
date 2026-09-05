@@ -104,7 +104,7 @@
  	--pre-code: var(--background-secondary);
  	--blockquote-border: var(--interactive-normal);
  	--vim-cursor: #ff5555;
- 	--border-color: #2b2727;
+ 	--border-color: var(--background-accent);
 
 	--main-accent: hsl(
         var(--accent-h),
@@ -125,9 +125,9 @@
 
 	
 	--interactive-normal: hsl(from var(--main-accent) h calc(0.1 + s * 0.3) 30%);
-	--interactive-accent: hsl(from var(--main-accent) h calc(0.1 + s * 0.3) 35%);
 	--interactive-hover: hsl(from var(--main-accent) h calc(s * 0.4) 40%);
-	--interactive-accent-hover: hsl(from var(--main-accent) h calc(s * 0.8) 40%);
+	--interactive-accent: hsl(from var(--main-accent) h calc(0.15 + s * 0.3) 45%);
+	--interactive-accent-hover: hsl(from var(--main-accent) h calc(0.2 + s * 0.3) 50%);
 	
 	--text-normal: color-mix(in oklch, var(--background-primary), #fff 90%);
 	--text-muted: #ecececf0;
@@ -150,7 +150,7 @@
 	--text-error-hover: #ff79c6;
 
 	--inline-title-color: var(--text-strong-accent);
-	--hr-color: rgba(255, 255, 255, 0.3);
+	--hr-color:  color-mix(in srgb, var(--main-accent), var(--background-primary) 60%);
 	--icon-color: color-mix(in srgb, var(--main-text-accent), white);
 	--nav-collapse-icon-color: var(--main-text-accent);
 }
@@ -172,7 +172,7 @@
 	--text-normal: #252525f9;
 	--text-muted: #292929d8;
 	--text-faint: color-mix(in srgb, var(--text-normal) 85%, transparent);
-	--text-selection: color-mix(in srgb, var(--interactive-accent), var(--background-primary) 80%);
+	--text-selection: color-mix(in srgb, var(--main-accent), var(--background-primary) 80%);
 
 	--text-accent: hsl(from var(--main-accent) h calc(0.65 + s * 0.1) 40%);
 	--text-accent-hover: hsl(from var(--main-accent) h calc(0.6 + s * 0.3) 40%);
@@ -190,7 +190,7 @@
 	--text-error-hover: #b11c70;
 
 	--inline-title-color: var(--text-strong-accent);
-	--hr-color: rgba(255, 255, 255, 0.3);
+	--hr-color:  color-mix(in srgb, var(--main-accent), var(--background-primary) 70%);
 	--icon-color: color-mix(in srgb, var(--main-text-accent), white);
 	--nav-collapse-icon-color: var(--main-text-accent);
  }
