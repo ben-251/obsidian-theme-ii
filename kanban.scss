@@ -1,0 +1,50 @@
+@use 'vars';
+
+.kanban-plugin__item {
+
+	.kanban-plugin__item-title {
+		align-self: center;
+		display: flex;
+		align-items: center;
+
+		.kanban-plugin__item-markdown {
+			flex-grow: 1;
+
+			.kanban-plugin__markdown-preview-view {		
+				& {
+					align-self: center;
+				}
+
+				* {
+					font-size: calc(var(--font-size-normal) * 0.85);
+				}
+
+				.tag {
+					padding-block: calc(var(--tag-padding-y)*1.2);
+					padding-inline: calc(var(--tag-padding-x)*1.2);
+					margin-inline-start: .5em;
+					font-size: .6em;
+				}
+				
+				.task-list-item-checkbox:checked {
+					&::after {
+						display: none;
+					}
+
+					&::before{
+						content: "";
+						color: var(--checkbox-marker-color);
+						font-weight: 800;
+					}
+				}
+			}
+			.kanban-plugin__item-metadata {
+				flex-shrink: 1;
+			}
+		}
+	}
+
+	.kanban-plugin__item-prefix-button-wrapper, .kanban-plugin__item-postfix-button-wrapper {
+		align-self: center;
+	}
+}

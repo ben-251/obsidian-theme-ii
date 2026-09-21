@@ -50,8 +50,6 @@ body {
   --font-profile: Garamond, "EB Garamond";
   --font-profile-heading: var(--font-serif);
   --font-profile-fancy: Cinzel, Garamond;
-  --tag-bg: rgba(225, 128, 255, 0.144);
-  --tag-font-color: rgb(239, 206, 255);
   --tag-radius: 2em;
   --callout-question-new: 168, 130, 255;
   --file-line-width: 100vw;
@@ -73,6 +71,8 @@ body {
   --scrollbar-active-thumb-bg: rgba(255, 255, 255, 0.2);
   --scrollbar-bg: rgba(255, 255, 255, 0.05);
   --scrollbar-thumb-bg: rgba(255, 255, 255, 0.1);
+  --tag-bg: var(--background-secondary);
+  --tag-font-color: var(--text-accent);
   --text-title-h1: #6a00ff;
   --text-title-h2: #fbff00;
   --text-title-h3: #00d0ff;
@@ -91,10 +91,10 @@ body {
   --vim-cursor: #ff5555;
   --border-color: var(--background-accent);
   --main-accent: hsl(
-         var(--accent-h),
-         var(--accent-s),
-         var(--accent-l)
-     );
+   var(--accent-h),
+   var(--accent-s),
+   var(--accent-l)
+  );
 }
 
 .theme-dark {
@@ -164,33 +164,92 @@ body {
   --nav-collapse-icon-color: var(--main-text-accent);
 }
 
-/*-------------------------------------*/
-/*      Search the following lines     */
-/*     to jump to specific section     */
-/*-------------------------------------*/
-/*  resize-handle and borders          */
+/*************************************/
 /*                tags               */
+/*************************************/
+/* Tag hover in preview */
+a.tag:hover {
+  color: var(--text-accent) !important;
+}
+
+/* Tag Color in editor and preview*/
+.cm-hashtag,
+a.tag {
+  /* color: var(--text-normal) !important; */
+  color: var(--tag-font-color) !important;
+  background-color: var(--tag-bg);
+  font-size: smaller;
+  padding-top: 0em;
+  padding-bottom: 0em;
+  text-decoration: none !important;
+  font-style: normal !important;
+  font-weight: 600;
+}
+
+/*********************************/
 /*             link              */
-/*                Cursor               */
-/* basic format in EDITOR and PREVIEW */
-/* Headings - EDITOR and PREVIEW */
-/*         Code block in  Preview      */
-/*       Code block in Editor          */
-/*              Brackets               */
-/*             Blockquote              */
-/*             table                   */
-/*               Checkbox              */
-/*           html in editor            */
-/*              popover                */
-/*            Side panel               */
-/* internal embedded link in preview   */
-/*             graph view              */
-/*            settings                 */
-/*            Hide side bar            */
-/*           width of content          */
-/*    at a rule line before ul list    *
-/*  Hide Scrollbar (recommend for mac)  */
-/*-------------------------------------*/
+/*********************************/
+/* link */
+a,
+.internal-link,
+.cm-hmd-internal-link,
+.cm-link,
+.cm-formatting-link,
+.cm-url {
+  text-decoration: none !important;
+}
+
+/* the url string in editor */
+.cm-s-obsidian span.cm-string {
+  color: var(--text-accent-hover);
+}
+
+/* make external links italics to differentiate */
+a:not(.internal-link) {
+  font-style: italic;
+}
+
+/*footnote*/
+.cm-s-obsidian pre.HyperMD-footnote span.cm-hmd-footnote,
+.cm-s-obsidian span.cm-footref {
+  color: var(--text-accent) !important;
+}
+
+.kanban-plugin__item .kanban-plugin__item-title {
+  align-self: center;
+  display: flex;
+  align-items: center;
+}
+.kanban-plugin__item .kanban-plugin__item-title .kanban-plugin__item-markdown {
+  flex-grow: 1;
+}
+.kanban-plugin__item .kanban-plugin__item-title .kanban-plugin__item-markdown .kanban-plugin__markdown-preview-view {
+  align-self: center;
+}
+.kanban-plugin__item .kanban-plugin__item-title .kanban-plugin__item-markdown .kanban-plugin__markdown-preview-view * {
+  font-size: calc(var(--font-size-normal) * 0.85);
+}
+.kanban-plugin__item .kanban-plugin__item-title .kanban-plugin__item-markdown .kanban-plugin__markdown-preview-view .tag {
+  padding-block: calc(var(--tag-padding-y) * 1.2);
+  padding-inline: calc(var(--tag-padding-x) * 1.2);
+  margin-inline-start: 0.5em;
+  font-size: 0.6em;
+}
+.kanban-plugin__item .kanban-plugin__item-title .kanban-plugin__item-markdown .kanban-plugin__markdown-preview-view .task-list-item-checkbox:checked::after {
+  display: none;
+}
+.kanban-plugin__item .kanban-plugin__item-title .kanban-plugin__item-markdown .kanban-plugin__markdown-preview-view .task-list-item-checkbox:checked::before {
+  content: "";
+  color: var(--checkbox-marker-color);
+  font-weight: 800;
+}
+.kanban-plugin__item .kanban-plugin__item-title .kanban-plugin__item-markdown .kanban-plugin__item-metadata {
+  flex-shrink: 1;
+}
+.kanban-plugin__item .kanban-plugin__item-prefix-button-wrapper, .kanban-plugin__item .kanban-plugin__item-postfix-button-wrapper {
+  align-self: center;
+}
+
 /* global */
 hr,
 .hr.cm-line hr {
@@ -211,6 +270,16 @@ hr,
   max-width: var(--file-line-width);
   margin-left: auto;
   margin-right: auto;
+}
+
+.cm-scroller {
+  padding-block: 3% !important;
+  padding-left: 10% !important;
+  padding-right: 10% !important;
+}
+
+.status-bar * {
+  text-wrap: nowrap !important;
 }
 
 .inline-title {
@@ -285,57 +354,6 @@ hr,
 
 .workspace-ribbon.mod-right.is-collapsed {
   border-left: 1px solid var(--border-color);
-}
-
-/*************************************/
-/*                tags               */
-/*************************************/
-/* Tag hover in preview */
-a.tag:hover {
-  color: var(--text-accent) !important;
-}
-
-/* Tag Color in editor and preview*/
-.cm-hashtag,
-a.tag {
-  /* color: var(--text-normal) !important; */
-  color: var(--tag-font-color) !important;
-  background-color: var(--tag-bg);
-  font-size: smaller;
-  padding-top: 0em;
-  padding-bottom: 0em;
-  text-decoration: none !important;
-  font-style: normal !important;
-  font-weight: 600;
-}
-
-/*********************************/
-/*             link              */
-/*********************************/
-/* link */
-a,
-.internal-link,
-.cm-hmd-internal-link,
-.cm-link,
-.cm-formatting-link,
-.cm-url {
-  text-decoration: none !important;
-}
-
-/* the url string in editor */
-.cm-s-obsidian span.cm-string {
-  color: var(--text-accent-hover);
-}
-
-/* make external links italics to differentiate */
-a:not(.internal-link) {
-  font-style: italic;
-}
-
-/*footnote*/
-.cm-s-obsidian pre.HyperMD-footnote span.cm-hmd-footnote,
-.cm-s-obsidian span.cm-footref {
-  color: var(--text-accent) !important;
 }
 
 /***************************************/

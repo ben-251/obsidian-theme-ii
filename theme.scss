@@ -1,235 +1,12 @@
- /* JS: ./script.js */
- @import url('https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400..800;1,400..800&display=swap');
- @import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300..700&display=swap');
- @import url('https://fonts.googleapis.com/css2?family=Unna:ital,wght@0,400;0,700;1,400;1,700&display=swap');
- @import url('https://fonts.googleapis.com/css2?family=Karla&display=swap');
- @import url('https://fonts.googleapis.com/css2?family=Spectral&display=swap');
-
-
- body {
-	// FONT SIZES
- 	--font-size-normal: 19px;
- 	--font-size-code: 16px;
- 	--font-size-side-dock: 16px;
- 	--font-size-side-dock-title: 18px;
- 	--font-size-status-bar: 16px;
- 	--base-heading-size: calc(var(--font-size-normal) * 1.2);
- 	--inline-title-size: calc(var(--base-heading-size)*1.5);
- 	--h1-size: calc(var(--base-heading-size)*1.35);
- 	--h2-size: calc(var(--base-heading-size)*1.2);
- 	--h3-size: calc(var(--base-heading-size)*1.16);
- 	--h4-size: calc(var(--base-heading-size)*1.12);
- 	--h5-size: calc(var(--base-heading-size)*1.1);
- 	--h6-size: calc(var(--base-heading-size)*1);
- 	--base-heading-size: calc(var(--font-size-normal) * 1.2);
- 	--inline-title-size: calc(var(--base-heading-size)*1.5);
- 	--h1-size: calc(var(--base-heading-size)*1.5);
- 	--h2-size: calc(var(--base-heading-size)*1.25);
- 	--h3-size: calc(var(--base-heading-size)*1.18);
- 	--h4-size: calc(var(--base-heading-size)*1.12);
- 	--h5-size: calc(var(--base-heading-size)*1.1);
- 	--h6-size: calc(var(--base-heading-size)*1);
-
-	// FONT FAMILIES
-	--font-serif: Unna, "Cormorant", serif;
-	--font-sans: Karla, sans-serif;
- 	--font-family-editor: var(--font-sans);
-	--font-text: var(--font-sans);
-	--font-italics: var(--font-text);
-	--font-bold: var(--font-text);
-	--font-bold-italics: var(--font-text);
- 	--font-family-preview: var(--font-sans), sans-serif;
- 	--font-title-new: var(--font-sans), var(--font-family-editor);
-	--inline-title-font: var(--font-title-new);
-	--font-comments: var(--font-sans);
-	--font-headings: var(--font-sans);
- 	--font-blockquote: var(--font-serif);
- 	--font-blockquote-render: "Lora";
- 	--font-timeline-accent: "Cinzel";
- 	--font-timeline-main: Garamond, "EB Garamond";
- 	--font-poem: "EB Garamond", Spectral;
- 	--font-poem-title: var(--font-sans);
- 	--font-prose: Garamond, "EB Garamond";
- 	--font-prose-title: Cinzel;
- 	--font-profile: Garamond, "EB Garamond";
- 	--font-profile-heading: var(--font-serif);
- 	--font-profile-fancy: Cinzel, Garamond;
-
-	// TAG STYLING
- 	--tag-bg: rgba(225, 128, 255, 0.144);
- 	--tag-font-color: rgb(239, 206, 255);
- 	--tag-radius: 2em;
-
-	// MISCELLANEOUS
- 	--callout-question-new: 168, 130, 255;
- 	--file-line-width: 100vw;
- 	--blockquote-border-thickness: 4px;
- }
-
-
- .theme-light,
- .theme-dark {
- 	--background-modifier-border: var(--background-accent);
- 	--background-modifier-form-field: rgba(0, 0, 0, 0.2);
- 	--background-modifier-form-field-highlighted: rgba(0, 0, 0, 0.5);
- 	--background-modifier-box-shadow: rgba(0, 0, 0, 0.3);
- 	--background-modifier-success: #50fa7b;
- 	--background-modifier-error: #c00000;
- 	--background-modifier-error-rgb: 192, 0, 0;
- 	--background-modifier-error-hover: #ff2727;
- 	--background-modifier-cover: rgba(0, 0, 0, 0.6);
-
- 	--blockquote-background-color: color-mix(in srgb, var(--background-secondary), transparent 60%);
- 	--scrollbar-active-thumb-bg: rgba(255, 255, 255, 0.2);
- 	--scrollbar-bg: rgba(255, 255, 255, 0.05);
- 	--scrollbar-thumb-bg: rgba(255, 255, 255, 0.1);
-
-	// Raw Hues for Headings 
- 	--text-title-h1: #6a00ff;
- 	--text-title-h2: #fbff00; 
- 	--text-title-h3: #00d0ff;
- 	--text-title-h4: #ff00d4;
- 	--text-title-h5: #00ff40;
- 	--text-title-h6: #ff0055;
-
-	--text-highlight-bg: #ff5555;
-
- 	--italics-color: var(--text-faint);
- 	--bold-color: var(--text-weak-accent);
- 	--inline-code: var(--text-accent);
- 	--code-block: var(--text-accent);
-	--code-comment: var(--text-faint);
-	--list-marker-color: var(--text-accent);
-
- 	--pre-code: var(--background-secondary);
- 	--blockquote-border: var(--interactive-normal);
- 	--vim-cursor: #ff5555;
- 	--border-color: var(--background-accent);
-
-	--main-accent: hsl(
-        var(--accent-h),
-        var(--accent-s),
-        var(--accent-l)
-    );
-
- }
-
-
- .theme-dark {
-	--background-primary: hsl(from var(--main-accent) h calc(0.2 + s * 0.2) 12%);
-	--background-primary-alt: hsl(from var(--main-accent) h calc(0.3 + s * 0.1) 15%);
-	--background-secondary: hsl(from var(--main-accent) h calc(0.25 + s * 0.2) 17%);
-	--background-secondary-alt: hsl(from var(--main-accent) h calc(0.25 + s * 0.2) 20%);
-	--background-accent: hsl(from var(--main-accent) h calc(0.2 + s * 0.1) 40%);
-	--background-error: rgb(156, 30, 53);
-
-	
-	--interactive-normal: hsl(from var(--main-accent) h calc(0.1 + s * 0.3) 30%);
-	--interactive-hover: hsl(from var(--main-accent) h calc(s * 0.4) 40%);
-	--interactive-accent: hsl(from var(--main-accent) h calc(0.15 + s * 0.3) 45%);
-	--interactive-accent-hover: hsl(from var(--main-accent) h calc(0.2 + s * 0.3) 50%);
-	
-	--text-normal: color-mix(in oklch, var(--background-primary), #fff 90%);
-	--text-muted: #ecececf0;
-	--text-faint: color-mix(in srgb, var(--text-normal) 85%, transparent);
-	--text-selection: color-mix(in srgb, var(--interactive-accent), rgba(54, 54, 54, 0.507) 60%);
-
-	--text-accent: hsl(from var(--main-accent) h calc(0.2 + s * 0.2) 80%);
-	--text-accent-hover: hsl(from var(--main-accent) h calc(0.1 + s * 0.3) 70%);
-	--text-strong-accent: hsl(from var(--main-accent) h calc(0.1 + s * 0.5) 70%);
-	--text-heading-accent: hsl(from var(--main-accent) h calc(0.05 + s * 0.1) 60%);
-	--text-weak-accent: #fff;
-	--text-on-accent: hsl(from var(--main-accent) h calc(0.7 + s * 0.3) 90%);
-	--text-on-accent-inverted: hsl(from var(--main-accent) h calc(0.7 + s * 0.3) 90%);   
-	--text-on-error: #f1a885;
-	
-	--nav-item-color: color-mix(in oklch, var(--text-normal), var(--background-secondary) 10%);
-	--nav-item-color-hover: var(--nav-item-color);
-
-	--text-error: #d04d4d;
-	--text-error-hover: #ff79c6;
-
-	--inline-title-color: var(--text-strong-accent);
-	--hr-color:  color-mix(in srgb, var(--main-accent), var(--background-primary) 60%);
-	--icon-color: color-mix(in srgb, var(--main-text-accent), white);
-	--nav-collapse-icon-color: var(--main-text-accent);
-}
-
- .theme-light {	
-	--interactive-normal: hsl(from var(--main-accent) h calc(0.4 + s * 0.3) 76%);
-	--interactive-hover: hsl(from var(--main-accent) h calc(0.4 + s * 0.3) 80%);
-	--interactive-accent: hsl(from var(--main-accent) h calc(0.35 + s * 0.1) 75%);
-	--interactive-accent-hover: hsl(from var(--main-accent) h calc(0.5 + s * 0.3) 75%);
-
-	--background-primary: hsl(from var(--main-accent) h calc(0.2 + s * 0.1) 95%);
-	--background-primary-alt: hsl(from var(--main-accent) h calc(0.3 + s * 0.1) 90%);
-	--background-secondary: hsl(from var(--main-accent) h calc(0.4 + s * 0.1) 87%);
-	--background-secondary-alt: hsl(from var(--main-accent) h calc(0.45 + s * 0.1) 85%);
-	--background-accent: hsl(from var(--main-accent) h calc(0.4 + s * 0.1) 70%);
-	--background-error: rgb(156, 30, 53);
-	--background-modifier-hover: color-mix(in oklch, var(--background-primary-alt), transparent);
-	
-	--text-normal: #252525f9;
-	--text-muted: #292929d8;
-	--text-faint: color-mix(in srgb, var(--text-normal) 85%, transparent);
-	--text-selection: color-mix(in srgb, var(--main-accent), var(--background-primary) 80%);
-
-	--text-accent: hsl(from var(--main-accent) h calc(0.65 + s * 0.1) 40%);
-	--text-accent-hover: hsl(from var(--main-accent) h calc(0.6 + s * 0.3) 40%);
-	--text-heading-accent:  hsl(from var(--main-accent) h calc(0.3 + s * 0.3) 28%);
-	--text-strong-accent: hsl(from var(--main-accent) h calc(0.4 + s * 0.5) 40%);
-	--text-weak-accent: hsl(from var(--main-accent) h 5% 10%);
-	--text-on-accent: hsl(from var(--main-accent) h calc(0.7 + s * 0.3) 30%);
-	--text-on-accent-inverted: hsl(from var(--main-accent) h calc(0.3 + s * 0.3) 30%);   
-	--text-on-error: #f1a885;
-
-	--nav-item-color:color-mix(in oklch, var(--text-normal), var(--background-secondary) 10%);
-	--nav-item-color-hover: var(--nav-item-color);
-
-	--text-error: #a50c0c;
-	--text-error-hover: #b11c70;
-
-	--inline-title-color: var(--text-strong-accent);
-	--hr-color:  color-mix(in srgb, var(--main-accent), var(--background-primary) 70%);
-	--icon-color: color-mix(in srgb, var(--main-text-accent), white);
-	--nav-collapse-icon-color: var(--main-text-accent);
- }
-
- /*-------------------------------------*/
- /*      Search the following lines     */
- /*     to jump to specific section     */
- /*-------------------------------------*/
- /*  resize-handle and borders          */
- /*                tags               */
- /*             link              */
- /*                Cursor               */
- /* basic format in EDITOR and PREVIEW */
- /* Headings - EDITOR and PREVIEW */
- /*         Code block in  Preview      */
- /*       Code block in Editor          */
- /*              Brackets               */
- /*             Blockquote              */
- /*             table                   */
- /*               Checkbox              */
- /*           html in editor            */
- /*              popover                */
- /*            Side panel               */
- /* internal embedded link in preview   */
- /*             graph view              */
- /*            settings                 */
- /*            Hide side bar            */
- /*           width of content          */
- /*    at a rule line before ul list    *
- /*  Hide Scrollbar (recommend for mac)  */
- /*-------------------------------------*/
+@use 'vars';
+@use 'components';
+@use 'kanban';
 
 /* global */
  hr,
  .hr.cm-line hr {
  	border-color: var(--hr-color);
  }
-
-
 
 .cm-comment {
 	color: var(--code-comment);
@@ -250,14 +27,26 @@
 	}
 }
 
-// .markdown-source-view.mod-cm6.is-readable-line-width 
+// Big, high-level tweaks
 
 .cm-sizer {
 	max-width: var(--file-line-width);
 	margin-left: auto;
 	margin-right: auto;
-  }
+}
 
+.cm-scroller {
+	padding-block: 3% !important;
+	padding-left: 10% !important;
+	padding-right: 10% !important;
+
+}
+
+.status-bar {
+	* {
+		text-wrap: nowrap !important;
+	}
+}
 
 .inline-title {
 	font-weight: 200;
@@ -338,58 +127,6 @@
  	border-left: 1px solid var(--border-color);
  }
 
- /*************************************/
- /*                tags               */
- /*************************************/
-
- /* Tag hover in preview */
- a.tag:hover {
- 	color: var(--text-accent) !important;
- }
-
- /* Tag Color in editor and preview*/
- .cm-hashtag,
- a.tag {
- 	/* color: var(--text-normal) !important; */
- 	color: var(--tag-font-color) !important;
- 	background-color: var(--tag-bg);
- 	font-size: smaller;
- 	padding-top: 0em;
- 	padding-bottom: 0em;
- 	text-decoration: none !important;
- 	font-style: normal !important;
- 	font-weight: 600;
- }
-
- /*********************************/
- /*             link              */
- /*********************************/
-
- /* link */
- a,
- .internal-link,
- .cm-hmd-internal-link,
- .cm-link,
- .cm-formatting-link,
- .cm-url {
- 	text-decoration: none !important;
- }
-
- /* the url string in editor */
- .cm-s-obsidian span.cm-string {
- 	color: var(--text-accent-hover)
- }
-
- /* make external links italics to differentiate */
- a:not(.internal-link) {
- 	font-style: italic;
- }
-
- /*footnote*/
- .cm-s-obsidian pre.HyperMD-footnote span.cm-hmd-footnote,
- .cm-s-obsidian span.cm-footref {
- 	color: var(--text-accent) !important;
- }
 
  /***************************************/
  /*                Cursor               */
