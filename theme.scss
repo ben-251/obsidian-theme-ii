@@ -306,6 +306,7 @@
  /***************************************/
 
  /* code blocks in preview */
+//  TODO: remove this ugly "important" stuff, and just fix via specificity!
  pre code {
  	font-family: monaco !important;
  	font-size: var(--font-size-code) !important;

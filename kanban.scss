@@ -24,8 +24,11 @@
 					padding-inline: calc(var(--tag-padding-x)*1.2);
 					margin-inline-start: .5em;
 					font-size: .6em;
+
+					background-color: var(--tag-background, hsla(var(--interactive-accent-hsl), .1));
+					color: var(--tag-color);
 				}
-				
+
 				.task-list-item-checkbox:checked {
 					&::after {
 						display: none;

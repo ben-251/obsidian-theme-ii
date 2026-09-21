@@ -176,7 +176,7 @@ a.tag:hover {
 .cm-hashtag,
 a.tag {
   /* color: var(--text-normal) !important; */
-  color: var(--tag-font-color) !important;
+  color: var(--tag-font-color);
   background-color: var(--tag-bg);
   font-size: smaller;
   padding-top: 0em;
@@ -234,6 +234,8 @@ a:not(.internal-link) {
   padding-inline: calc(var(--tag-padding-x) * 1.2);
   margin-inline-start: 0.5em;
   font-size: 0.6em;
+  background-color: var(--tag-background, hsla(var(--interactive-accent-hsl), 0.1));
+  color: var(--tag-color);
 }
 .kanban-plugin__item .kanban-plugin__item-title .kanban-plugin__item-markdown .kanban-plugin__markdown-preview-view .task-list-item-checkbox:checked::after {
   display: none;
